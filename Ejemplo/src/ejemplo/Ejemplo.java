@@ -5,7 +5,6 @@
  */
 package ejemplo;
 
-import java.util.Scanner;
 import toolbox.Input;
 import toolbox.Output;
 
@@ -19,20 +18,14 @@ public class Ejemplo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        int unNumero;
-        String unaString = new String();
-        
-        Output.mostrarMensaje("Ingrese numero");
-        unNumero = Input.leerIn.nextInt();
-        
-        Output.mostrarMensaje("El numero es: " + unNumero);
-        
-        Output.mostrarMensaje("Ingrese nombre");
-        
-        unaString = Input.leerIn.next();
-        
-        Output.mostrarMensaje("El nombre es: " + unaString);
-    }
 
+        Automovil miAuto = new Automovil();
+
+        miAuto.velocidadActual = 50;
+        Automovil.cantidadDeRuedas = 4;
+        Automovil.mostrarCantidadRuedas();
+        miAuto.mostrarVelocidadActual();
+        miAuto.Acelerar(10);
+        miAuto.mostrarVelocidadActual();
+    }
 }
