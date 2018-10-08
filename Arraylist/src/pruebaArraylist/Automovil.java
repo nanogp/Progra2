@@ -16,24 +16,30 @@ public class Automovil extends Vehiculo {
     public String modelo;
     public int anio;
 
+    private void setTipoVehiculo() {
+        super.setTipoVehiculo("Automovil");
+    }
+
     Automovil(String fabricante,
             String modelo,
-            int anio) {
+            int anio, int velocidad) {
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.anio = anio;
+        super.setVelocidadActual(velocidad);
+        setTipoVehiculo();
     }
 
     public static void mostrarCantidadDeRuedas() {
         System.out.println("La cantidad de ruedas es: " + _cantidadDeRuedas);
     }
 
-    public static void setearCantidadDeRuedas(int cantidadDeRuedas) {
+    public static void setCantidadDeRuedas(int cantidadDeRuedas) {
         _cantidadDeRuedas = cantidadDeRuedas;
     }
 
     public void mostrarVelocidadActual() {
-        System.out.println("La velocidad actual es: " + this.getVelocidadActual());
+        System.out.println("La velocidad actual es: " + this.getVelocidadActual() + "km/h");
     }
 
     public void mostrar() {

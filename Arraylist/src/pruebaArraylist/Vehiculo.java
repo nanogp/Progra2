@@ -12,7 +12,7 @@ package pruebaArraylist;
 public class Vehiculo {
 
     private int _velocidadActual;
-    private String _tipo;
+    private String _tipoVehiculo;
 
     protected int getVelocidadActual() {
         return _velocidadActual;
@@ -22,15 +22,15 @@ public class Vehiculo {
         _velocidadActual = velocidadActual;
     }
 
-    protected String getTipo() {
-        return _tipo;
+    protected String getTipoVehiculo() {
+        return _tipoVehiculo;
     }
 
-    protected void setTipo(String tipo) {
-        _tipo = tipo;
+    protected void setTipoVehiculo(String tipo) {
+        _tipoVehiculo = tipo;
     }
 
-    public void Acelerar(int velocidad) {
+    public void acelerar(int velocidad) {
         this._velocidadActual += velocidad;
     }
 }
