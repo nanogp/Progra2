@@ -7,6 +7,7 @@ package ejemplo;
 
 import toolbox.Input;
 import toolbox.Output;
+import java.util.ArrayList;
 
 /**
  *
