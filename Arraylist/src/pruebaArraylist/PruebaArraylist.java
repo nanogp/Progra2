@@ -24,14 +24,11 @@ public class PruebaArraylist {
 
         System.out.println("crear 3 autos en la lista...");
 
-        automovil = new Automovil("Fiat", "Vivace", 1997, 40);
-        add = lista.add(automovil);
+        add = lista.add(new Automovil("Fiat", "Vivace", 1997, 40));
 
-        automovil = new Automovil("Renault", "Fuego", 1986, 70);
-        add = lista.add(automovil);
+        add = lista.add(new Automovil("Renault", "Fuego", 1986, 70));
 
-        automovil = new Automovil("Peugeot", "405", 2001, 65);
-        add = lista.add(automovil);
+        add = lista.add(new Automovil("Peugeot", "405", 2001, 65));
 
         for (Object o : lista) {
             System.out.println("--------------");
@@ -43,5 +40,5 @@ public class PruebaArraylist {
             automovil.mostrarVelocidadActual();
 
         }
-    }
-}
+    }//main
+}//class

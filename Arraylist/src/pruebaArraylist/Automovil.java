@@ -20,7 +20,14 @@ public class Automovil extends Vehiculo {
         super.setTipoVehiculo("Automovil");
     }
 
-    Automovil(String fabricante, String modelo, int anio, int velocidad) {
+    public Automovil(String fabricante, String modelo, int anio) {
+        this.fabricante = fabricante;
+        this.modelo = modelo;
+        this.anio = anio;
+        setTipoVehiculo();
+    }
+
+    public Automovil(String fabricante, String modelo, int anio, int velocidad) {
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.anio = anio;
@@ -47,5 +54,4 @@ public class Automovil extends Vehiculo {
     public void mostrar() {
         System.out.println(this.toString());
     }
-
 }

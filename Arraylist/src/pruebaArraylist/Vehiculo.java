@@ -14,6 +14,11 @@ public class Vehiculo {
     private int _velocidadActual;
     private String _tipoVehiculo;
 
+    public Vehiculo() {
+        _velocidadActual = 0;
+        _tipoVehiculo = "";
+    }
+
     protected int getVelocidadActual() {
         return _velocidadActual;
     }
