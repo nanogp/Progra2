@@ -23,9 +23,11 @@ public class Auto
     public Auto()
     {
         this.fabricante = "un fabricante por defecto";
+        //<editor-fold defaultstate="collapsed" desc="${Rueda}">
         this.ruedaDD = new Rueda();
         this.ruedaDI = new Rueda();
         this.ruedaTD = new Rueda();
         this.ruedaTI = new Rueda();
+        //</editor-fold>
     }
 }
