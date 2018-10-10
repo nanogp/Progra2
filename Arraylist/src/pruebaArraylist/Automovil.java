@@ -9,25 +9,29 @@ package pruebaArraylist;
  *
  * @author mponti
  */
-public class Automovil extends Vehiculo {
+public class Automovil extends Vehiculo
+{
 
     private static int _cantidadDeRuedas;
     public String fabricante;
     public String modelo;
     public int anio;
 
-    private void setTipoVehiculo() {
+    private void setTipoVehiculo()
+    {
         super.setTipoVehiculo("Automovil");
     }
 
-    public Automovil(String fabricante, String modelo, int anio) {
+    public Automovil(String fabricante, String modelo, int anio)
+    {
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.anio = anio;
         setTipoVehiculo();
     }
 
-    public Automovil(String fabricante, String modelo, int anio, int velocidad) {
+    public Automovil(String fabricante, String modelo, int anio, int velocidad)
+    {
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.anio = anio;
@@ -35,23 +39,28 @@ public class Automovil extends Vehiculo {
         setTipoVehiculo();
     }
 
-    public String toString() {
+    public String toString()
+    {
         return this.fabricante + " - " + this.modelo + " - " + this.anio;
     }
 
-    public static void mostrarCantidadDeRuedas() {
+    public static void mostrarCantidadDeRuedas()
+    {
         System.out.println("La cantidad de ruedas es: " + _cantidadDeRuedas);
     }
 
-    public static void setCantidadDeRuedas(int cantidadDeRuedas) {
+    public static void setCantidadDeRuedas(int cantidadDeRuedas)
+    {
         _cantidadDeRuedas = cantidadDeRuedas;
     }
 
-    public void mostrarVelocidadActual() {
+    public void mostrarVelocidadActual()
+    {
         System.out.println("La velocidad actual es: " + this.getVelocidadActual() + "km/h");
     }
 
-    public void mostrar() {
+    public void mostrar()
+    {
         System.out.println(this.toString());
     }
 }

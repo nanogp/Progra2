@@ -16,37 +16,44 @@ import static org.junit.Assert.*;
  *
  * @author mponti
  */
-public class PruebaArraylistTest {
-    
-    public PruebaArraylistTest() {
+public class PruebaArraylistTest
+{
+
+    public PruebaArraylistTest()
+    {
     }
-    
+
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass()
+    {
     }
-    
+
     @AfterClass
-    public static void tearDownClass() {
+    public static void tearDownClass()
+    {
     }
-    
+
     @Before
-    public void setUp() {
+    public void setUp()
+    {
     }
-    
+
     @After
-    public void tearDown() {
+    public void tearDown()
+    {
     }
 
     /**
      * Test of main method, of class PruebaArraylist.
      */
     @Test
-    public void testMain() {
+    public void testMain()
+    {
         System.out.println("main");
         String[] args = null;
         PruebaArraylist.main(args);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
 }

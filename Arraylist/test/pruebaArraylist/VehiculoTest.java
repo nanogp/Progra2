@@ -16,32 +16,39 @@ import static org.junit.Assert.*;
  *
  * @author mponti
  */
-public class VehiculoTest {
+public class VehiculoTest
+{
 
-    public VehiculoTest() {
+    public VehiculoTest()
+    {
     }
 
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass()
+    {
     }
 
     @AfterClass
-    public static void tearDownClass() {
+    public static void tearDownClass()
+    {
     }
 
     @Before
-    public void setUp() {
+    public void setUp()
+    {
     }
 
     @After
-    public void tearDown() {
+    public void tearDown()
+    {
     }
 
     /**
      * Test of getVelocidadActual method, of class Vehiculo.
      */
     @Test
-    public void testGetVelocidadActual() {
+    public void testGetVelocidadActual()
+    {
         System.out.println("getVelocidadActual");
         Vehiculo instance = new Vehiculo();
         int expResult = 0;
@@ -54,7 +61,8 @@ public class VehiculoTest {
      * Test of setVelocidadActual method, of class Vehiculo.
      */
     @Test
-    public void testSetVelocidadActual() {
+    public void testSetVelocidadActual()
+    {
         System.out.println("setVelocidadActual");
         int velocidadActual = 10;
         Vehiculo instance = new Vehiculo();
@@ -68,7 +76,8 @@ public class VehiculoTest {
      * Test of getTipoVehiculo method, of class Vehiculo.
      */
     @Test
-    public void testGetTipoVehiculo() {
+    public void testGetTipoVehiculo()
+    {
         System.out.println("getTipoVehiculo");
         Vehiculo instance = new Vehiculo();
         String expResult = "";
@@ -82,7 +91,8 @@ public class VehiculoTest {
      * Test of setTipoVehiculo method, of class Vehiculo.
      */
     @Test
-    public void testSetTipoVehiculo() {
+    public void testSetTipoVehiculo()
+    {
         System.out.println("setTipoVehiculo");
         String tipo = "";
         Vehiculo instance = new Vehiculo();
@@ -96,7 +106,8 @@ public class VehiculoTest {
      * Test of acelerar method, of class Vehiculo.
      */
     @Test
-    public void testAcelerar() {
+    public void testAcelerar()
+    {
         System.out.println("acelerar");
         int velocidad = 0;
         Vehiculo instance = new Vehiculo();

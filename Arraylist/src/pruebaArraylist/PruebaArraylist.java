@@ -11,14 +11,16 @@ import java.util.ArrayList;
  *
  * @author mponti
  */
-public class PruebaArraylist {
+public class PruebaArraylist
+{
 
     /**
      * @param args the command line arguments
      */
     private static boolean add;
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         ArrayList lista = new ArrayList();
         Automovil automovil;
 
@@ -30,7 +32,8 @@ public class PruebaArraylist {
 
         add = lista.add(new Automovil("Peugeot", "405", 2001, 65));
 
-        for (Object o : lista) {
+        for (Object o : lista)
+        {
             System.out.println("--------------");
             automovil = (Automovil) o;
             automovil.mostrar();

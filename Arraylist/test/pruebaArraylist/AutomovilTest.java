@@ -16,32 +16,39 @@ import static org.junit.Assert.*;
  *
  * @author mponti
  */
-public class AutomovilTest {
-    
-    public AutomovilTest() {
+public class AutomovilTest
+{
+
+    public AutomovilTest()
+    {
     }
-    
+
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass()
+    {
     }
-    
+
     @AfterClass
-    public static void tearDownClass() {
+    public static void tearDownClass()
+    {
     }
-    
+
     @Before
-    public void setUp() {
+    public void setUp()
+    {
     }
-    
+
     @After
-    public void tearDown() {
+    public void tearDown()
+    {
     }
 
     /**
      * Test of toString method, of class Automovil.
      */
     @Test
-    public void testToString() {
+    public void testToString()
+    {
         System.out.println("toString");
         Automovil instance = null;
         String expResult = "";
@@ -55,7 +62,8 @@ public class AutomovilTest {
      * Test of mostrarCantidadDeRuedas method, of class Automovil.
      */
     @Test
-    public void testMostrarCantidadDeRuedas() {
+    public void testMostrarCantidadDeRuedas()
+    {
         System.out.println("mostrarCantidadDeRuedas");
         Automovil.mostrarCantidadDeRuedas();
         // TODO review the generated test code and remove the default call to fail.
@@ -66,7 +74,8 @@ public class AutomovilTest {
      * Test of setCantidadDeRuedas method, of class Automovil.
      */
     @Test
-    public void testSetCantidadDeRuedas() {
+    public void testSetCantidadDeRuedas()
+    {
         System.out.println("setCantidadDeRuedas");
         int cantidadDeRuedas = 0;
         Automovil.setCantidadDeRuedas(cantidadDeRuedas);
@@ -78,7 +87,8 @@ public class AutomovilTest {
      * Test of mostrarVelocidadActual method, of class Automovil.
      */
     @Test
-    public void testMostrarVelocidadActual() {
+    public void testMostrarVelocidadActual()
+    {
         System.out.println("mostrarVelocidadActual");
         Automovil instance = null;
         instance.mostrarVelocidadActual();
@@ -90,12 +100,13 @@ public class AutomovilTest {
      * Test of mostrar method, of class Automovil.
      */
     @Test
-    public void testMostrar() {
+    public void testMostrar()
+    {
         System.out.println("mostrar");
         Automovil instance = null;
         instance.mostrar();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
 }
