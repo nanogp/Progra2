@@ -5,17 +5,19 @@
  */
 package toolbox;
 
+import java.util.Scanner;
+
 /**
  *
  * @author mponti
  */
-public class Toolbox {
+public class Toolbox
+{
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public int random(int cant)
+    {
+        return (int) (Math.random() * cant);
     }
-    
+    public static Scanner leerIn = new Scanner(System.in);
+
 }
