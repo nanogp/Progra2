@@ -16,7 +16,7 @@ public class Alumno
 
     //<editor-fold defaultstate="collapsed" desc="Propiedades">
     private static int _secuencia = 0;
-    private static int _cantidadNotas = 3;
+    public static int _cantidadNotas = 3;
     private int _id;
     private String _apellidoNombre;
     private String _eMail;
@@ -122,19 +122,37 @@ public class Alumno
     //<editor-fold defaultstate="collapsed" desc="Metodos">    
     public String alumnoAString()
     {
-        return "id: " + this._id
-                + " | apellido y nombre : " + this._apellidoNombre
-                + " | direccion: " + this._direccion
-                + " | email: " + this._eMail
-                + " | nota 1: " + this._notasIngreso[0]
-                + " | nota 2: " + this._notasIngreso[1]
-                + " | nota 3: " + this._notasIngreso[2]
-                + " | promedio: " + new DecimalFormat("#,##0.00").format(this.getPromedio());
+        //StringBuffer retorno = new StringBuffer();
+        StringBuilder retorno = new StringBuilder();
+        DecimalFormat df = new DecimalFormat("#,##0.00");
+
+        retorno.append("id: " + this._id);
+        retorno.append(" | apellido y nombre : " + this._apellidoNombre);
+        retorno.append(" | direccion: " + this._direccion);
+        retorno.append(" | email: " + this._eMail);
+
+        for (int i = 0; i < Alumno._cantidadNotas; i++)
+        {
+            retorno.append(" | nota " + (i + 1) + ": " + this._notasIngreso[i]);
+        }
+        retorno.append(" | promedio: " + df.format(this.getPromedio()));
+
+        return retorno.toString();
     }
 
     public void calcularPromedio()
     {
-        this.setPromedio(((float) this._notasIngreso[0] + this._notasIngreso[1] + this._notasIngreso[2]) / 3);
+        float acumulador = 0;
+
+        if (Alumno._cantidadNotas > 0)
+        {
+            for (int nota : _notasIngreso)
+            {
+                acumulador += nota;
+            }
+        }
+
+        this.setPromedio(acumulador / Alumno._cantidadNotas);
     }
     //</editor-fold>
 }

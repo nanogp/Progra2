@@ -7,15 +7,22 @@ public class Clase6
 
     public static void main(String[] args)
     {
-        Alumno unAlumno = new Alumno(Alumno.getNextId(), Toolbox.NombreRandom.generarNombre(), "Sarasa 1234", "unmail@gmail.com");
+        Alumno[] alumnos = new Alumno[2];
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < alumnos.length; i++)
         {
-            unAlumno.setNotasIngreso(Toolbox.random.nextInt(1, 10), i);
+            alumnos[i] = new Alumno(Alumno.getNextId(), Toolbox.NombreRandom.generarNombre(), Toolbox.NombreRandom.generarNombre(), Toolbox.NombreRandom.generarNombre() + "@gmail.com");
         }
 
-        unAlumno.calcularPromedio();
+        for (Alumno alumno : alumnos)
+        {
+            for (int i = 0; i < Alumno._cantidadNotas; i++)
+            {
+                alumno.setNotasIngreso(Toolbox.random.nextInt(1, 10), i);
+                alumno.calcularPromedio();
+            }
+            System.out.println(alumno.alumnoAString());
+        }
 
-        System.out.println(unAlumno.alumnoAString());
     }
 }
