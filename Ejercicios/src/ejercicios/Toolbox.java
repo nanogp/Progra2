@@ -1,19 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ejercicios;
 
-import java.util.Scanner;
+import java.util.Date;
+import java.util.Calendar;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.Scanner;
 
-/**
- *
- * @author mponti
- */
 public class Toolbox
 {
+
+    public static ThreadLocalRandom random;
+
+    public static Date date(int año, int mes, int dia)
+    {
+        Calendar calendario = Calendar.getInstance();
+        calendario.set(Calendar.YEAR, año);
+        calendario.set(Calendar.MONTH, mes);
+        calendario.set(Calendar.DAY_OF_MONTH, dia);
+        return calendario.getTime();
+    }
 
     public static class NombreRandom
     {

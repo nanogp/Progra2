@@ -1,19 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ejercicios;
 
-/**
- *
- * @author nano
- */
 public class Ejercicios
 {
 
     public static void main(String[] args)
     {
-        Ejercicio1.main();
+        System.out.println(Toolbox.random.nextInt(0, 3));
+        System.out.println(Cuenta.eTipoInteres.values()[2]);
+        //Ejercicio1.main();
+        //Ejercicio2.main();
+        //Ejercicio4.main();
+        //int pos = Cuenta.eTipoInteres.values().length;
     }
 }

@@ -8,11 +8,16 @@ deberán de realizar las validaciones correspondientes
  */
 package ejercicios;
 
-/**
- *
- * @author nano
- */
 public class Ejercicio2
 {
 
+    public static void main()
+    {
+        Cuenta unaCuenta = new Cuenta();
+        unaCuenta.setNombre("Esta cuenta");
+        unaCuenta.setNroCuenta(982374434);
+        unaCuenta.setSaldo(1564453.25);
+        unaCuenta.setTipoInteres(Cuenta.eTipoInteres.values()[Toolbox.random.nextInt(Cuenta.eTipoInteres.values().length)]);
+        unaCuenta.mostrar();
+    }
 }

@@ -22,21 +22,23 @@ public class Automovil extends Vehiculo
         super.setTipoVehiculo("Automovil");
     }
 
+    public Automovil()
+    {
+        setTipoVehiculo();
+    }
+
     public Automovil(String fabricante, String modelo, int anio)
     {
+        this();
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.anio = anio;
-        setTipoVehiculo();
     }
 
     public Automovil(String fabricante, String modelo, int anio, int velocidad)
     {
-        this.fabricante = fabricante;
-        this.modelo = modelo;
-        this.anio = anio;
-        super.setVelocidadActual(velocidad);
-        setTipoVehiculo();
+        this(fabricante, modelo, anio);
+        this.setVelocidadActual(velocidad);
     }
 
     public String toString()

@@ -12,10 +12,6 @@
  */
 package ejercicios;
 
-/**
- *
- * @author nano
- */
 public class Ejercicio1
 {
 

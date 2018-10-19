@@ -1,16 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ejercicios;
 
-/**
- *
- * @author nano
- */
 public class Cuenta
 {
+
+    public static enum eTipoInteres
+    {
+        TIN, TAE, TIR
+    }
 
 //<editor-fold defaultstate="collapsed" desc="Campos">
     private String _nombre;
@@ -19,7 +15,7 @@ public class Cuenta
     private eTipoInteres _tipoInteres;
 //</editor-fold>
 
-//<editor-fold defaultstate="collapsed" desc="Metodos">
+//<editor-fold defaultstate="collapsed" desc="Getters y Setters">
     public String getNombre()
     {
         return _nombre;
@@ -40,24 +36,41 @@ public class Cuenta
         return _tipoInteres;
     }
 
-    public void setNombre(String _nombre)
+    public void setNombre(String nombre)
     {
-        this._nombre = _nombre;
+        this._nombre = nombre;
     }
 
-    public void setNroCuenta(long _nroCuenta)
+    public boolean setNroCuenta(long nroCuenta)
     {
-        this._nroCuenta = _nroCuenta;
+        if (nroCuenta > 0)
+        {
+            this._nroCuenta = nroCuenta;
+            return true;
+        }
+
+        return false;
     }
 
-    public void setSaldo(double _saldo)
+    public void setSaldo(double saldo)
     {
-        this._saldo = _saldo;
+        this._saldo = saldo;
     }
 
-    public void setTipoInteres(eTipoInteres _tipoInteres)
+    public void setTipoInteres(eTipoInteres tipoInteres)
     {
-        this._tipoInteres = _tipoInteres;
+        this._tipoInteres = tipoInteres;
     }
+
 //</editor-fold>
+    public void mostrar()
+
+    {
+        System.out.println("cuenta: "
+                + this._nombre + " | numero: "
+                + this._nroCuenta + " | saldo: $"
+                + this._saldo + "| tipo interes: "
+                + this._tipoInteres);
+    }
+
 }
