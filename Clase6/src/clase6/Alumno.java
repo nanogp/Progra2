@@ -98,14 +98,14 @@ public class Alumno
         this._promedio = _promedio;
     }
 
-    public int getNotasIngreso(int pos)
+    public int[] getNotasIngreso()
     {
-        return _notasIngreso[pos];
+        return _notasIngreso;
     }
 
-    public void setNotasIngreso(int nota, int pos)
+    public void setNotasIngreso(int[] _notasIngreso)
     {
-        this._notasIngreso[pos] = nota;
+        this._notasIngreso = _notasIngreso;
     }
 
     public String getDireccion()

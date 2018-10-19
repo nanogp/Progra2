@@ -12,8 +12,10 @@ import java.util.Scanner;
 public class Toolbox
 {
 
+    public static Scanner leerIn = new Scanner(System.in);
     public static ThreadLocalRandom random = ThreadLocalRandom.current();
 
+    //<editor-fold defaultstate="collapsed" desc="Date">
     public static Date date(int año, int mes, int dia)
     {
         Calendar calendario = Calendar.getInstance();
@@ -22,7 +24,9 @@ public class Toolbox
         calendario.set(Calendar.DAY_OF_MONTH, dia);
         return calendario.getTime();
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Nombre Random">
     public static class NombreRandom
     {
 
@@ -51,9 +55,36 @@ public class Toolbox
             return inicio[ThreadLocalRandom.current().nextInt(inicio.length)]
                     + medio[ThreadLocalRandom.current().nextInt(medio.length)]
                     + fin[ThreadLocalRandom.current().nextInt(fin.length)];
-
         }
     }
-    public static Scanner leerIn = new Scanner(System.in);
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Enteros">
+    public static class Enteros
+    {
+
+        public static int[] arrayIntRandom(int length, int min, int max)
+        {
+            int[] retorno = new int[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                retorno[i] = random.nextInt(min, max);
+            }
+            return retorno;
+        }
+
+        public static int[] arrayIntConsola(int length, String texto)
+        {
+            int[] retorno = new int[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                System.out.println(texto);
+                retorno[i] = leerIn.nextInt();
+            }
+            return retorno;
+        }
+    }
+    //</editor-fold>
 }
