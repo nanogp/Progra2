@@ -1,22 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package clase6;
 
 import java.text.DecimalFormat;
+import toolbox.Toolbox;
 
-/**
- *
- * @author mponti
- */
 public class Alumno
 {
 
     //<editor-fold defaultstate="collapsed" desc="Propiedades">
     private static int _secuencia = 0;
-    public static int _cantidadNotas = 3;
+    public static int cantidadNotas = 3;
+
+    private static int _paddingId = 3;
+    private static int _paddingApellidoNombre = 25;
+    private static int _paddingEmail = 25;
+    private static int _paddingPromedio = 3;
+    private static int _paddingNotasIngreso = 6;
+    private static int _paddingDireccion = 20;
+
     private int _id;
     private String _apellidoNombre;
     private String _eMail;
@@ -28,7 +28,7 @@ public class Alumno
     //<editor-fold defaultstate="collapsed" desc="Constructores">
     public Alumno()
     {
-        this._notasIngreso = new int[_cantidadNotas];
+        this._notasIngreso = new int[cantidadNotas];
     }
 
     public Alumno(int id, String apellidoNombre)
@@ -123,28 +123,29 @@ public class Alumno
     public String alumnoAString()
     {
         //StringBuffer retorno = new StringBuffer();
-        StringBuilder retorno = new StringBuilder();
+        //StringBuilder retorno = new StringBuilder();
         DecimalFormat df = new DecimalFormat("#,##0.00");
+        Toolbox.cadenas.stringBuilder = new StringBuilder();
+        Toolbox.cadenas.appendRightPadSeparator(Toolbox.enteros.toString(this._id), _paddingId, " | ");
+        Toolbox.cadenas.appendRightPadSeparator(this._apellidoNombre, _paddingApellidoNombre, " | ");
+        Toolbox.cadenas.appendRightPadSeparator(this._direccion, _paddingDireccion, " | ");
+        Toolbox.cadenas.appendRightPadSeparator(this._eMail, _paddingEmail, " | ");
 
-        retorno.append("id: " + this._id);
-        retorno.append(" | apellido y nombre : " + this._apellidoNombre);
-        retorno.append(" | direccion: " + this._direccion);
-        retorno.append(" | email: " + this._eMail);
-
-        for (int i = 0; i < Alumno._cantidadNotas; i++)
+        for (int i = 0; i < Alumno.cantidadNotas; i++)
         {
-            retorno.append(" | nota " + (i + 1) + ": " + this._notasIngreso[i]);
+            Toolbox.cadenas.appendRightPadSeparator(Toolbox.enteros.toString(this._notasIngreso[i]), _paddingNotasIngreso, " | ");
         }
-        retorno.append(" | promedio: " + df.format(this.getPromedio()));
 
-        return retorno.toString();
+        Toolbox.cadenas.stringBuilder.append(df.format(this.getPromedio()));
+
+        return Toolbox.cadenas.stringBuilder.toString();
     }
 
     public void calcularPromedio()
     {
         float acumulador = 0;
 
-        if (Alumno._cantidadNotas > 0)
+        if (Alumno.cantidadNotas > 0)
         {
             for (int nota : _notasIngreso)
             {
@@ -152,7 +153,8 @@ public class Alumno
             }
         }
 
-        this.setPromedio(acumulador / Alumno._cantidadNotas);
+        this.setPromedio(acumulador / Alumno.cantidadNotas);
     }
+
     //</editor-fold>
 }

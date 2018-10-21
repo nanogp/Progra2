@@ -1,9 +1,5 @@
 package toolbox;
 
-import com.sun.org.apache.xalan.internal.lib.ExsltDatetime;
-import java.time.Month;
-import java.util.Calendar;
-import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -13,14 +9,6 @@ import static org.junit.Assert.*;
 
 public class ToolboxTest
 {
-
-    Calendar calendario = Calendar.getInstance();
-    static int año = 2000;
-    static int mes = Month.JANUARY.getValue();
-    static int dia = 1;
-    static int hora = 0;
-    static int minutos = 0;
-    static int segundos = 0;
 
     public ToolboxTest()
     {
@@ -39,13 +27,6 @@ public class ToolboxTest
     @Before
     public void setUp()
     {
-        calendario.set(Calendar.YEAR, año);
-        calendario.set(Calendar.MONTH, mes);
-        calendario.set(Calendar.DAY_OF_MONTH, dia);
-        calendario.set(Calendar.HOUR_OF_DAY, hora);
-        calendario.set(Calendar.MINUTE, minutos);
-        calendario.set(Calendar.SECOND, segundos);
-        calendario.set(Calendar.MILLISECOND, 0);
     }
 
     @After
@@ -54,25 +35,9 @@ public class ToolboxTest
     }
 
     @Test
-    public void testDate_3args()
+    public void testSomeMethod()
     {
-        System.out.println("date 3args");
-        Date expResult = calendario.getTime();
-        Date result = Toolbox.date(año, mes, dia);
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testDate_6args()
-    {
-        System.out.println("date 6args");
-        hora = 15;
-        minutos = 30;
-        segundos = 45;
-        setUp();
-        Date expResult = calendario.getTime();
-        Date result = Toolbox.date(año, mes, dia, hora, minutos, segundos);
-        assertEquals(expResult, result);
+        assertNotEquals(Toolbox.random, null);
     }
 
 }
