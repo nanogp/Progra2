@@ -4,11 +4,9 @@ import java.util.Date;
 import java.util.Calendar;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+import jdk.nashorn.internal.codegen.CompilerConstants;
 
-/**
- *
- * @author mponti
- */
 public class Toolbox
 {
 
@@ -16,12 +14,47 @@ public class Toolbox
     public static ThreadLocalRandom random = ThreadLocalRandom.current();
 
     //<editor-fold defaultstate="collapsed" desc="Date">
+
+    /**
+     * Constructor de fecha
+     * @param año
+     * @param mes
+     * @param dia
+     * @return
+     */
     public static Date date(int año, int mes, int dia)
     {
         Calendar calendario = Calendar.getInstance();
         calendario.set(Calendar.YEAR, año);
         calendario.set(Calendar.MONTH, mes);
         calendario.set(Calendar.DAY_OF_MONTH, dia);
+        calendario.set(Calendar.HOUR_OF_DAY, 0);
+        calendario.set(Calendar.MINUTE, 0);
+        calendario.set(Calendar.SECOND, 0);
+        calendario.set(Calendar.MILLISECOND, 0);
+        return calendario.getTime();
+    }
+
+    /**
+     * Constructor de fecha y hora
+     * @param año
+     * @param mes
+     * @param dia
+     * @param hora
+     * @param minutos
+     * @param segundos
+     * @return
+     */
+    public static Date date(int año, int mes, int dia, int hora, int minutos, int segundos)
+    {
+        Calendar calendario = Calendar.getInstance();
+        calendario.set(Calendar.YEAR, año);
+        calendario.set(Calendar.MONTH, mes);
+        calendario.set(Calendar.DAY_OF_MONTH, dia);
+        calendario.set(Calendar.HOUR_OF_DAY, hora);
+        calendario.set(Calendar.MINUTE, minutos);
+        calendario.set(Calendar.SECOND, segundos);
+        calendario.set(Calendar.MILLISECOND, 0);
         return calendario.getTime();
     }
     //</editor-fold>
@@ -60,6 +93,10 @@ public class Toolbox
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Enteros">
+
+    /**
+     * Clase para manejo de datos int
+     */
     public static class Enteros
     {
 
