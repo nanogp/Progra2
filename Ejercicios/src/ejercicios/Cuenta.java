@@ -5,7 +5,12 @@ public class Cuenta
 
     public static enum eTipoInteres
     {
-        TIN, TAE, TIR
+        TIN, TAE, TIR;
+
+        public static eTipoInteres getRandom()
+        {
+            return eTipoInteres.values()[java.util.concurrent.ThreadLocalRandom.current().nextInt(eTipoInteres.values().length)];
+        }
     }
 
 //<editor-fold defaultstate="collapsed" desc="Campos">

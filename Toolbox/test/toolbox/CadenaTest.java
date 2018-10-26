@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package toolbox;
 
 import org.junit.After;
@@ -7,6 +12,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ *
+ * @author mponti
+ */
 public class CadenaTest
 {
 
@@ -27,84 +36,175 @@ public class CadenaTest
     @Before
     public void setUp()
     {
-        Cadena.stringBuilder = new StringBuilder();
     }
 
     @After
     public void tearDown()
     {
-        //Cadena.stringBuilder.delete(0, Cadena.stringBuilder.length());
     }
 
+    /**
+     * Test of repeat method, of class Cadena.
+     */
     @Test
-    public void testPadRight()
+    public void testRepeat()
     {
-        System.out.println("padRight");
-        String texto = "texto";
-        int padding = 10;
-        String expResult = "texto     ";
-        String result = Cadena.rightPad(texto, padding);
+        System.out.println("repeat");
+        String texto = "hola";
+        int count = 2;
+        String expResult = "holahola";
+        String result = Cadena.repeat(texto, count);
         assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
 
     }
 
+    /**
+     * Test of pad method, of class Cadena.
+     */
     @Test
-    public void testPadLeft()
+    public void testPad()
     {
-        System.out.println("padLeft");
-        String texto = "texto";
-        int padding = 10;
-        String expResult = "     texto";
-        String result = Cadena.leftPad(texto, padding);
+        System.out.println("pad");
+        String texto = "";
+        int ancho = 0;
+        int lado = 0;
+        String tabulador = "";
+        String expResult = "";
+        String result = Cadena.pad(texto, ancho, lado, tabulador);
         assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
 
     }
 
+    /**
+     * Test of lPad method, of class Cadena.
+     */
     @Test
-    public void testAppendRightPad()
+    public void testLPad_3args()
     {
-        System.out.println("appendRightPad");
-        String texto = "texto     ";
-        int padding = 10;
-        Cadena.appendRightPad(texto, padding);
-        assertEquals(texto, Cadena.stringBuilder.toString());
+        System.out.println("lPad");
+        String texto = "";
+        int ancho = 0;
+        String tabulador = "";
+        String expResult = "";
+        String result = Cadena.lPad(texto, ancho, tabulador);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
 
     }
 
+    /**
+     * Test of rPad method, of class Cadena.
+     */
     @Test
-    public void testAppendLeftPad()
+    public void testRPad_3args()
     {
-        System.out.println("appendLeftPad");
-        String texto = "     texto";
-        int padding = 10;
-        Cadena.appendRightPad(texto, padding);
-        assertEquals(texto, Cadena.stringBuilder.toString());
+        System.out.println("rPad");
+        String texto = "";
+        int ancho = 0;
+        String tabulador = "";
+        String expResult = "";
+        String result = Cadena.rPad(texto, ancho, tabulador);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
 
     }
 
+    /**
+     * Test of mPad method, of class Cadena.
+     */
     @Test
-    public void testAppendRightPadSeparator()
+    public void testMPad_3args()
     {
-        System.out.println("appendRightPadSeparator");
-        int padding = 10;
-        String texto = "texto     ";
-        Cadena.appendRightPadSeparator(texto, padding, "");
-        //String texto = "texto     -separador";
-        //Cadena.appendRightPadSeparator(texto, padding, "-separador");
-        assertEquals(texto, Cadena.stringBuilder.toString());
+        System.out.println("mPad");
+        String texto = "";
+        int ancho = 0;
+        String tabulador = "";
+        String expResult = "";
+        String result = Cadena.mPad(texto, ancho, tabulador);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
 
     }
 
+    /**
+     * Test of lPad method, of class Cadena.
+     */
     @Test
-    public void testAppendLeftPadSeparator()
+    public void testLPad_String_int()
     {
-        System.out.println("appendLeftPadSeparator");
-        int padding = 10;
-        String texto = "     texto";
-        Cadena.appendRightPadSeparator(texto, padding, "");
-        //String texto = "     texto-separador";
-        //Cadena.appendRightPadSeparator(texto, padding, "-separador");
-        assertEquals(texto, Cadena.stringBuilder.toString());
+        System.out.println("lPad");
+        String texto = "";
+        int ancho = 0;
+        String expResult = "";
+        String result = Cadena.lPad(texto, ancho);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+
+    /**
+     * Test of rPad method, of class Cadena.
+     */
+    @Test
+    public void testRPad_String_int()
+    {
+        System.out.println("rPad");
+        String texto = "";
+        int ancho = 0;
+        String expResult = "";
+        String result = Cadena.rPad(texto, ancho);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+
+    /**
+     * Test of mPad method, of class Cadena.
+     */
+    @Test
+    public void testMPad_String_int()
+    {
+        System.out.println("mPad");
+        String texto = "";
+        int ancho = 0;
+        String expResult = "";
+        String result = Cadena.mPad(texto, ancho);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+
+    /**
+     * Test of encolumnarTexto method, of class Cadena.
+     */
+    @Test
+    public void testEncolumnarTexto()
+    {
+        System.out.println("encolumnarTexto");
+        String separador = "";
+        Object[] args = null;
+        String expResult = "";
+        String result = Cadena.encolumnarTexto(separador, args);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+
+    /**
+     * Test of encolumnarAlinearTexto method, of class Cadena.
+     */
+    @Test
+    public void testEncolumnarAlinearTexto()
+    {
+        System.out.println("encolumnarAlinearTexto");
+        String separador = "";
+        Object[] args = null;
+        String expResult = "";
+        String result = Cadena.encolumnarAlinearTexto(separador, args);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
 
     }
 

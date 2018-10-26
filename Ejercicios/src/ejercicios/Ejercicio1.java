@@ -12,6 +12,8 @@
  */
 package ejercicios;
 
+import toolbox.*;
+
 public class Ejercicio1
 {
 
@@ -26,24 +28,24 @@ public class Ejercicio1
             switch (i)
             {
                 case 0:
-                    tresAlumnos[i].apellido = Toolbox.NombreRandom.generarNombre();
-                    tresAlumnos[i].nombre = Toolbox.NombreRandom.generarNombre();
+                    tresAlumnos[i].apellido = Random.randomName();
+                    tresAlumnos[i].nombre = Random.randomName();
                     tresAlumnos[i].legajo = 100 + i;
                     tresAlumnos[i].estudiar();
                     tresAlumnos[i].calcularFinal();
                     tresAlumnos[i].mostrar();
                     break;
                 case 1:
-                    tresAlumnos[i].apellido = Toolbox.NombreRandom.generarNombre();
-                    tresAlumnos[i].nombre = Toolbox.NombreRandom.generarNombre();
+                    tresAlumnos[i].apellido = Random.randomName();
+                    tresAlumnos[i].nombre = Random.randomName();
                     tresAlumnos[i].legajo = 100 + i;
                     tresAlumnos[i].estudiar();
                     tresAlumnos[i].calcularFinal();
                     tresAlumnos[i].mostrar();
                     break;
                 case 2:
-                    tresAlumnos[i].apellido = Toolbox.NombreRandom.generarNombre();
-                    tresAlumnos[i].nombre = Toolbox.NombreRandom.generarNombre();
+                    tresAlumnos[i].apellido = Random.randomName();
+                    tresAlumnos[i].nombre = Random.randomName();
                     tresAlumnos[i].legajo = 100 + i;
                     tresAlumnos[i].estudiar();
                     tresAlumnos[i].calcularFinal();

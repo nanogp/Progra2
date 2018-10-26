@@ -30,7 +30,7 @@ public class Clase6
         Toolbox.cadenas.appendRightPadSeparator("ID", 3, " | ");
         Toolbox.cadenas.appendRightPadSeparator("APELLIDO Y NOMBRE", 25, " | ");
         Toolbox.cadenas.appendRightPadSeparator("DIRECCION", 20, " | ");
-        Toolbox.cadenas.appendRightPadSeparator("eMAIL", 25, " | ");
+        Toolbox.cadenas.appendRightPadSeparator("EMAIL", 25, " | ");
         for (int i = 1; i <= Alumno.cantidadNotas; i++)
         {
             Toolbox.cadenas.appendRightPadSeparator("NOTA " + i, 6, " | ");

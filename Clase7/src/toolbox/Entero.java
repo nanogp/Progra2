@@ -1,5 +1,7 @@
 package toolbox;
 
+import static toolbox.Toolbox.*;
+
 public class Entero
 {
 
@@ -14,7 +16,7 @@ public class Entero
 
         for (int i = 0; i < length; i++)
         {
-            retorno[i] = Random.randomSeed.nextInt(min, max);
+            retorno[i] = random.nextInt(min, max);
         }
         return retorno;
     }
@@ -26,7 +28,7 @@ public class Entero
         for (int i = 0; i < length; i++)
         {
             System.out.println(texto);
-            retorno[i] = Toolbox.leerDeConsola.nextInt();
+            retorno[i] = leerDeConsola.nextInt();
         }
         return retorno;
     }

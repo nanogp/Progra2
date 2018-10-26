@@ -8,6 +8,8 @@ deberán de realizar las validaciones correspondientes
  */
 package ejercicios;
 
+import toolbox.*;
+
 public class Ejercicio2
 {
 
@@ -17,7 +19,7 @@ public class Ejercicio2
         unaCuenta.setNombre("Esta cuenta");
         unaCuenta.setNroCuenta(982374434);
         unaCuenta.setSaldo(1564453.25);
-        unaCuenta.setTipoInteres(Cuenta.eTipoInteres.values()[Toolbox.random.nextInt(Cuenta.eTipoInteres.values().length)]);
+        unaCuenta.setTipoInteres(Cuenta.eTipoInteres.getRandom());
         unaCuenta.mostrar();
     }
 }

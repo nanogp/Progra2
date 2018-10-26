@@ -6,6 +6,7 @@
 package pruebaArraylist;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -32,8 +33,9 @@ public class PruebaArraylist
 
         add = lista.add(new Automovil("Peugeot", "405", 2001, 65));
 
-        for (Object o : lista)
+        for (Iterator it = lista.iterator(); it.hasNext();)
         {
+            Object o = it.next();
             System.out.println("--------------");
             automovil = (Automovil) o;
             automovil.mostrar();
@@ -41,7 +43,6 @@ public class PruebaArraylist
             System.out.println("Acelero 20km/h...");
             automovil.acelerar(20);
             automovil.mostrarVelocidadActual();
-
         }
     }//main
 }//class
