@@ -3,6 +3,7 @@ package toolbox;
 public class Cadena
 {
 
+    //<editor-fold defaultstate="collapsed" desc="Propiedades">
     public static final int PADLEFT = 0;
     public static final int PADRIGHT = 1;
     public static final int PADMID = 2;
@@ -11,6 +12,7 @@ public class Cadena
     public static final int ALINEA_MED = PADMID;
     public static StringBuilder stringBuilder;
 
+    //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Transformaciones">
     public static String repeat(String texto, int count)
     {
@@ -90,145 +92,152 @@ public class Cadena
     //<editor-fold defaultstate="collapsed" desc="Encolumnar">
     /**
      * Funcion que genera una cadena encolumnada y separada por un tabulador que
-     * recibe una lista de columnas de a pares (tamaño, valor)
+     * recibe una lista de columnas de a pares (valor, ancho columna)
      *
-     * @param separador cadena que separa las columnas
-     * @param args 1er argumento ancho, 2do argumento valor, ... etc
+     * @param args 1er argumento , 2do argumento valorancho de columnna, 3er
+     *             argumento alineacion, ... etc
      * @return una cadena encolumnada
      */
     public static String encolumnarTexto(String separador, Object... args)
     {
         StringBuilder stringBuilder = new StringBuilder();
-        boolean esDato = false;
-        String texto;
+        final int ES_DATO = 0;
+        final int ES_ANCHO = 1;
+        int pivot_dato_ancho = 0;
         int ancho = 0;
+        int alineacion = 0;
+        String texto = new String();
 
         for (int i = 0; i < args.length; i++)
         {
             Object obj = args[i];
-            if (esDato)
+            switch (pivot_dato_ancho)
             {
-                switch (obj.getClass().getSimpleName())
-                {
-                    case "Integer":
-                        texto = String.format("%1$d", (int) obj);
-                        texto = lPad(texto, ancho);
-                        stringBuilder.append(texto);
-                        break;
-
-                    case "int[]":
-                        for (int entero : (int[]) obj)
-                        {
+                case ES_DATO:
+                    switch (obj.getClass().getSimpleName())
+                    {
+                        case "Integer":
                             texto = String.format("%1$d", (int) obj);
-                            texto = lPad(texto, ancho);
-                            stringBuilder.append(texto);
-                        }
-                        break;
+                            alineacion = ALINEA_DER;
+                            break;
 
-                    case "Float":
-                        texto = String.format("%1$.2f", obj);
-                        texto = lPad(texto, ancho);
-                        stringBuilder.append(texto);
-                        break;
+                        case "int[]":
+                            for (int entero : (int[]) obj)
+                            {
+                                texto = String.format("%1$d", (int) obj);
 
-                    case "String":
-                        texto = (String) obj;
-                        texto = rPad(texto, ancho);
-                        stringBuilder.append(texto);
-                        break;
-                }
+                            }
+                            alineacion = ALINEA_DER;
+                            break;
 
-                if (i < args.length - 1)
-                {
-                    stringBuilder.append(separador);
-                }
-                esDato = false;
-            } else
-            {
-                ancho = (int) obj;
-                esDato = true;
-            }
+                        case "Float":
+                            texto = String.format("%1$.2f", obj);
+                            alineacion = ALINEA_DER;
+                            break;
 
-        }
+                        case "String":
+                            texto = (String) obj;
+                            alineacion = ALINEA_IZQ;
+                            break;
+                    }
+
+                    pivot_dato_ancho++;
+                    break;
+
+                case ES_ANCHO:
+                    ancho = (int) obj;
+                    texto = pad(texto, ancho, alineacion, " ");
+                    stringBuilder.append(texto);
+                    if (i < args.length - 1)
+                    {
+                        stringBuilder.append(separador);
+                    }
+                    pivot_dato_ancho = 0;
+                    break;
+
+            }//switch
+
+        }//for
 
         return stringBuilder.toString();
     }
 
     /**
      * Funcion que genera una cadena encolumnada y separada por un tabulador que
-     * recibe una lista de columnas de a trios (tamaño, alineacion, valor)
+     * recibe una lista de columnas de a trios (valor, ancho columna,
+     * alineacion)
      *
      * @param separador cadena que separa las columnas
-     * @param args 1er argumento ancho, 2do argumento alineacion de columnna,
-     * 3er argumento valor, ... etc
+     * @param args      1er argumento , 2do argumento valorancho de columnna,
+     *                  3er argumento alineacion, ... etc
      * @return una cadena encolumnada
      */
     public static String encolumnarAlinearTexto(String separador, Object... args)
     {
         StringBuilder stringBuilder = new StringBuilder();
-        boolean esAlineacion = false;
-        boolean esDato = false;
-        String texto;
+        final int ES_DATO = 0;
+        final int ES_ANCHO = 1;
+        final int ES_ALINEACION = 2;
+        int pivot_dato_ancho_alineacion = 0;
         int ancho = 0;
         int alineacion = 0;
+        String texto = new String();
 
         for (int i = 0; i < args.length; i++)
         {
             Object obj = args[i];
-            if (esDato)
+            switch (pivot_dato_ancho_alineacion)
             {
-                switch (obj.getClass().getSimpleName())
-                {
-                    case "Integer":
-                        texto = String.format("%1$d", (int) obj);
-                        texto = pad(texto, ancho, alineacion, " ");
-                        stringBuilder.append(texto);
-                        break;
-
-                    case "int[]":
-                        for (int entero : (int[]) obj)
-                        {
+                case ES_DATO:
+                    switch (obj.getClass().getSimpleName())
+                    {
+                        case "Integer":
                             texto = String.format("%1$d", (int) obj);
-                            texto = pad(texto, ancho, alineacion, " ");
-                            stringBuilder.append(texto);
-                        }
-                        break;
 
-                    case "Float":
-                        texto = String.format("%1$.2f", obj);
-                        texto = pad(texto, ancho, alineacion, " ");
-                        stringBuilder.append(texto);
-                        break;
+                            break;
 
-                    case "String":
-                        texto = (String) obj;
-                        texto = pad(texto, ancho, alineacion, " ");
-                        stringBuilder.append(texto);
-                        break;
-                }
+                        case "int[]":
+                            for (int entero : (int[]) obj)
+                            {
+                                texto = String.format("%1$d", (int) obj);
 
-                if (i < args.length - 1)
-                {
-                    stringBuilder.append(separador);
-                }
-                esDato = false;
-            } else
-            {
-                if (esAlineacion)
-                {
-                    alineacion = (int) obj;
-                    esAlineacion = false;
-                    esDato = true;
-                } else
-                {
+                            }
+                            break;
+
+                        case "Float":
+                            texto = String.format("%1$.2f", obj);
+
+                            break;
+
+                        case "String":
+                            texto = (String) obj;
+                            break;
+                    }
+
+                    pivot_dato_ancho_alineacion++;
+                    break;
+
+                case ES_ANCHO:
                     ancho = (int) obj;
-                    esAlineacion = true;
-                }
-            }
+                    pivot_dato_ancho_alineacion++;
+                    break;
 
-        }
+                case ES_ALINEACION:
+                    alineacion = (int) obj;
+                    texto = pad(texto, ancho, alineacion, " ");
+                    stringBuilder.append(texto);
+                    if (i < args.length - 1)
+                    {
+                        stringBuilder.append(separador);
+                    }
+                    pivot_dato_ancho_alineacion = 0;
+                    break;
+
+            }//switch
+
+        }//for
 
         return stringBuilder.toString();
     }
-    //</editor-fold>
+//</editor-fold>
 }

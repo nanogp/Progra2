@@ -29,17 +29,22 @@ public class Ejercicios
 
         }
 
-        String cabeceras = Cadena.encolumnarAlinearTexto(" | ", 15, Cadena.ALINEA_IZQ, "FLOTANTE", 20, Cadena.ALINEA_MED, "CADENA", 15, Cadena.ALINEA_DER, "ENTERO");
+        String cabeceras = Cadena.encolumnarAlinearTexto(" | ", "ENTERO", 15, Cadena.ALINEA_MED, "CADENA", 20, Cadena.ALINEA_MED, "FLOTANTE", 15, Cadena.ALINEA_MED);
         System.out.println(cabeceras);
-
         System.out.println(Cadena.repeat("-", cabeceras.length()));
-        for (int i = 0;
-                i < 10; i++)
+
+        for (int i = 0; i < 5; i++)
         {
             Prueba p = new Prueba();
-            String aux = Cadena.encolumnarTexto(" | ", 15, p.flotante, 20, p.cadena, 15, p.entero);
-            System.out.println(Cadena.encolumnarAlinearTexto(" | ", 15, Cadena.ALINEA_IZQ, p.flotante, 20, Cadena.ALINEA_MED, p.cadena, 15, Cadena.ALINEA_DER, p.entero));
+            System.out.println(Cadena.encolumnarAlinearTexto(" | ", p.entero, 15, Cadena.ALINEA_MED, p.cadena, 20, Cadena.ALINEA_IZQ, p.flotante, 15, Cadena.ALINEA_DER));
         }
+
+        for (int i = 0; i < 5; i++)
+        {
+            Prueba p = new Prueba();
+            System.out.println(Cadena.encolumnarTexto(" | ", p.entero, 15, p.cadena, 20, p.flotante, 15));
+        }
+
     }
 
 }
