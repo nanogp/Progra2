@@ -38,13 +38,13 @@ public class Ejercicios
             Prueba p = new Prueba();
             System.out.println(Cadena.encolumnarAlinearTexto(" | ", p.entero, 15, Cadena.ALINEA_MED, p.cadena, 20, Cadena.ALINEA_IZQ, p.flotante, 15, Cadena.ALINEA_DER));
         }
-
+        /*
         for (int i = 0; i < 5; i++)
         {
             Prueba p = new Prueba();
             System.out.println(Cadena.encolumnarTexto(" | ", p.entero, 15, p.cadena, 20, p.flotante, 15));
         }
-
+         */
     }
 
 }

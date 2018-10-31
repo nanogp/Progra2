@@ -90,31 +90,17 @@ public class Cadena
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Encolumnar">
-    public static String concatenarTexto(String separador, Object... args)
-    {
-        StringBuilder retString = new StringBuilder();
-        for (int i = 0; i < args.length; i++)
-        {
-            retString.append(args[i]);
-            if (i < args.length - 1)
-            {
-                retString.append(separador);
-            }
-        }
-        return retString.toString();
-    }
-
     /**
      * Funcion que genera una cadena encolumnada y separada por un tabulador que
      * recibe una lista de columnas de a pares (valor, ancho columna)
      *
-     * @param args 1er argumento dato, 2do argumento ancho de columnna, 3er
-     * argumento alineacion, ... etc
+     * @param args 1er argumento , 2do argumento valorancho de columnna, 3er
+     *             argumento alineacion, ... etc
      * @return una cadena encolumnada
      */
     public static String encolumnarTexto(String separador, Object... args)
     {
-        StringBuilder retString = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         final int ES_DATO = 0;
         final int ES_ANCHO = 1;
         int pivot_dato_ancho = 0;
@@ -161,10 +147,10 @@ public class Cadena
                 case ES_ANCHO:
                     ancho = (int) obj;
                     texto = pad(texto, ancho, alineacion, " ");
-                    retString.append(texto);
+                    stringBuilder.append(texto);
                     if (i < args.length - 1)
                     {
-                        retString.append(separador);
+                        stringBuilder.append(separador);
                     }
                     pivot_dato_ancho = 0;
                     break;
@@ -173,7 +159,7 @@ public class Cadena
 
         }//for
 
-        return retString.toString();
+        return stringBuilder.toString();
     }
 
     /**
@@ -182,13 +168,13 @@ public class Cadena
      * alineacion)
      *
      * @param separador cadena que separa las columnas
-     * @param args 1er argumento dato, 2do argumento ancho de columnna, 3er
-     * argumento alineacion, ... etc
+     * @param args      1er argumento , 2do argumento valorancho de columnna,
+     *                  3er argumento alineacion, ... etc
      * @return una cadena encolumnada
      */
     public static String encolumnarAlinearTexto(String separador, Object... args)
     {
-        StringBuilder retString = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         final int ES_DATO = 0;
         final int ES_ANCHO = 1;
         final int ES_ALINEACION = 2;
@@ -239,10 +225,10 @@ public class Cadena
                 case ES_ALINEACION:
                     alineacion = (int) obj;
                     texto = pad(texto, ancho, alineacion, " ");
-                    retString.append(texto);
+                    stringBuilder.append(texto);
                     if (i < args.length - 1)
                     {
-                        retString.append(separador);
+                        stringBuilder.append(separador);
                     }
                     pivot_dato_ancho_alineacion = 0;
                     break;
@@ -251,7 +237,7 @@ public class Cadena
 
         }//for
 
-        return retString.toString();
+        return stringBuilder.toString();
     }
 //</editor-fold>
 }

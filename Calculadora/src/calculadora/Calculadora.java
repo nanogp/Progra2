@@ -35,50 +35,58 @@ Realizar en la clase main un programa que permite testear todos los métodos de 
  */
 package calculadora;
 
-import jdk.nashorn.internal.runtime.regexp.joni.encoding.CharacterType;
-import toolbox.Input;
-
 /**
  *
  * @author mponti
  */
-public class Calculadora {
+public class Calculadora
+{
 
     private static float _resultado;
     private static char _operador;
 
-    private static void _sumar(int a, int b) {
+    private static void _sumar(int a, int b)
+    {
         _resultado = a + b;
     }
 
-    private static void _restar(int a, int b) {
+    private static void _restar(int a, int b)
+    {
         _resultado = a - b;
     }
 
-    private static void _multiplicar(int a, int b) {
+    private static void _multiplicar(int a, int b)
+    {
         _resultado = a * b;
     }
 
-    private static void _dividir(int a, int b) {
-        if (b != 0) {
+    private static void _dividir(int a, int b)
+    {
+        if (b != 0)
+        {
             _resultado = (float) a / b;
         }
     }
 
-    public static void mostrarResultado() {
+    public static void mostrarResultado()
+    {
         System.out.println("El resultado de la operacion '" + getOperador() + "'  es: " + Calculadora._resultado);
     }
 
-    public static void setOperador(char operador) {
+    public static void setOperador(char operador)
+    {
         Calculadora._operador = operador;
     }
 
-    public static char getOperador() {
+    public static char getOperador()
+    {
         return Calculadora._operador;
     }
 
-    public static void calcularOperacion(int a, int b) {
-        switch (Calculadora.getOperador()) {
+    public static void calcularOperacion(int a, int b)
+    {
+        switch (Calculadora.getOperador())
+        {
             case '+':
                 _sumar(a, b);
                 break;
@@ -96,15 +104,24 @@ public class Calculadora {
         }
     }
 
-    public static void probarTodo(int a, int b) {
-        char operador;
-        System.out.println("Ingrese operador (f para finalizar)");
-        operador = Input.leerIn.next().charAt(0);
-        while (operador != 'f') {
+    public static void probarTodo()
+    {
+        char operador = 'a';
+        int a, b;
+
+        operador = toolbox.Toolbox.leerDeConsola.next().charAt(0);
+        while (operador != 'f')
+        {
+            System.out.println("Ingrese operador (f para finalizar)");
             setOperador(operador);
+            System.out.println("Ingresar primer numero");
+            a = toolbox.Toolbox.leerDeConsola.nextInt();
+            System.out.println("Ingresar segundo numero");
+            b = toolbox.Toolbox.leerDeConsola.nextInt();
+
             calcularOperacion(a, b);
             mostrarResultado();
-            operador = Input.leerIn.next().charAt(0);
+            operador = toolbox.Toolbox.leerDeConsola.next().charAt(0);
         }
     }
 
@@ -112,13 +129,8 @@ public class Calculadora {
      * @param args the command line arguments
      *
      */
-    public static void main(String[] args) {
-
-        int a, b;
-        System.out.println("Ingresar primer numero");
-        a = Input.leerIn.nextInt();
-        System.out.println("Ingresar segundo numero");
-        b = Input.leerIn.nextInt();
-        probarTodo(a, b);
+    public static void main(String[] args)
+    {
+        probarTodo();
     }
 }
