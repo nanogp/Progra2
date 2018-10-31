@@ -94,7 +94,7 @@ public class Cadena
      * Funcion que genera una cadena encolumnada y separada por un tabulador que
      * recibe una lista de columnas de a pares (valor, ancho columna)
      *
-     * @param args 1er argumento , 2do argumento valorancho de columnna, 3er
+     * @param args 1er argumento dato, 2do argumento ancho de columnna, 3er
      *             argumento alineacion, ... etc
      * @return una cadena encolumnada
      */
@@ -168,7 +168,7 @@ public class Cadena
      * alineacion)
      *
      * @param separador cadena que separa las columnas
-     * @param args      1er argumento , 2do argumento valorancho de columnna,
+     * @param args      1er argumento dato, 2do argumento ancho de columnna,
      *                  3er argumento alineacion, ... etc
      * @return una cadena encolumnada
      */
