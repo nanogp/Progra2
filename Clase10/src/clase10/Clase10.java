@@ -20,11 +20,10 @@ public class Clase10
         Centralita centralita = new Centralita("TELECOMICA DE ARGENZUELA");
         ArrayList<Llamada> lista = centralita.getLlamadas();
 
-        lista.add(new Local(String.format("%f", Random.randomSeed.nextDouble(1141111111, 1169999999)), 30, String.format("%f", Random.randomSeed.nextDouble(1141111111, 1169999999)), (float) 2.65));
-        lista.add(new Provincial(Franja.Franja_1, new Llamada(String.format("%f", Random.randomSeed.nextDouble(1141111111, 1169999999)), String.format("%f", Random.randomSeed.nextDouble(1141111111, 1169999999)), 21)));
-        lista.add(new Local(String.format("%f", Random.randomSeed.nextDouble(1141111111, 1169999999)), 45, String.format("%f", Random.randomSeed.nextDouble(1141111111, 1169999999)), (float) 1.99));
-        lista.add(new Provincial(Franja.Franja_3, new Llamada(String.format("%f", Random.randomSeed.nextDouble(1141111111, 1169999999)), String.format("%f", Random.randomSeed.nextDouble(1141111111, 1169999999)), 21)));
+        lista.add(new Local(String.format("%f", Random.randomFloat(1141111111, 1169999999)), 30, String.format("%f", Random.randomFloat(1141111111, 1169999999)), (float) 2.65));
+        lista.add(new Provincial(Franja.Franja_1, new Llamada(String.format("%f", Random.randomFloat(1141111111, 1169999999)), String.format("%f", Random.randomFloat(1141111111, 1169999999)), 21)));
+        lista.add(new Local(String.format("%f", Random.randomFloat(1141111111, 1169999999)), 45, String.format("%f", Random.randomFloat(1141111111, 1169999999)), (float) 1.99));
+        lista.add(new Provincial(Franja.Franja_3, new Llamada(String.format("%f", Random.randomFloat(1141111111, 1169999999)), String.format("%f", Random.randomFloat(1141111111, 1169999999)), 21)));
 
     }
-
 }
