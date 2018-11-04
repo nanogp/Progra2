@@ -13,7 +13,8 @@ public class TeoriaHerencia
 
         unObjetoDerivado.mostrarDerivada();
 
-        unObjetoDerivado = (ClaseDerivada) unObjetoPadre;
+        //unObjetoDerivado = (ClaseDerivada) unObjetoPadre; un padre no puede hacer de hijo
+        unObjetoPadre = (ClasePadre) unObjetoDerivado; //un hijo de padre si
 
         unObjetoDerivado.mostrarDerivada();
 

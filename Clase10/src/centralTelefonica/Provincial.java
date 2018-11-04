@@ -1,5 +1,7 @@
 package centralTelefonica;
 
+import toolbox.Cadena;
+
 public class Provincial extends Llamada
 {
 
@@ -8,7 +10,7 @@ public class Provincial extends Llamada
 
     public Franja getFranjaHoraria()
     {
-        return _franjaHoraria;
+        return this._franjaHoraria;
     }
 
     public float getCostoLlamada()
@@ -23,6 +25,7 @@ public class Provincial extends Llamada
     public Provincial(Franja miFranja, Llamada unaLlamada)
     {
         super(unaLlamada.getNroOrigen(), unaLlamada.getNroDestino(), unaLlamada.getDuracion());
+        this._franjaHoraria = miFranja;
         this._costo = this.calcularCosto();
     }
 
@@ -49,7 +52,12 @@ public class Provincial extends Llamada
     public void mostrar()
     {
         String texto;
-        texto = toolbox.Cadena.concatenarTexto(" - ", this.getCostoLlamada(), this.getDuracion(), this.getNroOrigen(), this.getNroDestino());
+        texto = Cadena.encolumnarAlinearTexto(" | ",
+                "$" + this.getCostoLlamada(), 8, Cadena.ALINEA_MED,
+                this.getDuracion() + " mins", 12, Cadena.ALINEA_MED,
+                this.getNroOrigen(), 12, Cadena.ALINEA_MED,
+                this.getNroDestino(), 12, Cadena.ALINEA_MED,
+                TipoLlamada.Provincial.name(), 10, Cadena.ALINEA_DER);
         System.out.println(texto);
     }
 }

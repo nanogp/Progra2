@@ -40,4 +40,9 @@ public class Random
 
         return inicio[randomSeed.nextInt(inicio.length)] + medio[randomSeed.nextInt(medio.length)] + fin[randomSeed.nextInt(fin.length)];
     }
+
+    public static Object randomObject(Object... args)
+    {
+        return args[randomSeed.nextInt(args.length)];
+    }
 }

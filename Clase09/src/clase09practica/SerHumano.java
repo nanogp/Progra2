@@ -72,7 +72,11 @@ public class SerHumano
 
     public String serHumanoAString()
     {
-        return toolbox.Cadena.concatenarTexto(" - ", this._nombre, this._peso, this._altura, this._sexo);
+        return toolbox.Cadena.encolumnarAlinearTexto(" - ",
+                this._nombre, 20, toolbox.Cadena.ALINEA_MED,
+                (int) this._peso, 6, toolbox.Cadena.ALINEA_MED,
+                (int) this._altura, 6, toolbox.Cadena.ALINEA_MED,
+                this._sexo, 10, toolbox.Cadena.ALINEA_MED);
     }
 
     public void mostrarSerHumano()

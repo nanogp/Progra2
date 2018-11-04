@@ -1,5 +1,7 @@
 package centralTelefonica;
 
+import toolbox.*;
+
 public class Local extends Llamada
 {
 
@@ -34,7 +36,12 @@ public class Local extends Llamada
     public void mostrar()
     {
         String texto;
-        texto = toolbox.Cadena.concatenarTexto(" - ", this.getCostoLlamada(), this.getDuracion(), this.getNroOrigen(), this.getNroDestino());
+        texto = Cadena.encolumnarAlinearTexto(" | ",
+                "$" + this.getCostoLlamada(), 8, Cadena.ALINEA_MED,
+                this.getDuracion() + " mins", 12, Cadena.ALINEA_MED,
+                this.getNroOrigen(), 12, Cadena.ALINEA_MED,
+                this.getNroDestino(), 12, Cadena.ALINEA_MED,
+                TipoLlamada.Local.name(), 10, Cadena.ALINEA_DER);
         System.out.println(texto);
     }
 }

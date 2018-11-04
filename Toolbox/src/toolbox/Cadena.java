@@ -108,8 +108,7 @@ public class Cadena
      * Funcion que genera una cadena encolumnada y separada por un tabulador que
      * recibe una lista de columnas de a pares (valor, ancho columna)
      *
-     * @param args 1er argumento dato, 2do argumento ancho de columnna, 3er
-     * argumento alineacion, ... etc
+     * @param args 1er argumento dato, 2do argumento ancho de columnna ... etc
      * @return una cadena encolumnada
      */
     public static String encolumnarTexto(String separador, Object... args)
@@ -182,8 +181,8 @@ public class Cadena
      * alineacion)
      *
      * @param separador cadena que separa las columnas
-     * @param args 1er argumento dato, 2do argumento ancho de columnna, 3er
-     * argumento alineacion, ... etc
+     * @param args      1er argumento dato, 2do argumento ancho de columnna, 3er
+     *                  argumento alineacion, ... etc
      * @return una cadena encolumnada
      */
     public static String encolumnarAlinearTexto(String separador, Object... args)

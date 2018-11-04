@@ -1,5 +1,7 @@
 package centralTelefonica;
 
+import java.util.Comparator;
+
 public class Llamada
 {
 
@@ -33,9 +35,11 @@ public class Llamada
         this._duracion = _duracion;
     }
 
-    public int ordenarPorDuracion(Llamada uno, Llamada dos)
-    {
-        return (int) (uno.getDuracion() - dos.getDuracion());
-    }
+    public static Comparator<Llamada> ordenarPorDuracion = (Llamada uno, Llamada dos) -> (int) Math.signum(uno.getDuracion() - dos.getDuracion());
 
+    /*
+     * public static Comparator<Llamada> ordenarPorDuracion = new
+     * Comparator<Llamada>() { public int compare(Llamada uno, Llamada dos) {
+     * return (int) Math.signum(uno.getDuracion() - dos.getDuracion()); } };
+     */
 }

@@ -17,7 +17,8 @@ public class Clase09
      */
     public static void main(String[] args)
     {
-        TeoriaHerencia.main(args);
+        //TeoriaHerencia.main(args);
+        clase09practica.EjercicioHerencia.main(args);
     }
     
 }

@@ -5,6 +5,16 @@ public class Random
 
     public static java.util.concurrent.ThreadLocalRandom randomSeed = java.util.concurrent.ThreadLocalRandom.current();
 
+    public static float randomFloat(float min, float max)
+    {
+        return randomSeed.nextLong((long) min, (long) max);
+    }
+
+    public static float randomFloat(int min, int max)
+    {
+        return randomFloat((float) min, (float) max);
+    }
+
     public static String randomName()
     {
         String[] inicio =
@@ -29,5 +39,10 @@ public class Random
         };
 
         return inicio[randomSeed.nextInt(inicio.length)] + medio[randomSeed.nextInt(medio.length)] + fin[randomSeed.nextInt(fin.length)];
+    }
+
+    public static Object randomObject(Object... args)
+    {
+        return args[randomSeed.nextInt(args.length)];
     }
 }
