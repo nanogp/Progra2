@@ -142,7 +142,9 @@ public class Formulario1 extends javax.swing.JFrame
         txtRecibe.setText(txtNombre.getText());
         nombre = txtNombre.getText();
         edad = (String) cmbEdades.getSelectedItem();
+        this.setVisible(false);
         JOptionPane.showMessageDialog(this, "edad: " + edad + " - nombre: " + nombre, "titulo", JOptionPane.WARNING_MESSAGE);
+        this.setVisible(true);
 
 //JOptionPane.showMessageDialog(this,);
     }//GEN-LAST:event_btnIngresoActionPerformed
