@@ -1,15 +1,14 @@
 package clase6;
 
-import toolbox.Toolbox;
+import toolbox.*;
 
 public class Clase6
 {
 
-    public static int cantidadAlumnos;
-
     public static void main(String[] args)
     {
-        cantidadAlumnos = 10;
+
+        int cantidadAlumnos = 10;
         Alumno.cantidadNotas = 3;
         int notaMin = 2;
         int notaMax = 10;
@@ -20,30 +19,37 @@ public class Clase6
         for (int i = 0; i < alumnos.length; i++)
         {
             alumnos[i] = new Alumno(Alumno.getNextId(),
-                    Toolbox.cadenas.generarNombreRandom() + ", " + Toolbox.cadenas.generarNombreRandom(),
-                    Toolbox.cadenas.generarNombreRandom() + " " + Toolbox.random.nextInt(101, 6000),
-                    Toolbox.cadenas.generarNombreRandom() + "@gmail.com");
+                    Random.randomName() + ", " + Random.randomName(),
+                    Random.randomName() + " " + Random.randomSeed.nextInt(101, 6000),
+                    Random.randomName() + "@gmail.com");
         }
 
         //genero cabecera
-        Toolbox.cadenas.stringBuilder = new StringBuilder();
-        Toolbox.cadenas.appendRightPadSeparator("ID", 3, " | ");
-        Toolbox.cadenas.appendRightPadSeparator("APELLIDO Y NOMBRE", 25, " | ");
-        Toolbox.cadenas.appendRightPadSeparator("DIRECCION", 20, " | ");
-        Toolbox.cadenas.appendRightPadSeparator("EMAIL", 25, " | ");
+        Cadena.stringBuilder = new StringBuilder();
+        Cadena.stringBuilder.append(
+                Cadena.encolumnarAlinearTexto(" | ",
+                        "ID", 3, Cadena.ALINEA_MED,
+                        "APELLIDO Y NOMBRE", 25, Cadena.ALINEA_MED,
+                        "DIRECCION", 20, Cadena.ALINEA_MED,
+                        "EMAIL", 25, Cadena.ALINEA_MED,
+                        ""));
+
         for (int i = 1; i <= Alumno.cantidadNotas; i++)
         {
-            Toolbox.cadenas.appendRightPadSeparator("NOTA " + i, 6, " | ");
+            Cadena.stringBuilder.append(
+                    Cadena.encolumnarAlinearTexto(" | ", "NOTA " + i, 6, Cadena.ALINEA_MED,
+                            ""));
 
         }
-        Toolbox.cadenas.stringBuilder.append("PROMEDIO");
-        System.out.println(Toolbox.cadenas.stringBuilder.toString());
-        System.out.println(Toolbox.cadenas.rightPad("-", Toolbox.cadenas.stringBuilder.toString().length(), "-"));
+        Cadena.stringBuilder.append(Cadena.encolumnarAlinearTexto(" | ", "PROMEDIO ", 6, Cadena.ALINEA_MED));
+
+        System.out.println(Cadena.stringBuilder.toString());
+        System.out.println(Cadena.repeat("-", Cadena.stringBuilder.length()));
 
         //calculo campos numericos y muestro
         for (Alumno alumno : alumnos)
         {
-            alumno.setNotasIngreso(Toolbox.enteros.arrayIntRandom(Alumno.cantidadNotas, notaMin, notaMax));
+            alumno.setNotasIngreso(Entero.arrayIntRandom(Alumno.cantidadNotas, notaMin, notaMax));
             alumno.calcularPromedio();
             System.out.println(alumno.alumnoAString());
         }

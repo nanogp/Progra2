@@ -1,6 +1,7 @@
 package clase6;
 
 import java.text.DecimalFormat;
+import toolbox.Cadena;
 import toolbox.Toolbox;
 
 public class Alumno
@@ -122,33 +123,38 @@ public class Alumno
     //<editor-fold defaultstate="collapsed" desc="Metodos">    
     public String alumnoAString()
     {
-        //StringBuffer retorno = new StringBuffer();
-        //StringBuilder retorno = new StringBuilder();
-        //DecimalFormat df = new DecimalFormat("#,##0.00");
-        //Toolbox.cadenas.stringBuilder = new StringBuilder();
-        StringBuilder retorno = new StringBuilder();
-
+        StringBuilder retBuilder = new StringBuilder();
         /*
-        Toolbox.cadenas.appendRightPadSeparator(Toolbox.enteros.toString(this._id), _paddingId, " | ");
-        Toolbox.cadenas.appendRightPadSeparator(this._apellidoNombre, _paddingApellidoNombre, " | ");
-        Toolbox.cadenas.appendRightPadSeparator(this._direccion, _paddingDireccion, " | ");
-        Toolbox.cadenas.appendRightPadSeparator(this._eMail, _paddingEmail, " | ");
+        DecimalFormat df = new DecimalFormat("#,##0.00");
+        Toolbox.cadenas.stringBuilder = new StringBuilder();
 
+         retorno.append(String.format("%1$3d | %2$-25s | %3$-20s | %4$-25s | ", this._id, this._apellidoNombre, this._direccion, this._eMail));
         for (int i = 0; i < Alumno.cantidadNotas; i++)
         {
-            Toolbox.cadenas.appendLeftPadSeparator(Toolbox.enteros.toString(this._notasIngreso[i]), _paddingNotasIngreso, " | ");
+            retBuffer.append(String.format("%6d | ", this._notasIngreso[i]));
         }
-
-        Toolbox.cadenas.stringBuilder.append(df.format(this.getPromedio()));
+        retBuffer.append(String.format("%8.2f", this.getPromedio()));
          */
-        retorno.append(String.format("%1$3d | %2$-25s | %3$-20s | %4$-25s | ", this._id, this._apellidoNombre, this._direccion, this._eMail));
-        for (int i = 0; i < Alumno.cantidadNotas; i++)
-        {
-            retorno.append(String.format("%6d | ", this._notasIngreso[i]));
-        }
-        retorno.append(String.format("%8.2f", this.getPromedio()));
+        retBuilder = new StringBuilder();
+        retBuilder.append(
+                Cadena.encolumnarAlinearTexto(" | ",
+                        this._id, 3, Cadena.ALINEA_MED,
+                        this._apellidoNombre, 25, Cadena.ALINEA_MED,
+                        this._direccion, 20, Cadena.ALINEA_MED,
+                        this._eMail, 25, Cadena.ALINEA_MED,
+                        ""));
 
-        return retorno.toString();
+        for (int i : this._notasIngreso)
+        {
+            retBuilder.append(Cadena.encolumnarAlinearTexto(" | ",
+                    i, 6, Cadena.ALINEA_MED,
+                    ""));
+        }
+        retBuilder.append(
+                Cadena.encolumnarAlinearTexto(" | ",
+                        String.format("%.2f",
+                                this.getPromedio()), 8, Cadena.ALINEA_MED));
+        return retBuilder.toString();
     }
 
     public void calcularPromedio()

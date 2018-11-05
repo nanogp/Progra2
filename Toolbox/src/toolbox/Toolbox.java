@@ -10,4 +10,10 @@ public class Toolbox
     public static Entero enteros = new Entero();
     public static Cadena cadenas = new Cadena();
     public static Fecha fechas = new Fecha();
+
+    public static void main(String[] args)
+    {
+
+    }
+
 }

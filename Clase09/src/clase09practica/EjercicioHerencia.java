@@ -13,7 +13,7 @@ public class EjercicioHerencia
         Gerente unGerente;
         String cabeceras;
 
-        cabeceras = toolbox.Cadena.encolumnarAlinearTexto(" - ",
+        cabeceras = toolbox.Cadena.encolumnarAlinearTexto(" | ",
                 "NOMBRE", 20, Cadena.ALINEA_MED,
                 "PESO", 6, Cadena.ALINEA_MED,
                 "ALTURA", 6, Cadena.ALINEA_MED,

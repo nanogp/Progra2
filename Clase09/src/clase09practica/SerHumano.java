@@ -72,7 +72,7 @@ public class SerHumano
 
     public String serHumanoAString()
     {
-        return toolbox.Cadena.encolumnarAlinearTexto(" - ",
+        return toolbox.Cadena.encolumnarAlinearTexto(" | ",
                 this._nombre, 20, toolbox.Cadena.ALINEA_MED,
                 (int) this._peso, 6, toolbox.Cadena.ALINEA_MED,
                 (int) this._altura, 6, toolbox.Cadena.ALINEA_MED,

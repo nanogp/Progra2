@@ -13,7 +13,7 @@ public class Clase7
 
         for (int i = 0; i < 4; i++)
         {
-            Perro unPerro = new Perro(Cadena.generarNombreRandom(), Toolbox.random.nextInt(1, 5));
+            Perro unPerro = new Perro(Random.randomName(), Random.randomSeed.nextInt(1, 5));
             lista.add(unPerro);
         }
 

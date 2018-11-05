@@ -1,5 +1,6 @@
 package clase6;
 
+import toolbox.Random;
 import toolbox.Toolbox;
 
 public class EjemploArrays
@@ -25,7 +26,7 @@ public class EjemploArrays
 
         for (int i = 0; i < clonVector.length; i++)
         {
-            clonVector[i] = Toolbox.random.nextInt(1, 10);
+            clonVector[i] = Random.randomSeed.nextInt(1, 10);
         }
 
         for (int i = 0; i < clonVector.length; i++)
