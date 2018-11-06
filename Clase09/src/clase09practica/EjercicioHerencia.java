@@ -27,7 +27,7 @@ public class EjercicioHerencia
             unSerHumano = new SerHumano(Random.randomName(),
                     (byte) Random.randomSeed.nextInt(30, 100),
                     (byte) Random.randomSeed.nextInt(14, 21),
-                    (String) Random.randomObject(new Object[]{"M","F"}));
+                    (String) Random.randomObject("M", "F"));
             unSerHumano.mostrarSerHumano();
         }
 

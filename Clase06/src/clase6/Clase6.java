@@ -49,7 +49,7 @@ public class Clase6
         //calculo campos numericos y muestro
         for (Alumno alumno : alumnos)
         {
-            alumno.setNotasIngreso(Entero.arrayIntRandom(Alumno.cantidadNotas, notaMin, notaMax));
+            alumno.setNotasIngreso(Numero.arrayIntRandom(Alumno.cantidadNotas, notaMin, notaMax));
             alumno.calcularPromedio();
             System.out.println(alumno.alumnoAString());
         }

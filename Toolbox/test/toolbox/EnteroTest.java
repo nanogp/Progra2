@@ -40,7 +40,7 @@ public class EnteroTest
         System.out.println("toString");
         int entero = 0;
         String expResult = "0";
-        String result = Entero.toString(entero);
+        String result = Numero.toString(entero);
         assertEquals(expResult, result);
 
     }
@@ -52,7 +52,7 @@ public class EnteroTest
         int length = 0;
         int min = 10;
         int max = 100;
-        int[] result = Entero.arrayIntRandom(length, min, max);
+        int[] result = Numero.arrayIntRandom(length, min, max);
         assertEquals(length, result.length);
 
     }
@@ -64,7 +64,7 @@ public class EnteroTest
         int length = 0;
         String texto = "";
         int[] expResult = null;
-        //int[] result = Entero.arrayIntConsola(length, texto);
+        //int[] result = Numero.arrayIntConsola(length, texto);
         //assertArrayEquals(expResult, result);
 
     }
