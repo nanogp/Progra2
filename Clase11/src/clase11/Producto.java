@@ -41,14 +41,25 @@ public class Producto
         System.out.println("Precio:" + String.format("%.0f", this._precio));
     }
 
-    public boolean comparaComestible(Producto unProducto, eTipoComestible tipo)
+    public static boolean comparaComestible(Producto unProducto, eTipoComestible tipo)
     {
         return unProducto._tipo == tipo;
     }
 
-    public boolean comparaDosProductos(Producto unProducto, Producto otroProducto)
+    public static boolean comparaDosProductos(Producto unProducto, Producto otroProducto)
     {
-        return unProducto._codigoBarras == otroProducto._codigoBarras;
+        return unProducto.equals(otroProducto);
+    }
+
+    public boolean equals(Producto p)
+    {
+        return this._codigoBarras == p._codigoBarras;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        return this.equals((Producto) obj);
     }
 
     //</editor-fold>

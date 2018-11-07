@@ -58,7 +58,7 @@ public class Container
 
         for (Producto producto : contenedorUno._lista)
         {
-            if (producto.comparaComestible(producto, tipoComestible))
+            if (Producto.comparaComestible(producto, tipoComestible))
             {
                 retList.add(producto);
             }
@@ -72,7 +72,7 @@ public class Container
 
         for (Producto producto : unContenedor._lista)
         {
-            if (producto.comparaDosProductos(unProducto, producto))
+            if (Producto.comparaDosProductos(unProducto, producto))
             {
                 contiene = true;
                 break;
