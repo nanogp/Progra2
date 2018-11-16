@@ -31,34 +31,22 @@ public class Lavadero
         ThreadLocalRandom seed = ThreadLocalRandom.current();
         float precio = 0;
 
+        _precioAuto = (float) seed.nextDouble(150, 565);
+
         do
         {
-            do
-            {
-                precio = (float) seed.nextDouble(150, 565);
-            }
-            while (precioYaExiste(precio));
-
-            if (_precioAuto == 0)
-            {
-                _precioAuto = precio;
-
-            }
-            else
-            {
-                if (_precioCamion == 0)
-                {
-                    _precioCamion = precio;
-                }
-                else
-                {
-
-                    _precioMoto = precio;
-
-                }
-            }
+            precio = (float) seed.nextDouble(150, 565);
         }
-        while (_precioAuto == 0 || _precioCamion == 0 || _precioMoto == 0);
+        while (precioYaExiste(precio));
+        _precioCamion = precio;
+
+        do
+        {
+            precio = (float) seed.nextDouble(150, 565);
+        }
+        while (precioYaExiste(precio));
+        _precioMoto = precio;
+
     }
 
     private Lavadero()
