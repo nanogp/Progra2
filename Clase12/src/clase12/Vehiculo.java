@@ -1,41 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package clase12;
 
-/**
- *
- * @author mponti
- */
 public class Vehiculo
 {
     //<editor-fold defaultstate="collapsed" desc="Atributos">
 
     private String _patente;
     private int _cantRuedas;
-    private eMarcas _marca;
+    private EMarcas _marca;
 
-//</editor-fold>
-//<editor-fold defaultstate="collapsed" desc="Constructores">
-    public Vehiculo(String _patente, int _cantRuedas, eMarcas _marca)
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Constructores">
+    public Vehiculo(String _patente, int _cantRuedas, EMarcas _marca)
     {
         this._patente = _patente;
         this._cantRuedas = _cantRuedas;
         this._marca = _marca;
     }
 
-//</editor-fold>
-//<editor-fold defaultstate="collapsed" desc="GetSet">
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="GetSet">
     public String getPatente()
     {
         return _patente;
-    }
-
-    public void setPatente(String _patente)
-    {
-        this._patente = _patente;
     }
 
     public int getCantRuedas()
@@ -48,26 +34,33 @@ public class Vehiculo
         this._cantRuedas = _cantRuedas;
     }
 
-    public eMarcas getMarca()
+    public EMarcas getMarca()
     {
         return _marca;
     }
 
-    public void setMarca(eMarcas _marca)
+    public void setMarca(EMarcas _marca)
     {
         this._marca = _marca;
     }
 
-//</editor-fold>
-//<editor-fold defaultstate="collapsed" desc="Metodos">
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Metodos">
     protected String Mostrar()
     {
-        return "";
+        StringBuilder retString = new StringBuilder();
+
+        retString.append("Marca: ").append(this._marca);
+        retString.append("\nPatente: ").append(this._patente);
+        retString.append("\nCantidad de ruedas: ").append(this._cantRuedas);
+
+        return retString.toString();
     }
 
     public static boolean ComparaVehiculos(Vehiculo uno, Vehiculo otro)
     {
-        return true;
+        return uno._patente.contentEquals(otro._patente);
+
     }
-//</editor-fold>    
+    //</editor-fold>    
 }

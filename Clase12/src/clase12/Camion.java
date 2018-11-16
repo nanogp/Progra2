@@ -1,17 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package clase12;
 
 public class Camion extends Vehiculo
 {
-//<editor-fold defaultstate="collapsed" desc="Atributos">
+    //<editor-fold defaultstate="collapsed" desc="Atributos">
 
     protected float _tara;
-//</editor-fold>
-//<editor-fold defaultstate="collapsed" desc="Constructores">
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Constructores">
+
+    public Camion()
+    {
+        super(null, 0, null);
+        this._tara = 0;
+    }
 
     public Camion(Vehiculo vehiculo, float _tara)
     {
@@ -19,25 +20,16 @@ public class Camion extends Vehiculo
         this._tara = _tara;
     }
 
-//</editor-fold>
-//<editor-fold defaultstate="collapsed" desc="GetSet">
-    public float getCilindrada()
-    {
-        return _tara;
-    }
-
-    public void setCilindrada(float _cilindrada)
-    {
-        this._tara = _cilindrada;
-    }
-//</editor-fold>
-//<editor-fold defaultstate="collapsed" desc="Metodos">
-
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Metodos">
+    @Override
     public String Mostrar()
     {
-        String aux = super.Mostrar();
-        return aux;
+        StringBuilder retString = new StringBuilder();
+        retString.append(super.Mostrar());
+        retString.append("\nTara: ").append(this._tara);
+        return retString.toString();
     }
 
-//</editor-fold>
+    //</editor-fold>
 }

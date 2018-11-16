@@ -13,30 +13,27 @@ public class Auto extends Vehiculo
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc="Constructores">
 
-    public Auto(String _patente, eMarcas _marca, int _cantidadAsientos)
+    public Auto()
+    {
+        super(null, 0, null);
+        this._cantidadAsientos = 0;
+    }
+
+    public Auto(String _patente, EMarcas _marca, int _cantidadAsientos)
     {
         super(_patente, 4, _marca);
         this._cantidadAsientos = _cantidadAsientos;
     }
 
 //</editor-fold>
-//<editor-fold defaultstate="collapsed" desc="GetSet">
-    public int getCantidadAsientos()
-    {
-        return _cantidadAsientos;
-    }
-
-    public void setCantidadAsientos(int _cantidadAsientos)
-    {
-        this._cantidadAsientos = _cantidadAsientos;
-    }
-//</editor-fold>
 //<editor-fold defaultstate="collapsed" desc="Metodos">
-
+    @Override
     public String Mostrar()
     {
-        String aux = super.Mostrar();
-        return aux;
+        StringBuilder retString = new StringBuilder();
+        retString.append(super.Mostrar());
+        retString.append("\nCantidad de asientos: ").append(this._cantidadAsientos);
+        return retString.toString();
     }
 
 //</editor-fold>

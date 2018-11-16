@@ -1,17 +1,8 @@
-/*
-     * To change this license header, choose License Headers in Project Properties.
-     * To change this template file, choose Tools | Templates
-     * and open the template in the editor.
- */
 package clase12;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
- *
- * @author mponti
- */
 public class Lavadero
 {
     //<editor-fold defaultstate="collapsed" desc="Atributos">
@@ -24,9 +15,50 @@ public class Lavadero
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Constructores">
+    private static boolean precioYaExiste(double precio)
+    {
+        boolean retorno = false;
+        if (precio == _precioAuto || precio == _precioCamion || precio == _precioMoto)
+        {
+            retorno = true;
+        }
+        return retorno;
+    }
+
     static
     {
-        generarPrecios();
+
+        ThreadLocalRandom seed = ThreadLocalRandom.current();
+        float precio = 0;
+
+        do
+        {
+            do
+            {
+                precio = (float) seed.nextDouble(150, 565);
+            }
+            while (precioYaExiste(precio));
+
+            if (_precioAuto == 0)
+            {
+                _precioAuto = precio;
+
+            }
+            else
+            {
+                if (_precioCamion == 0)
+                {
+                    _precioCamion = precio;
+                }
+                else
+                {
+
+                    _precioMoto = precio;
+
+                }
+            }
+        }
+        while (_precioAuto == 0 || _precioCamion == 0 || _precioMoto == 0);
     }
 
     private Lavadero()
@@ -34,72 +66,40 @@ public class Lavadero
         this._vehiculos = new ArrayList<Vehiculo>();
     }
 
-    public Lavadero(ArrayList<Vehiculo> _vehiculos, float _precioAuto, float _precioMoto, String _razonSocial)
+    public Lavadero(String _razonSocial)
     {
-
-        this._vehiculos = _vehiculos;
-
-    }
-
-    //</editor-fold>
-    //<editor-fold defaultstate="collapsed" desc="GetSet">
-    public ArrayList<Vehiculo> getVehiculos()
-    {
-        return _vehiculos;
-    }
-
-    public void setVehiculos(ArrayList<Vehiculo> _vehiculos)
-    {
-        this._vehiculos = _vehiculos;
-    }
-
-    public String getRazonSocial()
-    {
-        return _razonSocial;
-    }
-
-    public void setRazonSocial(String _razonSocial)
-    {
+        this();
         this._razonSocial = _razonSocial;
     }
+
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">
-
-    private static boolean verificarPrecio(float precio)
+    public String LavaderoString()
     {
-        return precio == _precioMoto
-                || precio == _precioAuto
-                || precio == _precioCamion;
-    }
+        StringBuilder retString = new StringBuilder();
 
-    private static void generarPrecios()
-    {
-        ThreadLocalRandom seed = ThreadLocalRandom.current();
-        float precio = 0;
+        retString.append("RAZON SOCIAL: ").append(this._razonSocial);
+        retString.append("\n***Precios vigentes***");
+        retString.append("\nMoto: $").append(String.format("%.2f", _precioMoto));
+        retString.append("\nAuto: $").append(String.format("%.2f", _precioAuto));
+        retString.append("\nCamion: $").append(String.format("%.2f", _precioCamion));
+        retString.append("\n\n***Listado de vehiculos***\n");
 
-        while (_precioMoto == 0 && _precioAuto == 0 && _precioCamion == 0)
+        for (Vehiculo vehiculo : _vehiculos)
         {
-            while (verificarPrecio(precio))
-            {
-                precio = (float) seed.nextDouble(150, 565);
-            }
-
-            if (_precioMoto == 0)
-            {
-                _precioMoto = precio;
-                if (_precioAuto == 0)
-                {
-                    _precioAuto = precio;
-                }
-                else
-                {
-                    _precioMoto = precio;
-                }
-            }
+            retString.append(vehiculo.Mostrar());
+            retString.append("\n*************\n");
         }
+        retString.append("\n\n***Ganancias***");
+        retString.append("\nTotales: $").append(String.format("%.2f", this.MostrarTotalFacturado()));
+        retString.append("\nPor motos: $").append(String.format("%.2f", this.MostrarTotalFacturado(eVehiculos.Moto)));
+        retString.append("\nPor autos: $").append(String.format("%.2f", this.MostrarTotalFacturado(eVehiculos.Auto)));
+        retString.append("\nPor camiones: $").append(String.format("%.2f", this.MostrarTotalFacturado(eVehiculos.Camion)));
+
+        return retString.toString();
     }
 
-    private double calcularTotalFacturado(eVehiculos tipo)
+    private double MostrarTotalFacturado(eVehiculos tipo)
     {
         int autos = 0;
         int camiones = 0;
@@ -135,20 +135,13 @@ public class Lavadero
                 total = (double) camiones * _precioCamion;
                 break;
             case Moto:
-                total = (double) motos * _precioMoto;
+                total = (double) motos * _precioAuto;
                 break;
 
         }
 
         return total;
 
-    }
-
-    private double calcularTotalFacturado()
-    {
-        return calcularTotalFacturado(eVehiculos.Auto)
-                + calcularTotalFacturado(eVehiculos.Camion)
-                + calcularTotalFacturado(eVehiculos.Moto);
     }
 
     /**
@@ -159,7 +152,9 @@ public class Lavadero
      */
     public double MostrarTotalFacturado()
     {
-        return calcularTotalFacturado();
+        return MostrarTotalFacturado(eVehiculos.Auto)
+                + MostrarTotalFacturado(eVehiculos.Camion)
+                + MostrarTotalFacturado(eVehiculos.Moto);
     }
 
     /**
@@ -170,13 +165,12 @@ public class Lavadero
     public static int EstaEnLavadero(Vehiculo vehiculo, Lavadero lavadero)
     {
         int pos = -1;
-        ArrayList<Vehiculo> vehiculos = lavadero.getVehiculos();
-        Vehiculo vehiculoEnPos;
+        Vehiculo vehiculoPosicion;
 
-        for (int i = 0; i < vehiculos.size(); i++)
+        for (int i = 0; i < lavadero._vehiculos.size(); i++)
         {
-            vehiculoEnPos = vehiculos.get(i);
-            if (vehiculoEnPos.getPatente().equalsIgnoreCase(vehiculo.getPatente()))
+            vehiculoPosicion = lavadero._vehiculos.get(i);
+            if (vehiculoPosicion.getPatente().equalsIgnoreCase(vehiculo.getPatente()))
             {
                 pos = i;
                 break;
@@ -192,13 +186,60 @@ public class Lavadero
      */
     public static boolean EstaEnLavadero(Lavadero lavadero, Vehiculo vehiculo)
     {
-        boolean esta = false;
+        boolean retorno = false;
         if (EstaEnLavadero(vehiculo, lavadero) != -1)
         {
-            esta = true;
+            retorno = true;
         }
-        return esta;
+        return retorno;
     }
 
+    /**
+     * El método AgregarVehiculo, agregara un vehiculo al lavadero siempre y
+     * cuando el vehículo no se encuentre en el lavadero. Ej.
+     * Lavadero.AgregarVehiculo(unLavadero, unAuto);
+     */
+    public static void AgregarVehiculo(Lavadero lavadero, Vehiculo vehiculo)
+    {
+        if (!EstaEnLavadero(lavadero, vehiculo))
+        {
+            lavadero._vehiculos.add(vehiculo);
+        }
+    }
+
+    /**
+     * El método QuitarVehiculo, quitara un vehiculo al lavadero siempre y
+     * cuando el vehículo no se encuentre en el lavadero. Ej.
+     * unLavadero.QuitarVehiculo(unaMoto);
+     */
+    public void QuitarVehiculo(Vehiculo vehiculo)
+    {
+        if (EstaEnLavadero(this, vehiculo))
+        {
+            this._vehiculos.remove(EstaEnLavadero(vehiculo, this));
+        }
+    }
+
+    /**
+     * Generar un método estático (OrdenarVehiculosPorPatente : int) que reciba
+     * dos vehículos y retorne un 0 (cero), si ambas patentes son iguales, si la
+     * primera patente es ‘mayor’ que la segunda, retornará un 1 (uno) y si no,
+     * retornará un -1 (menos uno).
+     */
+    public static int OrdenarVehiculosPorPatente(Vehiculo uno, Vehiculo otro)
+    {
+        return (int) Math.signum(uno.getPatente().compareTo(otro.getPatente()));
+    }
+
+    /**
+     * Generar un método de instancia (OrdenarVehiculosPorMarca : int) que
+     * reciba dos vehículos retorne un 0 (cero), si ambas marcas son iguales, si
+     * la primera marca es ‘mayor’ que la segunda, retornará un 1 (uno) y si no,
+     * retornará un -1 (menos uno).
+     */
+    public int OrdenarVehiculosPorMarca(Vehiculo uno, Vehiculo otro)
+    {
+        return (int) Math.signum(uno.getMarca().compareTo(otro.getMarca()));
+    }
     //</editor-fold>
 }
