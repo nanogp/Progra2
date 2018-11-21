@@ -12,7 +12,7 @@ public class Fecha
     {
         Calendar calendario = Calendar.getInstance();
         calendario.set(Calendar.YEAR, año);
-        calendario.set(Calendar.MONTH, mes);
+        calendario.set(Calendar.MONTH, mes - 1);
         calendario.set(Calendar.DAY_OF_MONTH, dia);
         calendario.set(Calendar.HOUR_OF_DAY, hora);
         calendario.set(Calendar.MINUTE, minutos);

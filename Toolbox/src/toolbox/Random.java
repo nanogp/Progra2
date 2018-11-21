@@ -1,5 +1,8 @@
 package toolbox;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class Random
 {
 
@@ -49,6 +52,24 @@ public class Random
     public static Object randomObject(Object... args)
     {
         return args[randomSeed.nextInt(args.length)];
+    }
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Date">
+
+    public static Date randomDate(int añoMin, int añoMax)
+    {
+        int año, mes, dia;
+
+        año = randomSeed.nextInt(añoMin, añoMax);
+        mes = randomSeed.nextInt(1, 12);
+        dia = randomSeed.nextInt(1, 31);
+
+        return Fecha.newDate(año, mes, dia);
+    }
+
+    public static Date randomDate()
+    {
+        return randomDate(Calendar.getInstance().getMinimum(Calendar.YEAR), Calendar.getInstance().get(Calendar.YEAR));
     }
     //</editor-fold>
 }
