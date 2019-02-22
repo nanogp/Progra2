@@ -33,10 +33,11 @@ public class Encadenadas
         }
         catch (Exception e)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.append(e.getMessage());
-            sb.append("\nERROR EN F1");
-            throw new Exception(sb.toString());
+            throw new Exception(
+                    new StringBuilder()
+                            .append(e.getMessage())
+                            .append("\nERROR EN F1")
+                            .toString());
         }
     }
 

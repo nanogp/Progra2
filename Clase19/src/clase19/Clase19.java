@@ -7,8 +7,8 @@ public class Clase19
     {
         //Demo.main(args);
         //PruebaDivision.main(args);
-        Encadenadas.main(args);
-
+        //Encadenadas.main(args);
+        System.out.println(java.util.concurrent.ThreadLocalRandom.current().nextInt(3));
     }
 
 }
