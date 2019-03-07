@@ -1,13 +1,12 @@
 package toolbox;
 
-import java.io.BufferedReader;
-import java.io.File;
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.FileOutputStream;
 
 public class Archivo
 {
@@ -19,43 +18,40 @@ public class Archivo
     //<editor-fold defaultstate="collapsed" desc="GetSet">
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">
-    public static void escribirEnTxt(String path)
+    public static void serializarXml(Object objeto, String nombreArchivo)
     {
-        File file = new File(path);
-        PrintWriter writer = null;
-        BufferedReader reader = null;
+        XMLEncoder encoder = null;
 
-        if (!file.exists())
+        try
         {
-            try
-            {
-                file.createNewFile();
-            }
-            catch (IOException ex)
-            {
-                Logger.getLogger(Archivo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
+            encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(nombreArchivo)));
         }
-        else
+        catch (FileNotFoundException fileNotFound)
         {
-            try
-            {
-                writer = new PrintWriter(file, "utf-8");
-                writer.append("sarlanganga");
-
-                
-            
-            }
-            catch (FileNotFoundException | UnsupportedEncodingException ex)
-            {
-                Logger.getLogger(Archivo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            finally
-            {
-                writer.close();
-            }
+            fileNotFound.getMessage();
+            System.out.println("ERROR- tu archivo no esta");
         }
+
+        encoder.writeObject(objeto);
+        encoder.close();
+
+    }
+
+    public static Object deserializarXml(String nombreArchivo)
+    {
+        XMLDecoder decoder = null;
+        try
+        {
+            decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(nombreArchivo)));
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("ERROR: Archivo no encontrado");
+        }
+
+        Object objeto = decoder.readObject();
+
+        return objeto;
     }
 
     //</editor-fold>
