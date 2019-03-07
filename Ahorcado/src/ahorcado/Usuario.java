@@ -70,9 +70,9 @@ public class Usuario implements Comparable<Usuario>, Comparator<Usuario>
         return uno.compareTo(otro);
     }
 
-    public static Comparator<Usuario> PorPuntaje = Usuario::compareTo;
+    public static Comparator<Usuario> ComparatorPuntaje = Usuario::compareTo;
 
-    public static Comparator<Usuario> PorNombre = (Usuario uno, Usuario otro) -> uno.getNombre().compareTo(otro.getNombre());
+    public static Comparator<Usuario> ComparatorNombre = (Usuario uno, Usuario otro) -> uno.getNombre().compareTo(otro.getNombre());
 
     //</editor-fold>
 }

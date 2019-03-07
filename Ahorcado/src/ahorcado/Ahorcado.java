@@ -7,15 +7,16 @@ public class Ahorcado
 
     static Diccionario diccionario = new Diccionario();
     static Ranking ranking = new Ranking();
-    
 
     public static void main(String[] args)
     {
 
         //diccionario.cargaDeArchivo();
         diccionario.cargaDePrueba();
+        diccionario.sortByDificultad();
+        toolbox.Archivo.serializarXml(diccionario.getListaDePalabras(), "diccionario.xml");
         //diccionario.mostrar();
-        
 
     }
+
 }

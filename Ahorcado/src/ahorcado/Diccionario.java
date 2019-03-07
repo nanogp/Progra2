@@ -1,22 +1,32 @@
 package ahorcado;
 
+import java.beans.XMLEncoder;
+import java.io.BufferedOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.Collections;
 import java.util.LinkedList;
 
 public class Diccionario
 {
 
     //<editor-fold defaultstate="collapsed" desc="Atributos">
-    private LinkedList<Palabra> listaDePalabras;
+    private final LinkedList<Palabra> listaDePalabras;
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Constructores">
     public Diccionario()
     {
-        this.listaDePalabras = new LinkedList();
+        this.listaDePalabras = new LinkedList<>();
     }
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="GetSet">
+    public LinkedList<Palabra> getListaDePalabras()    
+    {
+        return listaDePalabras;
+    }
+
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">
     public void cargaDePrueba()
@@ -54,6 +64,37 @@ public class Diccionario
     {
         System.out.println(this.toString());
     }
-    //</editor-fold>
 
+    public void sortByAlfabetico()
+    {
+        Collections.sort(this.listaDePalabras, Palabra.ComparatorAlfabetico);
+    }
+
+    public void sortByDificultad()
+    {
+        Collections.sort(this.listaDePalabras, Palabra.ComparatorDificultad);
+    }
+
+    public static void serializar(Diccionario lista, String nombreArchivo)
+    {
+        XMLEncoder encoder = null;
+
+        try
+        {
+            //FileOutputStream archivo = new FileOutputStream(nombreArchivo);
+            //BufferedOutputStream salida = new BufferedOutputStream(archivo);
+            encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(nombreArchivo)));
+        }
+        catch (FileNotFoundException fileNotFound)
+        {
+            fileNotFound.getMessage();
+            System.out.println("ERROR- tu archivo no esta");
+        }
+
+        encoder.writeObject(lista);
+        encoder.close();
+
+    }
+
+    //</editor-fold>
 }

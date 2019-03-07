@@ -20,10 +20,16 @@ public class Ranking
     //<editor-fold defaultstate="collapsed" desc="GetSet">
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">
-    public void sort()
+    public void sortByPuntaje()
     {
-        Collections.sort(this.listaDeUsuarios, Usuario.PorPuntaje);
-        Collections.sort(this.listaDeUsuarios, Usuario.PorNombre);
+        Collections.sort(this.listaDeUsuarios, Usuario.ComparatorPuntaje);
+
+    }
+
+    public void sortByNombre()
+    {
+
+        Collections.sort(this.listaDeUsuarios, Usuario.ComparatorNombre);
     }
     //</editor-fold>
 }

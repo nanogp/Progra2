@@ -1,6 +1,8 @@
 package ahorcado;
 
-public class Palabra
+import java.util.Comparator;
+
+public class Palabra implements Comparable<Palabra>, Comparator<Palabra>
 {
 
     //<editor-fold defaultstate="collapsed" desc="Atributos">
@@ -66,6 +68,22 @@ public class Palabra
                 .append(" | ")
                 .append(this.getDefinicionPalabra()).toString();
     }
-    //</editor-fold>
 
+    @Override
+    public int compareTo(Palabra p)
+    {
+        return this.getNombrePalabra().compareToIgnoreCase(p.getNombrePalabra());
+    }
+
+    @Override
+    public int compare(Palabra una, Palabra otra)
+    {
+        return (int) Math.signum(una.getDificultad() - otra.getDificultad());
+    }
+
+    public static Comparator<Palabra> ComparatorAlfabetico = Palabra::compareTo;
+
+    public static Comparator<Palabra> ComparatorDificultad = (Palabra una, Palabra otra) -> una.compare(una, otra);
+
+    //</editor-fold>
 }
