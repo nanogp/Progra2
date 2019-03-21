@@ -1,5 +1,6 @@
-package ahorcado;
+package ahorcado.Clases;
 
+import ahorcado.Enumerados.Dificultad;
 import java.util.Comparator;
 
 public class Palabra implements Comparable<Palabra>, Comparator<Palabra>
@@ -8,10 +9,8 @@ public class Palabra implements Comparable<Palabra>, Comparator<Palabra>
     //<editor-fold defaultstate="collapsed" desc="Atributos">
     protected String nombre;
     protected String definicion;
-    protected int dificultad;
-    public static int FACIL = 0;
-    public static int NORMAL = 1;
-    public static int DIFICIL = 2;
+    protected Dificultad dificultad;
+    protected int tamaño;
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Constructores">
@@ -19,43 +18,54 @@ public class Palabra implements Comparable<Palabra>, Comparator<Palabra>
     {
     }
 
-    public Palabra(String nombre, String definicion, int dificultad)
+    public Palabra(String nombre, String definicion, Dificultad dificultad)
     {
         this.nombre = nombre;
         this.definicion = definicion;
         this.dificultad = dificultad;
+        this.tamaño = this.nombre.length();
     }
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="GetSet">
-    public String getNombrePalabra()
+    public String getNombre()
     {
         return nombre;
     }
 
-    public void setNombrePalabra(String nombrePalabra)
+    public void setNombre(String nombre)
     {
-        this.nombre = nombrePalabra;
+        this.nombre = nombre;
     }
 
-    public String getDefinicionPalabra()
+    public String getDefinicion()
     {
         return definicion;
     }
 
-    public void setDefinicionPalabra(String definicionPalabra)
+    public void setDefinicion(String definicion)
     {
-        this.definicion = definicionPalabra;
+        this.definicion = definicion;
     }
 
-    public int getDificultad()
+    public Dificultad getDificultad()
     {
         return dificultad;
     }
 
-    public void setDificultad(int dificultad)
+    public void setDificultad(Dificultad dificultad)
     {
         this.dificultad = dificultad;
+    }
+
+    public int getTamaño()
+    {
+        return tamaño;
+    }
+
+    public void setTamaño(int tamaño)
+    {
+        this.tamaño = tamaño;
     }
 
     //</editor-fold>
@@ -63,22 +73,22 @@ public class Palabra implements Comparable<Palabra>, Comparator<Palabra>
     @Override
     public String toString()
     {
-        return new StringBuilder()
-                .append(this.getNombrePalabra())
-                .append(" | ")
-                .append(this.getDefinicionPalabra()).toString();
+        return toolbox.Cadena.encolumnarAlinearTexto(" | ",
+                this.getNombre(), 20, toolbox.Cadena.ALINEA_IZQ,
+                this.getDificultad().toString(), 10, toolbox.Cadena.ALINEA_MED,
+                this.getDefinicion(), 1, toolbox.Cadena.ALINEA_IZQ);
     }
 
     @Override
     public int compareTo(Palabra p)
     {
-        return this.getNombrePalabra().compareToIgnoreCase(p.getNombrePalabra());
+        return this.getNombre().compareToIgnoreCase(p.getNombre());
     }
 
     @Override
     public int compare(Palabra una, Palabra otra)
     {
-        return (int) Math.signum(una.getDificultad() - otra.getDificultad());
+        return una.getDificultad().compareTo(otra.getDificultad());
     }
 
     public static Comparator<Palabra> ComparatorAlfabetico = Palabra::compareTo;
