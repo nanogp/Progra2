@@ -1,4 +1,4 @@
-package ahorcado;
+package ahorcado.Clases;
 
 import ahorcado.Enumerados.Dificultad;
 import ahorcado.Clases.Palabra;

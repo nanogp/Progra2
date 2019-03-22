@@ -5,12 +5,18 @@
  */
 package forms;
 
+import ahorcado.Ahorcado;
+import ahorcado.Clases.Usuario;
+import ahorcado.Enumerados.Dificultad;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Nano
  */
 public class FormInicial extends javax.swing.JFrame
 {
+    Ahorcado ahorcado;
 
     /**
      * Creates new form FormInicial
@@ -18,6 +24,7 @@ public class FormInicial extends javax.swing.JFrame
     public FormInicial()
     {
         initComponents();
+        ahorcado = new Ahorcado();
     }
 
     /**
@@ -30,72 +37,370 @@ public class FormInicial extends javax.swing.JFrame
     private void initComponents()
     {
 
+        jpInicio = new javax.swing.JPanel();
+        jpGameplay = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        lblFallidas = new javax.swing.JLabel();
+        jIntentos = new javax.swing.JTextField();
+        barProg = new javax.swing.JProgressBar();
+        jPanAhoracado = new javax.swing.JPanel();
+        lblImagen = new javax.swing.JLabel();
+        jpanLetras = new javax.swing.JPanel();
+        jPnPalabra = new javax.swing.JPanel();
+        jugandoUsuario = new javax.swing.JLabel();
+        btnRendirse = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPista = new javax.swing.JTextArea();
+        jpRank = new javax.swing.JPanel();
+        menuBar = new javax.swing.JMenuBar();
+        mnMenu = new javax.swing.JMenu();
+        mnItemNuevo = new javax.swing.JMenuItem();
+        mnItemRank = new javax.swing.JMenuItem();
+        mnItemSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("forms/Bundle"); // NOI18N
         setTitle(bundle.getString("titulo")); // NOI18N
+        setMinimumSize(new java.awt.Dimension(800, 600));
+
+        javax.swing.GroupLayout jpInicioLayout = new javax.swing.GroupLayout(jpInicio);
+        jpInicio.setLayout(jpInicioLayout);
+        jpInicioLayout.setHorizontalGroup(
+            jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 940, Short.MAX_VALUE)
+        );
+        jpInicioLayout.setVerticalGroup(
+            jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 642, Short.MAX_VALUE)
+        );
+
+        jPanel1.setBackground(java.awt.Color.white);
+        jPanel1.setToolTipText("");
+        jPanel1.setMaximumSize(new java.awt.Dimension(920, 620));
+        jPanel1.setMinimumSize(new java.awt.Dimension(920, 620));
+        jPanel1.setName(""); // NOI18N
+        jPanel1.setOpaque(false);
+
+        lblFallidas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblFallidas.setForeground(new java.awt.Color(255, 255, 255));
+        lblFallidas.setText("Letras Fallidas :");
+
+        jIntentos.setEditable(false);
+        jIntentos.setBackground(new java.awt.Color(0, 0, 0));
+        jIntentos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jIntentos.setForeground(new java.awt.Color(255, 255, 255));
+        jIntentos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jIntentos.setToolTipText("");
+        jIntentos.setAutoscrolls(false);
+        jIntentos.setBorder(null);
+        jIntentos.setOpaque(false);
+        jIntentos.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jIntentosActionPerformed(evt);
+            }
+        });
+
+        barProg.setBackground(java.awt.Color.white);
+        barProg.setMaximumSize(new java.awt.Dimension(146, 14));
+        barProg.setMinimumSize(new java.awt.Dimension(146, 14));
+        barProg.setString("");
+
+        jPanAhoracado.setMaximumSize(new java.awt.Dimension(300, 419));
+        jPanAhoracado.setMinimumSize(new java.awt.Dimension(300, 419));
+        jPanAhoracado.setOpaque(false);
+
+        lblImagen.setMaximumSize(new java.awt.Dimension(300, 419));
+        lblImagen.setMinimumSize(new java.awt.Dimension(300, 419));
+        lblImagen.setPreferredSize(new java.awt.Dimension(300, 419));
+
+        javax.swing.GroupLayout jPanAhoracadoLayout = new javax.swing.GroupLayout(jPanAhoracado);
+        jPanAhoracado.setLayout(jPanAhoracadoLayout);
+        jPanAhoracadoLayout.setHorizontalGroup(
+            jPanAhoracadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanAhoracadoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanAhoracadoLayout.setVerticalGroup(
+            jPanAhoracadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanAhoracadoLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(lblImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jpanLetras.setMaximumSize(new java.awt.Dimension(500, 160));
+        jpanLetras.setMinimumSize(new java.awt.Dimension(500, 160));
+        jpanLetras.setOpaque(false);
+
+        javax.swing.GroupLayout jpanLetrasLayout = new javax.swing.GroupLayout(jpanLetras);
+        jpanLetras.setLayout(jpanLetrasLayout);
+        jpanLetrasLayout.setHorizontalGroup(
+            jpanLetrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jpanLetrasLayout.setVerticalGroup(
+            jpanLetrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPnPalabra.setOpaque(false);
+
+        javax.swing.GroupLayout jPnPalabraLayout = new javax.swing.GroupLayout(jPnPalabra);
+        jPnPalabra.setLayout(jPnPalabraLayout);
+        jPnPalabraLayout.setHorizontalGroup(
+            jPnPalabraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPnPalabraLayout.setVerticalGroup(
+            jPnPalabraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 118, Short.MAX_VALUE)
+        );
+
+        jugandoUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jugandoUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
+        btnRendirse.setBorder(null);
+        btnRendirse.setBorderPainted(false);
+        btnRendirse.setContentAreaFilled(false);
+        btnRendirse.setFocusPainted(false);
+        btnRendirse.setMaximumSize(new java.awt.Dimension(121, 35));
+        btnRendirse.setMinimumSize(new java.awt.Dimension(121, 35));
+        btnRendirse.setPreferredSize(new java.awt.Dimension(121, 35));
+        btnRendirse.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnRendirseActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane1.setMaximumSize(new java.awt.Dimension(520, 135));
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(520, 135));
+        jScrollPane1.setName(""); // NOI18N
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(520, 135));
+        jScrollPane1.setRequestFocusEnabled(false);
+        jScrollPane1.setWheelScrollingEnabled(false);
+
+        jTextPista.setBackground(new java.awt.Color(35, 44, 105));
+        jTextPista.setColumns(20);
+        jTextPista.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jTextPista.setForeground(new java.awt.Color(255, 255, 255));
+        jTextPista.setLineWrap(true);
+        jTextPista.setRows(2);
+        jTextPista.setToolTipText("");
+        jTextPista.setWrapStyleWord(true);
+        jTextPista.setBorder(null);
+        jTextPista.setCaretColor(new java.awt.Color(153, 0, 204));
+        jTextPista.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTextPista.setKeymap(null);
+        jTextPista.setMaximumSize(new java.awt.Dimension(530, 61));
+        jTextPista.setMinimumSize(new java.awt.Dimension(530, 61));
+        jTextPista.setOpaque(false);
+        jTextPista.setPreferredSize(new java.awt.Dimension(530, 160));
+        jScrollPane1.setViewportView(jTextPista);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jugandoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanAhoracado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(barProg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jIntentos, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblFallidas, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRendirse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))
+                    .addComponent(jpanLetras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPnPalabra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(jPnPalabra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jpanLetras, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(btnRendirse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblFallidas, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jIntentos, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(67, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanAhoracado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(barProg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jugandoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        jMenu1.setText("Juego");
+        //iniciarABC();
+        //inicarPalabra();
 
-        jMenuItem2.setText("Nuevo");
-        jMenu1.add(jMenuItem2);
+        javax.swing.GroupLayout jpGameplayLayout = new javax.swing.GroupLayout(jpGameplay);
+        jpGameplay.setLayout(jpGameplayLayout);
+        jpGameplayLayout.setHorizontalGroup(
+            jpGameplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 920, Short.MAX_VALUE)
+            .addGroup(jpGameplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jpGameplayLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jpGameplayLayout.setVerticalGroup(
+            jpGameplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 620, Short.MAX_VALUE)
+            .addGroup(jpGameplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jpGameplayLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
-        jMenuItem1.setText("Salir");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener()
+        javax.swing.GroupLayout jpRankLayout = new javax.swing.GroupLayout(jpRank);
+        jpRank.setLayout(jpRankLayout);
+        jpRankLayout.setHorizontalGroup(
+            jpRankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
+        );
+        jpRankLayout.setVerticalGroup(
+            jpRankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 598, Short.MAX_VALUE)
+        );
+
+        mnMenu.setMnemonic('J');
+        mnMenu.setText("Juego");
+
+        mnItemNuevo.setMnemonic('N');
+        mnItemNuevo.setText("Nuevo");
+        mnItemNuevo.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jMenuItem1ActionPerformed(evt);
+                mnItemNuevoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        mnMenu.add(mnItemNuevo);
 
-        jMenuBar1.add(jMenu1);
+        mnItemRank.setMnemonic('R');
+        mnItemRank.setText("Ranking");
+        mnItemRank.setToolTipText("");
+        mnItemRank.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                mnItemRankActionPerformed(evt);
+            }
+        });
+        mnMenu.add(mnItemRank);
 
-        jMenu2.setText("Salir");
-        jMenuBar1.add(jMenu2);
+        mnItemSalir.setMnemonic('S');
+        mnItemSalir.setText("Salir");
+        mnItemSalir.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                mnItemSalirActionPerformed(evt);
+            }
+        });
+        mnMenu.add(mnItemSalir);
 
-        setJMenuBar(jMenuBar1);
+        menuBar.add(mnMenu);
+
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 700, Short.MAX_VALUE))
+            .addComponent(jpInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jpGameplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(jpRank, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(20, 20, 20)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 474, Short.MAX_VALUE))
+            .addComponent(jpInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jpGameplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(22, 22, 22)
+                    .addComponent(jpRank, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(22, 22, 22)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jMenuItem1ActionPerformed
-    {//GEN-HEADEREND:event_jMenuItem1ActionPerformed
+    private void mnItemSalirActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mnItemSalirActionPerformed
+    {//GEN-HEADEREND:event_mnItemSalirActionPerformed
         System.exit(NORMAL);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mnItemSalirActionPerformed
+
+    private void mnItemNuevoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mnItemNuevoActionPerformed
+    {//GEN-HEADEREND:event_mnItemNuevoActionPerformed
+        //pedir usuario
+        //pedir dificultad
+        //llamar a nueva partida
+        ahorcado.nuevaPartida(new Usuario("Nano"),Dificultad.getRandom());
+    }//GEN-LAST:event_mnItemNuevoActionPerformed
+
+    private void mnItemRankActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mnItemRankActionPerformed
+    {//GEN-HEADEREND:event_mnItemRankActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnItemRankActionPerformed
+
+    private void jIntentosActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jIntentosActionPerformed
+    {//GEN-HEADEREND:event_jIntentosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jIntentosActionPerformed
+
+    private void btnRendirseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRendirseActionPerformed
+    {//GEN-HEADEREND:event_btnRendirseActionPerformed
+        int resp = JOptionPane.showConfirmDialog(this, " Abandonar la partida?");
+        // 0=yes, 1=no, 2=cancel
+        if (resp == 0)
+        {
+            JOptionPane.showMessageDialog(this, " Que maracaná!\n la palabra era:");
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_btnRendirseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,11 +452,25 @@ public class FormInicial extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JProgressBar barProg;
+    private javax.swing.JButton btnRendirse;
+    private javax.swing.JTextField jIntentos;
+    private javax.swing.JPanel jPanAhoracado;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPnPalabra;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextPista;
+    private javax.swing.JPanel jpGameplay;
+    private javax.swing.JPanel jpInicio;
+    private javax.swing.JPanel jpRank;
+    private javax.swing.JPanel jpanLetras;
+    private javax.swing.JLabel jugandoUsuario;
+    private javax.swing.JLabel lblFallidas;
+    private javax.swing.JLabel lblImagen;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem mnItemNuevo;
+    private javax.swing.JMenuItem mnItemRank;
+    private javax.swing.JMenuItem mnItemSalir;
+    private javax.swing.JMenu mnMenu;
     // End of variables declaration//GEN-END:variables
 }

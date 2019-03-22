@@ -1,19 +1,12 @@
-/**
- * leer diccionarios
- * esperar seleccion del usuario
- * a. config
- * b. jugar
- * c. salir
- */
 package ahorcado;
 
+import ahorcado.Clases.ListaDePalabras;
 import ahorcado.Clases.Diccionario;
 import ahorcado.Clases.Partida;
 import ahorcado.Clases.Ranking;
 import ahorcado.Clases.Usuario;
 import ahorcado.Enumerados.Dificultad;
-import ahorcado.ListaDePalabras;
-import java.util.LinkedList;
+import javax.swing.JOptionPane;
 
 public class Ahorcado
 {
@@ -31,10 +24,10 @@ public class Ahorcado
     //<editor-fold defaultstate="collapsed" desc="Constructores">
     public Ahorcado()
     {
-        //this.diccionario = new Diccionario();
+        this.diccionario = new Diccionario();
         this.diccionario = Diccionario.leerDeXml(diccionario.getNombreArchivo());
 
-        //this.ranking = new Ranking();
+        this.ranking = new Ranking();
         this.ranking = Ranking.leerDeXml(ranking.getNombreArchivo());
 
     }
@@ -113,10 +106,11 @@ public class Ahorcado
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">
-    public void nuevaPartida()
+    public void nuevaPartida(Usuario nuevoJugador, Dificultad dificultad)
     {
         //setear usuario y si existe, cargar sus datos
-        Usuario nuevoJugador = new Usuario(toolbox.Toolbox.leerDeConsola.next());
+        //System.out.println("Ingresar nombre jugador: ");
+        //Usuario nuevoJugador = new Usuario(toolbox.Toolbox.leerDeConsola.next());
 
         if (getRanking().getListaDeUsuarios().contains(nuevoJugador))
         {
@@ -137,11 +131,7 @@ public class Ahorcado
         setPalabrasEnJuego(getDiccionario().getListaDePalabras().getListaPalabrasPorDificultad(getDificultad()));
 
         partida = new Partida(getDificultad(), getUsuario(), getPalabrasEnJuego().getRandom());
-        System.out.println("palabra: " + partida.getPalabra());
-        System.out.println("dificultad: " + partida.getDificultad());
-        System.out.println("fallidos: " + partida.getIntentosFallidos());
-        System.out.println("aciertos: " + partida.getContadorAciertos());
-        System.out.println("usuario: " + partida.getUsuario());
+
     }
     //</editor-fold>
 

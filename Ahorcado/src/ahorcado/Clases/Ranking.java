@@ -1,13 +1,12 @@
 package ahorcado.Clases;
 
-import ahorcado.Interfaces.InterfaceXml;
-import ahorcado.ListaDeUsuarios;
 import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.LinkedList;
 import toolbox.Random;
+import ahorcado.Interfaces.InterfazXml;
 
-public class Ranking implements InterfaceXml
+public class Ranking implements InterfazXml
 {
 
     //<editor-fold defaultstate="collapsed" desc="Atributos">
@@ -52,7 +51,7 @@ public class Ranking implements InterfaceXml
     //<editor-fold defaultstate="collapsed" desc="Metodos">
     public static Ranking leerDeXml(String nombreArchivo)
     {
-        return (Ranking) InterfaceXml.leerDeXml(nombreArchivo);
+        return (Ranking) InterfazXml.leerDeXml(nombreArchivo);
     }
 
     @Override

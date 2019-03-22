@@ -23,7 +23,7 @@ public class Palabra implements Comparable<Palabra>, Comparator<Palabra>
         this.nombre = nombre;
         this.definicion = definicion;
         this.dificultad = dificultad;
-        this.tamaño = this.nombre.length();
+        this.tamaño = this.nombre.length() + 1;
     }
 
     //</editor-fold>

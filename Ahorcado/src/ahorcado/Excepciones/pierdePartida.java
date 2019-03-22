@@ -7,26 +7,26 @@ package ahorcado.Excepciones;
 
 /**
  *
- * @author mponti
+ * @author Nano
  */
-public class pierdeJuego extends Exception
+public class pierdePartida extends Exception
 {
 
     /**
-     * Creates a new instance of <code>pierdeJuego</code> without detail
+     * Creates a new instance of <code>pierdePartida</code> without detail
      * message.
      */
-    public pierdeJuego()
+    public pierdePartida()
     {
     }
 
     /**
-     * Constructs an instance of <code>pierdeJuego</code> with the specified
+     * Constructs an instance of <code>pierdePartida</code> with the specified
      * detail message.
      *
      * @param msg the detail message.
      */
-    public pierdeJuego(String msg)
+    public pierdePartida(String msg)
     {
         super(msg);
     }

@@ -5,6 +5,7 @@ import ahorcado.Clases.Usuario;
 import ahorcado.Clases.Diccionario;
 import ahorcado.Clases.Palabra;
 import ahorcado.Clases.Ranking;
+import forms.FormInicial;
 import java.util.Collection;
 import java.util.Collections;
 import toolbox.Random;
@@ -44,13 +45,20 @@ public class Main
 
     public static void main(String[] args)
     {
-        Ahorcado juegoNuevo = new Ahorcado();
-
-        juegoNuevo.nuevaPartida();
         /*
-        generarDiccionarioPrueba(juegoNuevo.getDiccionario());
-        generarRankingPrueba(juegoNuevo.getRanking());
-         
+        generarDiccionarioPrueba(new Diccionario());
+        generarRankingPrueba(new Ranking());
+         */
+
+        //Ahorcado juegoNuevo = new Ahorcado();
+        //juegoNuevo.nuevaPartida();
+
+        forms.FormInicial gui = new FormInicial();
+
+        gui.setVisible(true);
+
+        //System.out.println(juegoNuevo.getRanking().getListaDeUsuarios().toString());
+        /*  
         System.out.println(toolbox.Cadena.encolumnarAlinearTexto(" | ",
                 "PALABRA", 20, toolbox.Cadena.ALINEA_IZQ,
                 "DIFICULTAD", 10, toolbox.Cadena.ALINEA_IZQ,
@@ -63,8 +71,6 @@ public class Main
                 "PUNTAJE", 10, toolbox.Cadena.ALINEA_IZQ,
                 "PARTIDAS JUGADAS", 1, toolbox.Cadena.ALINEA_IZQ));
         System.out.println(toolbox.Cadena.repeat("-", 50));
-        System.out.println(juegoNuevo.getRanking().getListaDeUsuarios().toString());
          */
-        //Form ui = new form();
     }
 }

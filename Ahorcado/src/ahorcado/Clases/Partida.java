@@ -10,8 +10,13 @@ public class Partida
     protected Dificultad dificultad;
     protected Usuario usuario;
     protected Palabra palabra;
+    protected int maxFallos;
+    protected int momentoPista;
+    protected int valorPuntos;
     protected int contadorFallos;
     protected int contadorAciertos;
+    protected char[] palabraSecreta;
+    protected char[] letrasUsadas;
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Constructores">
@@ -19,6 +24,9 @@ public class Partida
     {
         this.contadorFallos = 0;
         this.contadorAciertos = 0;
+        this.maxFallos = Dificultad.getMaxFallos(dificultad);
+        this.momentoPista = Dificultad.getMomentoPista(dificultad);
+        this.momentoPista = Dificultad.getValorPuntos(dificultad);
     }
 
     public Partida(Dificultad dificultad, Usuario usuario, Palabra palabra)
@@ -26,6 +34,7 @@ public class Partida
         this.dificultad = dificultad;
         this.usuario = usuario;
         this.palabra = palabra;
+        this.setPalabraSecreta();
     }
 
     //</editor-fold>
@@ -60,14 +69,49 @@ public class Partida
         this.palabra = palabra;
     }
 
-    public int getIntentosFallidos()
+    public int getMaxFallos()
+    {
+        return maxFallos;
+    }
+
+    public void setMaxFallos(int maxFallos)
+    {
+        this.maxFallos = maxFallos;
+    }
+
+    public int getMomentoPista()
+    {
+        return momentoPista;
+    }
+
+    public void setMomentoPista(int momentoPista)
+    {
+        this.momentoPista = momentoPista;
+    }
+
+    public int getValorPuntos()
+    {
+        return valorPuntos;
+    }
+
+    public void setValorPuntos(int valorPuntos)
+    {
+        this.valorPuntos = valorPuntos;
+    }
+
+    public int getContadorFallos()
     {
         return contadorFallos;
     }
 
-    public void setIntentosFallidos(int intentosFallidos)
+    public void setContadorFallos(int contadorFallos)
     {
-        this.contadorFallos = intentosFallidos;
+        this.contadorFallos = contadorFallos;
+    }
+
+    public void addContadorFallos()
+    {
+        this.contadorFallos++;
     }
 
     public int getContadorAciertos()
@@ -80,7 +124,47 @@ public class Partida
         this.contadorAciertos = contadorAciertos;
     }
 
+    public void addContadorAciertos()
+    {
+        this.contadorAciertos++;
+    }
+
+    public char[] getPalabraSecreta()
+    {
+        return palabraSecreta;
+    }
+
+    private void setPalabraSecreta()
+    {
+        for (int i = 0; i < getPalabra().getNombre().length(); i++)
+        {
+            this.palabraSecreta[i] = '_';
+        }
+    }
+
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">
+    public void validarLetraIngresada(char letra)
+    {
+        boolean noHayCoincidencia = true;
+
+        letrasUsadas[letrasUsadas.length] = letra;
+
+        for (int i = 0; i < palabraSecreta.length; i++)
+        {
+            if (palabraSecreta[i] == letra)
+            {
+                palabraSecreta[i] = letra;
+                noHayCoincidencia = false;
+                addContadorAciertos();
+            }
+        }
+
+        if (noHayCoincidencia)
+        {
+            addContadorFallos();
+        }
+    }
+
     //</editor-fold>
 }

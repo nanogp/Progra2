@@ -1,10 +1,9 @@
 package ahorcado.Clases;
 
-import ahorcado.Interfaces.InterfaceXml;
-import ahorcado.ListaDePalabras;
 import java.io.FileNotFoundException;
+import ahorcado.Interfaces.InterfazXml;
 
-public class Diccionario implements InterfaceXml
+public class Diccionario implements InterfazXml
 {
 
     //<editor-fold defaultstate="collapsed" desc="Atributos">
@@ -73,7 +72,7 @@ public class Diccionario implements InterfaceXml
 
     public static Diccionario leerDeXml(String nombreArchivo)
     {
-        return (Diccionario) InterfaceXml.leerDeXml(nombreArchivo);
+        return (Diccionario) InterfazXml.leerDeXml(nombreArchivo);
     }
 
     @Override

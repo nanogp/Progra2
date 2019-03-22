@@ -3,7 +3,7 @@ package ahorcado.Interfaces;
 import ahorcado.Clases.Archivo;
 import java.io.FileNotFoundException;
 
-public interface InterfaceXml
+public interface InterfazXml
 {
 
     public void guardarEnXml();

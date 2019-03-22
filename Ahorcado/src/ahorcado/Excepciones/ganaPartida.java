@@ -7,25 +7,26 @@ package ahorcado.Excepciones;
 
 /**
  *
- * @author mponti
+ * @author Nano
  */
-public class ganaJuego extends Exception
+public class ganaPartida extends Exception
 {
 
     /**
-     * Creates a new instance of <code>ganaJuego</code> without detail message.
+     * Creates a new instance of <code>ganaPartida</code> without detail
+     * message.
      */
-    public ganaJuego()
+    public ganaPartida()
     {
     }
 
     /**
-     * Constructs an instance of <code>ganaJuego</code> with the specified
+     * Constructs an instance of <code>ganaPartida</code> with the specified
      * detail message.
      *
      * @param msg the detail message.
      */
-    public ganaJuego(String msg)
+    public ganaPartida(String msg)
     {
         super(msg);
     }
