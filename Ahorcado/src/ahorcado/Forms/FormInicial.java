@@ -40,7 +40,6 @@ public class FormInicial extends javax.swing.JFrame
     {
 
         jpInicio = new javax.swing.JPanel();
-        btnJugar = new javax.swing.JToggleButton();
         jpImagenInicio = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jpGameplay = new javax.swing.JPanel();
@@ -57,6 +56,7 @@ public class FormInicial extends javax.swing.JFrame
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPista = new javax.swing.JTextArea();
         jpRank = new javax.swing.JPanel();
+        jpEligeNivel = new javax.swing.JPanel();
         menuBar = new javax.swing.JMenuBar();
         mnMenu = new javax.swing.JMenu();
         mnItemNuevo = new javax.swing.JMenuItem();
@@ -68,24 +68,15 @@ public class FormInicial extends javax.swing.JFrame
         setTitle(bundle.getString("titulo")); // NOI18N
         setMinimumSize(new java.awt.Dimension(800, 600));
 
-        btnJugar.setText("JUGAR");
-        btnJugar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                btnJugarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jpImagenInicioLayout = new javax.swing.GroupLayout(jpImagenInicio);
         jpImagenInicio.setLayout(jpImagenInicioLayout);
         jpImagenInicioLayout.setHorizontalGroup(
             jpImagenInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 928, Short.MAX_VALUE)
         );
         jpImagenInicioLayout.setVerticalGroup(
             jpImagenInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 314, Short.MAX_VALUE)
+            .addGap(0, 516, Short.MAX_VALUE)
         );
 
         jButton1.setText("JUGAR");
@@ -106,22 +97,18 @@ public class FormInicial extends javax.swing.JFrame
                 .addComponent(jpImagenInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jpInicioLayout.createSequentialGroup()
-                .addGap(286, 286, 286)
-                .addGroup(jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnJugar, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
-                .addContainerGap(367, Short.MAX_VALUE))
+                .addGap(319, 319, 319)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpInicioLayout.setVerticalGroup(
             jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpInicioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jpImagenInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(153, 153, 153))
+                .addGap(20, 20, 20))
         );
 
         jPanel1.setBackground(java.awt.Color.white);
@@ -340,6 +327,17 @@ public class FormInicial extends javax.swing.JFrame
             .addGap(0, 598, Short.MAX_VALUE)
         );
 
+        javax.swing.GroupLayout jpEligeNivelLayout = new javax.swing.GroupLayout(jpEligeNivel);
+        jpEligeNivel.setLayout(jpEligeNivelLayout);
+        jpEligeNivelLayout.setHorizontalGroup(
+            jpEligeNivelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jpEligeNivelLayout.setVerticalGroup(
+            jpEligeNivelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         mnMenu.setMnemonic('J');
         mnMenu.setText("Juego");
 
@@ -396,10 +394,17 @@ public class FormInicial extends javax.swing.JFrame
                     .addGap(20, 20, 20)
                     .addComponent(jpRank, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(20, 20, 20)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jpEligeNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jpInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -410,6 +415,11 @@ public class FormInicial extends javax.swing.JFrame
                     .addGap(22, 22, 22)
                     .addComponent(jpRank, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(22, 22, 22)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jpEligeNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -427,6 +437,8 @@ public class FormInicial extends javax.swing.JFrame
 
         nivel.setVisible(true);
         ahorcado.setDificultad(nivel.getNivelElegido());
+        nivel.setVisible(false);
+        nivel.dispose();
 
         //llamar a nueva partida
         ahorcado.nuevaPartida(new Usuario("Nano"), ahorcado.getDificultad());
@@ -454,11 +466,6 @@ public class FormInicial extends javax.swing.JFrame
             this.setVisible(false);
         }
     }//GEN-LAST:event_btnRendirseActionPerformed
-
-    private void btnJugarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnJugarActionPerformed
-    {//GEN-HEADEREND:event_btnJugarActionPerformed
-        this.mnItemNuevoActionPerformed(evt);
-    }//GEN-LAST:event_btnJugarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
@@ -516,7 +523,6 @@ public class FormInicial extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar barProg;
-    private javax.swing.JToggleButton btnJugar;
     private javax.swing.JButton btnRendirse;
     private javax.swing.JButton jButton1;
     private javax.swing.JTextField jIntentos;
@@ -525,6 +531,7 @@ public class FormInicial extends javax.swing.JFrame
     private javax.swing.JPanel jPnPalabra;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextPista;
+    private javax.swing.JPanel jpEligeNivel;
     private javax.swing.JPanel jpGameplay;
     private javax.swing.JPanel jpImagenInicio;
     private javax.swing.JPanel jpInicio;

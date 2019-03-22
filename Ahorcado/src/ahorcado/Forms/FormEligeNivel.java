@@ -175,17 +175,15 @@ public class FormEligeNivel extends javax.swing.JDialog
         if (btnFacil.isSelected())
         {
             nivelElegido = Dificultad.Facil;
-            this.dispose();
+            
         }
         else if (btnNormal.isSelected())
         {
             nivelElegido = Dificultad.Normal;
-            this.dispose();
         }
         else if (btnDificil.isSelected())
         {
             nivelElegido = Dificultad.Dificil;
-            this.dispose();
         }
         else
         {
