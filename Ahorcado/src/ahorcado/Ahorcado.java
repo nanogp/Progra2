@@ -1,12 +1,8 @@
 package ahorcado;
 
-import ahorcado.Clases.ListaDePalabras;
-import ahorcado.Clases.Diccionario;
-import ahorcado.Clases.Partida;
-import ahorcado.Clases.Ranking;
-import ahorcado.Clases.Usuario;
-import ahorcado.Enumerados.Dificultad;
-import javax.swing.JOptionPane;
+import ahorcado.Clases.*;
+import ahorcado.Enumerados.*;
+import ahorcado.Forms.FormInicial;
 
 public class Ahorcado
 {

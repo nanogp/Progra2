@@ -5,9 +5,7 @@ import ahorcado.Clases.Usuario;
 import ahorcado.Clases.Diccionario;
 import ahorcado.Clases.Palabra;
 import ahorcado.Clases.Ranking;
-import forms.FormInicial;
-import java.util.Collection;
-import java.util.Collections;
+import ahorcado.Forms.FormInicial;
 import toolbox.Random;
 
 public class Main
@@ -50,13 +48,11 @@ public class Main
         generarRankingPrueba(new Ranking());
          */
 
-        //Ahorcado juegoNuevo = new Ahorcado();
-        //juegoNuevo.nuevaPartida();
-
-        forms.FormInicial gui = new FormInicial();
-
+        Ahorcado juegoNuevo = new Ahorcado();
+        ahorcado.Forms.FormInicial gui = new FormInicial();
         gui.setVisible(true);
 
+        //juegoNuevo.nuevaPartida();
         //System.out.println(juegoNuevo.getRanking().getListaDeUsuarios().toString());
         /*  
         System.out.println(toolbox.Cadena.encolumnarAlinearTexto(" | ",

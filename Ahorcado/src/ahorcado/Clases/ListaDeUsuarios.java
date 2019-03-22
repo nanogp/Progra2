@@ -1,6 +1,5 @@
 package ahorcado.Clases;
 
-import ahorcado.Clases.Usuario;
 import java.util.Collections;
 import java.util.LinkedList;
 

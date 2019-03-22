@@ -9,14 +9,14 @@ package ahorcado.Excepciones;
  *
  * @author Nano
  */
-public class ganaPartida extends Exception
+public class GanaPartida extends Exception
 {
 
     /**
      * Creates a new instance of <code>ganaPartida</code> without detail
      * message.
      */
-    public ganaPartida()
+    public GanaPartida()
     {
     }
 
@@ -26,7 +26,7 @@ public class ganaPartida extends Exception
      *
      * @param msg the detail message.
      */
-    public ganaPartida(String msg)
+    public GanaPartida(String msg)
     {
         super(msg);
     }

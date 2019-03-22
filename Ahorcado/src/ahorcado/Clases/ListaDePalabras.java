@@ -1,7 +1,6 @@
 package ahorcado.Clases;
 
 import ahorcado.Enumerados.Dificultad;
-import ahorcado.Clases.Palabra;
 import java.util.Collections;
 import java.util.LinkedList;
 

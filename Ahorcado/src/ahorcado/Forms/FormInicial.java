@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forms;
+package ahorcado.Forms;
 
 import ahorcado.Ahorcado;
 import ahorcado.Clases.Usuario;
-import ahorcado.Enumerados.Dificultad;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,15 +15,18 @@ import javax.swing.JOptionPane;
  */
 public class FormInicial extends javax.swing.JFrame
 {
+    //<editor-fold defaultstate="collapsed" desc="Atributos">
     Ahorcado ahorcado;
+    FormEligeNivel nivel;
 
+    //</editor-fold>
     /**
      * Creates new form FormInicial
      */
     public FormInicial()
     {
         initComponents();
-        ahorcado = new Ahorcado();
+        nivel = new FormEligeNivel(this, true);
     }
 
     /**
@@ -38,6 +40,9 @@ public class FormInicial extends javax.swing.JFrame
     {
 
         jpInicio = new javax.swing.JPanel();
+        btnJugar = new javax.swing.JToggleButton();
+        jpImagenInicio = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jpGameplay = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         lblFallidas = new javax.swing.JLabel();
@@ -63,15 +68,60 @@ public class FormInicial extends javax.swing.JFrame
         setTitle(bundle.getString("titulo")); // NOI18N
         setMinimumSize(new java.awt.Dimension(800, 600));
 
+        btnJugar.setText("JUGAR");
+        btnJugar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnJugarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpImagenInicioLayout = new javax.swing.GroupLayout(jpImagenInicio);
+        jpImagenInicio.setLayout(jpImagenInicioLayout);
+        jpImagenInicioLayout.setHorizontalGroup(
+            jpImagenInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jpImagenInicioLayout.setVerticalGroup(
+            jpImagenInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 314, Short.MAX_VALUE)
+        );
+
+        jButton1.setText("JUGAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpInicioLayout = new javax.swing.GroupLayout(jpInicio);
         jpInicio.setLayout(jpInicioLayout);
         jpInicioLayout.setHorizontalGroup(
             jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
+            .addGroup(jpInicioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jpImagenInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jpInicioLayout.createSequentialGroup()
+                .addGap(286, 286, 286)
+                .addGroup(jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnJugar, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
+                .addContainerGap(367, Short.MAX_VALUE))
         );
         jpInicioLayout.setVerticalGroup(
             jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 642, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpInicioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jpImagenInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(153, 153, 153))
         );
 
         jPanel1.setBackground(java.awt.Color.white);
@@ -93,7 +143,6 @@ public class FormInicial extends javax.swing.JFrame
         jIntentos.setToolTipText("");
         jIntentos.setAutoscrolls(false);
         jIntentos.setBorder(null);
-        jIntentos.setOpaque(false);
         jIntentos.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -184,7 +233,6 @@ public class FormInicial extends javax.swing.JFrame
         jScrollPane1.setMaximumSize(new java.awt.Dimension(520, 135));
         jScrollPane1.setMinimumSize(new java.awt.Dimension(520, 135));
         jScrollPane1.setName(""); // NOI18N
-        jScrollPane1.setOpaque(false);
         jScrollPane1.setPreferredSize(new java.awt.Dimension(520, 135));
         jScrollPane1.setRequestFocusEnabled(false);
         jScrollPane1.setWheelScrollingEnabled(false);
@@ -203,7 +251,6 @@ public class FormInicial extends javax.swing.JFrame
         jTextPista.setKeymap(null);
         jTextPista.setMaximumSize(new java.awt.Dimension(530, 61));
         jTextPista.setMinimumSize(new java.awt.Dimension(530, 61));
-        jTextPista.setOpaque(false);
         jTextPista.setPreferredSize(new java.awt.Dimension(530, 160));
         jScrollPane1.setViewportView(jTextPista);
 
@@ -377,8 +424,14 @@ public class FormInicial extends javax.swing.JFrame
     {//GEN-HEADEREND:event_mnItemNuevoActionPerformed
         //pedir usuario
         //pedir dificultad
+
+        nivel.setVisible(true);
+        ahorcado.setDificultad(nivel.getNivelElegido());
+
         //llamar a nueva partida
-        ahorcado.nuevaPartida(new Usuario("Nano"),Dificultad.getRandom());
+        ahorcado.nuevaPartida(new Usuario("Nano"), ahorcado.getDificultad());
+        this.jpInicio.setVisible(false);
+        this.jpGameplay.setVisible(true);
     }//GEN-LAST:event_mnItemNuevoActionPerformed
 
     private void mnItemRankActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mnItemRankActionPerformed
@@ -401,6 +454,16 @@ public class FormInicial extends javax.swing.JFrame
             this.setVisible(false);
         }
     }//GEN-LAST:event_btnRendirseActionPerformed
+
+    private void btnJugarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnJugarActionPerformed
+    {//GEN-HEADEREND:event_btnJugarActionPerformed
+        this.mnItemNuevoActionPerformed(evt);
+    }//GEN-LAST:event_btnJugarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
+    {//GEN-HEADEREND:event_jButton1ActionPerformed
+        this.mnItemNuevoActionPerformed(evt);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -453,7 +516,9 @@ public class FormInicial extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar barProg;
+    private javax.swing.JToggleButton btnJugar;
     private javax.swing.JButton btnRendirse;
+    private javax.swing.JButton jButton1;
     private javax.swing.JTextField jIntentos;
     private javax.swing.JPanel jPanAhoracado;
     private javax.swing.JPanel jPanel1;
@@ -461,6 +526,7 @@ public class FormInicial extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextPista;
     private javax.swing.JPanel jpGameplay;
+    private javax.swing.JPanel jpImagenInicio;
     private javax.swing.JPanel jpInicio;
     private javax.swing.JPanel jpRank;
     private javax.swing.JPanel jpanLetras;

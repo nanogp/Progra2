@@ -1,7 +1,7 @@
 package ahorcado.Clases;
 
 import ahorcado.Enumerados.Dificultad;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Partida
 {
@@ -15,8 +15,9 @@ public class Partida
     protected int valorPuntos;
     protected int contadorFallos;
     protected int contadorAciertos;
-    protected char[] palabraSecreta;
-    protected char[] letrasUsadas;
+    protected char[] alfabeto;
+    protected ArrayList<Character> palabraSecreta;
+    protected ArrayList<Character> letrasUsadas;
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Constructores">
@@ -35,6 +36,8 @@ public class Partida
         this.usuario = usuario;
         this.palabra = palabra;
         this.setPalabraSecreta();
+        this.setAlfabeto();
+
     }
 
     //</editor-fold>
@@ -129,21 +132,52 @@ public class Partida
         this.contadorAciertos++;
     }
 
-    public char[] getPalabraSecreta()
+    public ArrayList<Character> getPalabraSecreta()
     {
         return palabraSecreta;
     }
 
     private void setPalabraSecreta()
-    {
+    {/*
         for (int i = 0; i < getPalabra().getNombre().length(); i++)
         {
             this.palabraSecreta[i] = '_';
+        }
+         */
+        if (this.palabraSecreta == null)
+        {
+            this.palabraSecreta = new ArrayList<>();
+        }
+        else
+        {
+            this.palabraSecreta.clear();
+        }
+
+        for (char c : getPalabra().getNombre().toCharArray())
+        {
+            this.palabraSecreta.add('_');
+        }
+    }
+
+    public char[] getAlfabeto()
+    {
+        return alfabeto;
+    }
+
+    private void setAlfabeto()
+    {
+        String alfabetoValido = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        this.alfabeto = new char[alfabetoValido.length()];
+
+        for (int i = 0; i < alfabetoValido.length(); i++)
+        {
+            alfabeto[i] = alfabetoValido.charAt(i);
         }
     }
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">
+    /*
     public void validarLetraIngresada(char letra)
     {
         boolean noHayCoincidencia = true;
@@ -155,6 +189,28 @@ public class Partida
             if (palabraSecreta[i] == letra)
             {
                 palabraSecreta[i] = letra;
+                noHayCoincidencia = false;
+                addContadorAciertos();
+            }
+        }
+
+        if (noHayCoincidencia)
+        {
+            addContadorFallos();
+        }
+    }
+     */
+    public void validarLetraIngresada(char letra)
+    {
+        boolean noHayCoincidencia = true;
+
+        letrasUsadas.add(letra);
+
+        for (int i = 0; i < palabraSecreta.size(); i++)
+        {
+            if (palabraSecreta.get(i) == letra)
+            {
+                palabraSecreta.set(i, letra);
                 noHayCoincidencia = false;
                 addContadorAciertos();
             }

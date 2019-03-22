@@ -9,14 +9,14 @@ package ahorcado.Excepciones;
  *
  * @author Nano
  */
-public class pierdePartida extends Exception
+public class PierdePartida extends Exception
 {
 
     /**
      * Creates a new instance of <code>pierdePartida</code> without detail
      * message.
      */
-    public pierdePartida()
+    public PierdePartida()
     {
     }
 
@@ -26,7 +26,7 @@ public class pierdePartida extends Exception
      *
      * @param msg the detail message.
      */
-    public pierdePartida(String msg)
+    public PierdePartida(String msg)
     {
         super(msg);
     }
