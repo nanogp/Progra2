@@ -2,7 +2,7 @@ package ahorcado;
 
 import ahorcado.Clases.*;
 import ahorcado.Enumerados.*;
-import ahorcado.Forms.FormInicial;
+import ahorcado.Excepciones.GanaJuego;
 
 public class Ahorcado
 {
@@ -102,7 +102,7 @@ public class Ahorcado
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">
-    public void nuevaPartida(Usuario nuevoJugador, Dificultad dificultad)
+    public void nuevoJuego(Usuario nuevoJugador, Dificultad dificultad) throws GanaJuego
     {
         //setear usuario y si existe, cargar sus datos
         //System.out.println("Ingresar nombre jugador: ");
@@ -121,14 +121,30 @@ public class Ahorcado
         }
 
         //setear dificultad
-        setDificultad(Dificultad.getRandom());
+        setDificultad(dificultad);
 
         //obtener lista de palabras acorde a dificultad
         setPalabrasEnJuego(getDiccionario().getListaDePalabras().getListaPalabrasPorDificultad(getDificultad()));
 
-        partida = new Partida(getDificultad(), getUsuario(), getPalabrasEnJuego().getRandom());
+        //crear una nueva partida del juego
+        nuevaPartida();
 
     }
-    //</editor-fold>
 
+    public void nuevaPartida() throws GanaJuego
+    {
+
+        //verificar si quedan mas palabras
+        if (getPalabrasEnJuego().isEmpty())
+        {
+            //subir de nivel o lanzar GanaJuego
+            setDificultad(getDificultad().levelUp());
+        }
+
+        //crear parida nueva
+        partida = new Partida(getDificultad(), getUsuario(), getPalabrasEnJuego().popRandom());
+
+    }
+
+    //</editor-fold>
 }
