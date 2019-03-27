@@ -40,16 +40,9 @@ public class PanelUsuario extends javax.swing.JPanel
     private void initComponents()
     {
 
-        txtTitulo = new javax.swing.JTextField();
-        scrollStats = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jcomboUsuario = new javax.swing.JComboBox<>();
-
-        txtTitulo.setText("SELECCION DE USUARIO");
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        scrollStats.setViewportView(jTextArea1);
+        btnCancelar = new javax.swing.JButton();
+        btnOk = new javax.swing.JButton();
 
         jcomboUsuario.setToolTipText("Ingrese su nombre");
         jcomboUsuario.addActionListener(new java.awt.event.ActionListener()
@@ -60,28 +53,50 @@ public class PanelUsuario extends javax.swing.JPanel
             }
         });
 
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        btnOk.setText("OK");
+        btnOk.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnOkActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jcomboUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrollStats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jcomboUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(btnCancelar)
+                        .addGap(63, 63, 63)
+                        .addComponent(btnOk)))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollStats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(144, 144, 144)
                 .addComponent(jcomboUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnOk))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -90,11 +105,21 @@ public class PanelUsuario extends javax.swing.JPanel
         // TODO add your handling code here:
     }//GEN-LAST:event_jcomboUsuarioActionPerformed
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCancelarActionPerformed
+    {//GEN-HEADEREND:event_btnCancelarActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnOkActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnOkActionPerformed
+    {//GEN-HEADEREND:event_btnOkActionPerformed
+        Main.backend.getUsuario().setNombre((String) jcomboUsuario.getSelectedItem());
+        this.setVisible(false);
+    }//GEN-LAST:event_btnOkActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnOk;
     private javax.swing.JComboBox<String> jcomboUsuario;
-    private javax.swing.JScrollPane scrollStats;
-    private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
 }

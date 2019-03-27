@@ -8,11 +8,14 @@ package ahorcado.Forms;
 import ahorcado.Ahorcado;
 import ahorcado.Enumerados.Dificultad;
 import ahorcado.Excepciones.GanaJuego;
+import ahorcado.Main;
 import java.awt.Container;
+import java.awt.GridLayout;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import sun.swing.BakedArrayList;
 
 /**
  *
@@ -21,10 +24,10 @@ import java.util.logging.Logger;
 public class FormInicial extends javax.swing.JFrame
 {
     //<editor-fold defaultstate="collapsed" desc="Atributos">
-    Ahorcado ahorcado;
-    FormEligeNivel nivel;
-    PanelUsuario usuario;
+    FormEligeNivel formNivel;
+    PanelUsuario panelUsuario;
     Container contenedor;
+    ComponentListener listenerVolverAInicio;
 
     //</editor-fold>
     /**
@@ -33,10 +36,39 @@ public class FormInicial extends javax.swing.JFrame
     public FormInicial()
     {
         initComponents();
-        nivel = new FormEligeNivel(this, true);
-        nivel.setLocationRelativeTo(null);
-        usuario = new PanelUsuario();
+        formNivel = new FormEligeNivel(this, true);
+        formNivel.setLocationRelativeTo(null);
+        panelUsuario = new PanelUsuario();
         contenedor = new Container();
+        listenerVolverAInicio = new ComponentListener()
+        {
+            @Override
+            public void componentResized(ComponentEvent e)
+            {
+
+            }
+
+            @Override
+            public void componentMoved(ComponentEvent e)
+            {
+
+            }
+
+            @Override
+            public void componentShown(ComponentEvent e)
+            {
+
+            }
+
+            @Override
+            public void componentHidden(ComponentEvent e)
+            {
+                jpInicio.setVisible(true);
+                jpGameplay.setVisible(false);
+                jpUsuario.setVisible(false);
+                jpRank.setVisible(false);
+            }
+        };
     }
 
     /**
@@ -49,29 +81,16 @@ public class FormInicial extends javax.swing.JFrame
     private void initComponents()
     {
 
-        jpRank = new javax.swing.JPanel();
         jpInicio = new javax.swing.JPanel();
-        jpImagenInicio = new javax.swing.JPanel();
         btnJugar = new javax.swing.JButton();
         jpGameplay = new javax.swing.JPanel();
+        jpUsuario = new javax.swing.JPanel();
+        jpRank = new javax.swing.JPanel();
         menuBar = new javax.swing.JMenuBar();
         mnMenu = new javax.swing.JMenu();
         mnItemNuevo = new javax.swing.JMenuItem();
         mnItemRank = new javax.swing.JMenuItem();
         mnItemSalir = new javax.swing.JMenuItem();
-
-        jpRank.setMaximumSize(null);
-
-        javax.swing.GroupLayout jpRankLayout = new javax.swing.GroupLayout(jpRank);
-        jpRank.setLayout(jpRankLayout);
-        jpRankLayout.setHorizontalGroup(
-            jpRankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
-        );
-        jpRankLayout.setVerticalGroup(
-            jpRankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ahorcado"); // NOI18N
@@ -85,10 +104,6 @@ public class FormInicial extends javax.swing.JFrame
         jpInicio.setMaximumSize(null);
         jpInicio.setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jpImagenInicio.setAlignmentX(0.0F);
-        jpImagenInicio.setAlignmentY(0.0F);
-        jpImagenInicio.setMaximumSize(null);
-
         btnJugar.setText("JUGAR");
         btnJugar.setAlignmentY(0.0F);
         btnJugar.addActionListener(new java.awt.event.ActionListener()
@@ -99,38 +114,21 @@ public class FormInicial extends javax.swing.JFrame
             }
         });
 
-        javax.swing.GroupLayout jpImagenInicioLayout = new javax.swing.GroupLayout(jpImagenInicio);
-        jpImagenInicio.setLayout(jpImagenInicioLayout);
-        jpImagenInicioLayout.setHorizontalGroup(
-            jpImagenInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpImagenInicioLayout.createSequentialGroup()
-                .addGap(239, 239, 239)
-                .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(250, Short.MAX_VALUE))
-        );
-        jpImagenInicioLayout.setVerticalGroup(
-            jpImagenInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpImagenInicioLayout.createSequentialGroup()
-                .addContainerGap(328, Short.MAX_VALUE)
-                .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(166, 166, 166))
-        );
-
         javax.swing.GroupLayout jpInicioLayout = new javax.swing.GroupLayout(jpInicio);
         jpInicio.setLayout(jpInicioLayout);
         jpInicioLayout.setHorizontalGroup(
             jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpInicioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jpImagenInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(239, 239, 239)
+                .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(262, Short.MAX_VALUE))
         );
         jpInicioLayout.setVerticalGroup(
             jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpInicioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jpImagenInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpInicioLayout.createSequentialGroup()
+                .addContainerGap(340, Short.MAX_VALUE)
+                .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(166, 166, 166))
         );
 
         jpGameplay.setAlignmentX(0.0F);
@@ -147,6 +145,30 @@ public class FormInicial extends javax.swing.JFrame
         jpGameplayLayout.setVerticalGroup(
             jpGameplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jpUsuarioLayout = new javax.swing.GroupLayout(jpUsuario);
+        jpUsuario.setLayout(jpUsuarioLayout);
+        jpUsuarioLayout.setHorizontalGroup(
+            jpUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jpUsuarioLayout.setVerticalGroup(
+            jpUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jpRank.setMaximumSize(null);
+
+        javax.swing.GroupLayout jpRankLayout = new javax.swing.GroupLayout(jpRank);
+        jpRank.setLayout(jpRankLayout);
+        jpRankLayout.setHorizontalGroup(
+            jpRankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
+        );
+        jpRankLayout.setVerticalGroup(
+            jpRankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 610, Short.MAX_VALUE)
         );
 
         mnMenu.setMnemonic('J');
@@ -194,7 +216,7 @@ public class FormInicial extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 900, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -205,10 +227,20 @@ public class FormInicial extends javax.swing.JFrame
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(jpGameplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jpUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jpRank, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 610, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -218,6 +250,16 @@ public class FormInicial extends javax.swing.JFrame
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(jpGameplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jpUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jpRank, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -243,50 +285,16 @@ public class FormInicial extends javax.swing.JFrame
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnJugarActionPerformed
     {//GEN-HEADEREND:event_btnJugarActionPerformed
 
-        //mostrar inicio
-        this.setVisible(true);
-
         //pedir usuario
-        this.usuario.addComponentListener(new ComponentListener()
-        {
-            @Override
-            public void componentResized(ComponentEvent e)
-            {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void componentMoved(ComponentEvent e)
-            {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void componentShown(ComponentEvent e)
-            {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void componentHidden(ComponentEvent e)
-            {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        });
-
-        //contenedor.add(this.usuario);
-        //contenedor.setVisible(true);
-        //usuario.setVisible(true);
-        //this.setVisible(false);
+        pedirUsuario();
 
         //pedir dificultad
-        nivel.setVisible(true);
+        //pedirDificultad();
 
         try
         {
             //llamar a nueva partida
-            ahorcado.nuevoJuego(ahorcado.getUsuario(), ahorcado.getDificultad());
-
+            Main.backend.nuevoJuego(Main.backend.getUsuario(), Main.backend.getDificultad());
         }
         catch (GanaJuego ex)
         {
@@ -345,12 +353,35 @@ public class FormInicial extends javax.swing.JFrame
         });
     }
 
+    public void pedirUsuario()
+    {
+        panelUsuario.addComponentListener(listenerVolverAInicio);
+
+        //limpiar contenedor
+        if (contenedor != null)
+        {
+            contenedor.removeAll();
+        }
+        contenedor = jpUsuario;
+        panelUsuario.addComponentListener(listenerVolverAInicio);
+        contenedor.setLayout(new GridLayout(1, 1));
+        contenedor.add(panelUsuario);
+        jpUsuario.setVisible(true);
+        panelUsuario.setVisible(true);
+        jpInicio.setVisible(false);
+    }
+
+    public void pedirDificultad()
+    {
+        formNivel.setVisible(true);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnJugar;
     private javax.swing.JPanel jpGameplay;
-    private javax.swing.JPanel jpImagenInicio;
     private javax.swing.JPanel jpInicio;
     private javax.swing.JPanel jpRank;
+    private javax.swing.JPanel jpUsuario;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem mnItemNuevo;
     private javax.swing.JMenuItem mnItemRank;
