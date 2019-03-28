@@ -290,7 +290,6 @@ public class FormInicial extends javax.swing.JFrame
 
         //pedir dificultad
         //pedirDificultad();
-
         try
         {
             //llamar a nueva partida
