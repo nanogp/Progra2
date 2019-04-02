@@ -1,4 +1,4 @@
-package ahorcado.Toolbox;
+package toolbox;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;

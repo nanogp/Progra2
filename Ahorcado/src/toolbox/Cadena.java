@@ -1,4 +1,4 @@
-package ahorcado.Toolbox;
+package toolbox;
 
 public class Cadena
 {

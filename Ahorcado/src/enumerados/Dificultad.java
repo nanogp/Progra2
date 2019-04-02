@@ -1,6 +1,6 @@
-package ahorcado.Enumerados;
+package enumerados;
 
-import ahorcado.Excepciones.GanaJuego;
+import excepciones.GanaJuego;
 
 public enum Dificultad
 {

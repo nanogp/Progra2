@@ -1,7 +1,7 @@
-package ahorcado.Forms;
+package forms;
 
-import ahorcado.Enumerados.Dificultad;
-import ahorcado.Excepciones.GanaJuego;
+import enumerados.Dificultad;
+import excepciones.GanaJuego;
 import ahorcado.Main;
 import java.awt.Container;
 import java.awt.GridLayout;
@@ -183,7 +183,7 @@ public class FormInicial extends javax.swing.JFrame
                     .addGroup(jpInicioLayout.createSequentialGroup()
                         .addGap(139, 139, 139)
                         .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         jpInicioLayout.setVerticalGroup(
             jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -1,8 +1,8 @@
-package ahorcado.Clases;
+package clases;
 
-import ahorcado.Enumerados.Dificultad;
-import ahorcado.Excepciones.GanaPartida;
-import ahorcado.Excepciones.PierdePartida;
+import enumerados.Dificultad;
+import excepciones.GanaPartida;
+import excepciones.PierdePartida;
 import java.util.ArrayList;
 
 public class Partida

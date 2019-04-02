@@ -1,7 +1,7 @@
-package ahorcado.Clases;
+package clases;
 
-import ahorcado.Enumerados.Dificultad;
-import ahorcado.Toolbox.Cadena;
+import enumerados.Dificultad;
+import toolbox.Cadena;
 import java.util.Comparator;
 
 public class Palabra implements Comparable<Palabra>, Comparator<Palabra>

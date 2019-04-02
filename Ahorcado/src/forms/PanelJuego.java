@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ahorcado.Forms;
+package forms;
 
-import ahorcado.Clases.Partida;
+import clases.Partida;
 import ahorcado.Main;
 import java.awt.Color;
 import java.awt.Container;

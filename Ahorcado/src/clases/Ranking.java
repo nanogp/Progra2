@@ -1,8 +1,8 @@
-package ahorcado.Clases;
+package clases;
 
-import ahorcado.Toolbox.Archivo;
+import toolbox.Archivo;
 import java.io.FileNotFoundException;
-import ahorcado.Interfaces.InterfazXml;
+import interfaces.InterfazXml;
 
 public class Ranking implements InterfazXml
 {

@@ -1,4 +1,4 @@
-package ahorcado.Excepciones;
+package excepciones;
 
 public class GanaJuego extends Exception
 {

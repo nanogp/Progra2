@@ -1,6 +1,6 @@
-package ahorcado.Clases;
+package clases;
 
-import ahorcado.Toolbox.Cadena;
+import toolbox.Cadena;
 import java.util.Comparator;
 
 public class Usuario implements Comparable<Usuario>, Comparator<Usuario>

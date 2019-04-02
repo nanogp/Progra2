@@ -1,4 +1,4 @@
-package ahorcado.Clases;
+package clases;
 
 import java.util.Collections;
 import java.util.LinkedList;

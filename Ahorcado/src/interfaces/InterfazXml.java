@@ -1,6 +1,6 @@
-package ahorcado.Interfaces;
+package interfaces;
 
-import ahorcado.Toolbox.Archivo;
+import toolbox.Archivo;
 import java.io.FileNotFoundException;
 
 public interface InterfazXml

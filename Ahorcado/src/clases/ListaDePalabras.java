@@ -1,6 +1,6 @@
-package ahorcado.Clases;
+package clases;
 
-import ahorcado.Enumerados.Dificultad;
+import enumerados.Dificultad;
 
 import java.util.Collections;
 import java.util.LinkedList;

@@ -1,8 +1,11 @@
 package ahorcado;
 
-import ahorcado.Clases.*;
-import ahorcado.Enumerados.Dificultad;
-import ahorcado.Forms.FormInicial;
+import clases.Diccionario;
+import clases.Palabra;
+import clases.Usuario;
+import clases.Ranking;
+import enumerados.Dificultad;
+import forms.FormInicial;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -12,7 +15,7 @@ public class Main
 {
     //<editor-fold defaultstate="collapsed" desc="Atributos">
     public static Ahorcado backend;
-    public static ahorcado.Forms.FormInicial gui;
+    public static forms.FormInicial gui;
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">

@@ -1,8 +1,12 @@
 package ahorcado;
 
-import ahorcado.Clases.*;
-import ahorcado.Enumerados.*;
-import ahorcado.Excepciones.GanaJuego;
+import enumerados.Dificultad;
+import clases.Diccionario;
+import clases.ListaDePalabras;
+import clases.Partida;
+import clases.Usuario;
+import clases.Ranking;
+import excepciones.GanaJuego;
 
 public class Ahorcado
 {

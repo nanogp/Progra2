@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.8.0_201" class="java.beans.XMLDecoder">
- <object class="ahorcado.Clases.Ranking" id="Ranking0">
+ <object class="clases.Ranking" id="Ranking0">
   <void property="listaDeUsuarios">
    <void method="add">
-    <object class="ahorcado.Clases.Usuario">
+    <object class="clases.Usuario">
      <void property="nombre">
       <string>Fulano</string>
      </void>
      <void property="partidasJugadas">
-      <int>17</int>
+      <int>4</int>
      </void>
      <void property="puntajeAcumulado">
-      <int>13</int>
+      <int>10</int>
      </void>
     </object>
    </void>
    <void method="add">
-    <object class="ahorcado.Clases.Usuario">
+    <object class="clases.Usuario">
      <void property="nombre">
       <string>Mengano</string>
      </void>
      <void property="partidasJugadas">
-      <int>19</int>
+      <int>3</int>
      </void>
      <void property="puntajeAcumulado">
       <int>16</int>
@@ -29,41 +29,41 @@
     </object>
    </void>
    <void method="add">
-    <object class="ahorcado.Clases.Usuario">
+    <object class="clases.Usuario">
      <void property="nombre">
       <string>Sultano</string>
-     </void>
-     <void property="partidasJugadas">
-      <int>12</int>
-     </void>
-     <void property="puntajeAcumulado">
-      <int>11</int>
-     </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="ahorcado.Clases.Usuario">
-     <void property="nombre">
-      <string>Un-tano</string>
      </void>
      <void property="partidasJugadas">
       <int>10</int>
      </void>
      <void property="puntajeAcumulado">
-      <int>19</int>
+      <int>12</int>
      </void>
     </object>
    </void>
    <void method="add">
-    <object class="ahorcado.Clases.Usuario">
+    <object class="clases.Usuario">
+     <void property="nombre">
+      <string>Un-tano</string>
+     </void>
+     <void property="partidasJugadas">
+      <int>11</int>
+     </void>
+     <void property="puntajeAcumulado">
+      <int>15</int>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="clases.Usuario">
      <void property="nombre">
       <string>Nano</string>
      </void>
      <void property="partidasJugadas">
-      <int>19</int>
+      <int>16</int>
      </void>
      <void property="puntajeAcumulado">
-      <int>48</int>
+      <int>32</int>
      </void>
     </object>
    </void>

@@ -1,6 +1,6 @@
-package ahorcado.Forms;
+package forms;
 
-import ahorcado.Clases.Usuario;
+import clases.Usuario;
 import ahorcado.Main;
 
 public class PanelUsuario extends javax.swing.JPanel
