@@ -526,4 +526,5 @@ public class FormInicial extends javax.swing.JFrame
     // End of variables declaration//GEN-END:variables
 
 //</editor-fold>
+
 }
