@@ -14,7 +14,7 @@ public class Ahorcado
     private Partida partida;
     private Usuario usuario;
     private boolean usuarioExistia;
-    private Dificultad dificultad;
+    public Dificultad dificultad;
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Constructores">
@@ -25,6 +25,9 @@ public class Ahorcado
 
         this.ranking = new Ranking();
         this.ranking = Ranking.leerDeXml(ranking.getNombreArchivo());
+        
+        this.usuario= new Usuario(); 
+       
 
     }
 

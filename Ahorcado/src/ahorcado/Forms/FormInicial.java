@@ -5,7 +5,6 @@
  */
 package ahorcado.Forms;
 
-import ahorcado.Ahorcado;
 import ahorcado.Enumerados.Dificultad;
 import ahorcado.Excepciones.GanaJuego;
 import ahorcado.Main;
@@ -13,9 +12,9 @@ import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import sun.swing.BakedArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,11 +22,12 @@ import sun.swing.BakedArrayList;
  */
 public class FormInicial extends javax.swing.JFrame
 {
+
     //<editor-fold defaultstate="collapsed" desc="Atributos">
-    FormEligeNivel formNivel;
     PanelUsuario panelUsuario;
     Container contenedor;
     ComponentListener listenerVolverAInicio;
+    PanelJuego jugar;
 
     //</editor-fold>
     /**
@@ -35,11 +35,11 @@ public class FormInicial extends javax.swing.JFrame
      */
     public FormInicial()
     {
+        this.setContentPane(new JLabel(new ImageIcon("fondo-01.png")));
         initComponents();
-        formNivel = new FormEligeNivel(this, true);
-        formNivel.setLocationRelativeTo(null);
+        btnJugar.setEnabled(false);
         panelUsuario = new PanelUsuario();
-        contenedor = new Container();
+        //   contenedor = new Container();
         listenerVolverAInicio = new ComponentListener()
         {
             @Override
@@ -69,6 +69,15 @@ public class FormInicial extends javax.swing.JFrame
                 jpRank.setVisible(false);
             }
         };
+
+        this.btnFacil.setIcon(new ImageIcon("niveles-05.png"));
+        this.btnNormal.setIcon(new ImageIcon("niveles-06.png"));
+        this.btnDificil.setIcon(new ImageIcon("niveles-07.png"));
+
+        this.btnJugar.setDisabledIcon(new ImageIcon("jugar-08.png"));
+        this.btnJugar.setIcon(new ImageIcon("jugar-09.png"));
+        this.btnJugar.setRolloverIcon(new ImageIcon("jugar-11.png"));
+        this.btnJugar.setPressedIcon(new ImageIcon("jugar-10.png"));
     }
 
     /**
@@ -83,6 +92,9 @@ public class FormInicial extends javax.swing.JFrame
 
         jpInicio = new javax.swing.JPanel();
         btnJugar = new javax.swing.JButton();
+        btnDificil = new javax.swing.JToggleButton();
+        btnNormal = new javax.swing.JToggleButton();
+        btnFacil = new javax.swing.JToggleButton();
         jpGameplay = new javax.swing.JPanel();
         jpUsuario = new javax.swing.JPanel();
         jpRank = new javax.swing.JPanel();
@@ -95,17 +107,22 @@ public class FormInicial extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ahorcado"); // NOI18N
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
 
         jpInicio.setAlignmentX(0.0F);
         jpInicio.setAlignmentY(0.0F);
         jpInicio.setMaximumSize(null);
+        jpInicio.setOpaque(false);
         jpInicio.setPreferredSize(new java.awt.Dimension(800, 600));
 
-        btnJugar.setText("JUGAR");
         btnJugar.setAlignmentY(0.0F);
+        btnJugar.setBorderPainted(false);
+        btnJugar.setContentAreaFilled(false);
+        btnJugar.setFocusPainted(false);
+        btnJugar.setMaximumSize(new java.awt.Dimension(143, 71));
+        btnJugar.setMinimumSize(new java.awt.Dimension(143, 71));
+        btnJugar.setPreferredSize(new java.awt.Dimension(143, 71));
         btnJugar.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -114,26 +131,86 @@ public class FormInicial extends javax.swing.JFrame
             }
         });
 
+        btnDificil.setBorderPainted(false);
+        btnDificil.setContentAreaFilled(false);
+        btnDificil.setFocusPainted(false);
+        btnDificil.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDificil.setMaximumSize(new java.awt.Dimension(198, 142));
+        btnDificil.setMinimumSize(new java.awt.Dimension(198, 142));
+        btnDificil.setPreferredSize(new java.awt.Dimension(198, 142));
+        btnDificil.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnDificilActionPerformed(evt);
+            }
+        });
+
+        btnNormal.setBorderPainted(false);
+        btnNormal.setContentAreaFilled(false);
+        btnNormal.setFocusPainted(false);
+        btnNormal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNormal.setMaximumSize(new java.awt.Dimension(198, 142));
+        btnNormal.setMinimumSize(new java.awt.Dimension(198, 142));
+        btnNormal.setPreferredSize(new java.awt.Dimension(198, 142));
+        btnNormal.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnNormalActionPerformed(evt);
+            }
+        });
+
+        btnFacil.setBorderPainted(false);
+        btnFacil.setContentAreaFilled(false);
+        btnFacil.setFocusPainted(false);
+        btnFacil.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnFacil.setMaximumSize(new java.awt.Dimension(198, 142));
+        btnFacil.setMinimumSize(new java.awt.Dimension(198, 142));
+        btnFacil.setPreferredSize(new java.awt.Dimension(198, 142));
+        btnFacil.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnFacilActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpInicioLayout = new javax.swing.GroupLayout(jpInicio);
         jpInicio.setLayout(jpInicioLayout);
         jpInicioLayout.setHorizontalGroup(
             jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpInicioLayout.createSequentialGroup()
-                .addGap(239, 239, 239)
-                .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addGroup(jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpInicioLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(btnFacil, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnNormal, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDificil, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpInicioLayout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         jpInicioLayout.setVerticalGroup(
             jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpInicioLayout.createSequentialGroup()
-                .addContainerGap(340, Short.MAX_VALUE)
-                .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(166, 166, 166))
+                .addGap(0, 0, 0)
+                .addGroup(jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnFacil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNormal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDificil, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jpGameplay.setAlignmentX(0.0F);
         jpGameplay.setAlignmentY(0.0F);
         jpGameplay.setMaximumSize(null);
+        jpGameplay.setOpaque(false);
         jpGameplay.setPreferredSize(new java.awt.Dimension(800, 600));
 
         javax.swing.GroupLayout jpGameplayLayout = new javax.swing.GroupLayout(jpGameplay);
@@ -147,6 +224,8 @@ public class FormInicial extends javax.swing.JFrame
             .addGap(0, 600, Short.MAX_VALUE)
         );
 
+        jpUsuario.setOpaque(false);
+
         javax.swing.GroupLayout jpUsuarioLayout = new javax.swing.GroupLayout(jpUsuario);
         jpUsuario.setLayout(jpUsuarioLayout);
         jpUsuarioLayout.setHorizontalGroup(
@@ -159,6 +238,7 @@ public class FormInicial extends javax.swing.JFrame
         );
 
         jpRank.setMaximumSize(null);
+        jpRank.setOpaque(false);
 
         javax.swing.GroupLayout jpRankLayout = new javax.swing.GroupLayout(jpRank);
         jpRank.setLayout(jpRankLayout);
@@ -216,12 +296,10 @@ public class FormInicial extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jpInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(70, Short.MAX_VALUE)
+                .addComponent(jpInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -240,12 +318,10 @@ public class FormInicial extends javax.swing.JFrame
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jpInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(164, Short.MAX_VALUE)
+                .addComponent(jpInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(156, 156, 156))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -285,23 +361,74 @@ public class FormInicial extends javax.swing.JFrame
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnJugarActionPerformed
     {//GEN-HEADEREND:event_btnJugarActionPerformed
 
-        //pedir usuario
-        pedirUsuario();
+        this.jpInicio.setVisible(false);
+        // this.jpGameplay.setVisible(true);
 
+        //pedir usuario
         //pedir dificultad
         //pedirDificultad();
         try
         {
             //llamar a nueva partida
+            empezarJuego();
             Main.backend.nuevoJuego(Main.backend.getUsuario(), Main.backend.getDificultad());
         }
         catch (GanaJuego ex)
         {
-            //CARTELITO de que gano
+            pedirUsuario();
+            JOptionPane.showMessageDialog(null, "GANASTE");
         }
 //jdContenedor.add(jpGameplay);
 //jpGameplay.setVisible(true);
     }//GEN-LAST:event_btnJugarActionPerformed
+
+    private void btnDificilActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnDificilActionPerformed
+    {//GEN-HEADEREND:event_btnDificilActionPerformed
+        //botones
+        this.btnFacil.setIcon(new ImageIcon("niveles-05.png"));
+        this.btnNormal.setIcon(new ImageIcon("niveles-06.png"));
+        this.btnDificil.setIcon(new ImageIcon("niveles-04.png"));
+
+        btnFacil.setSelected(false);
+        btnNormal.setSelected(false);
+        btnDificil.setSelected(true);
+
+        Main.backend.setDificultad(Dificultad.Dificil);
+        btnJugar.setEnabled(true);
+
+
+    }//GEN-LAST:event_btnDificilActionPerformed
+
+    private void btnNormalActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnNormalActionPerformed
+    {//GEN-HEADEREND:event_btnNormalActionPerformed
+        //botones
+        this.btnFacil.setIcon(new ImageIcon("niveles-05.png"));
+        this.btnNormal.setIcon(new ImageIcon("niveles-03.png"));
+        this.btnDificil.setIcon(new ImageIcon("niveles-07.png"));
+
+        btnFacil.setSelected(false);
+        btnNormal.setSelected(true);
+        btnDificil.setSelected(false);
+
+        Main.backend.setDificultad(Dificultad.Normal);
+        btnJugar.setEnabled(true);
+    }//GEN-LAST:event_btnNormalActionPerformed
+
+    private void btnFacilActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnFacilActionPerformed
+    {//GEN-HEADEREND:event_btnFacilActionPerformed
+        //botones
+        this.btnFacil.setIcon(new ImageIcon("niveles-02.png"));
+        this.btnNormal.setIcon(new ImageIcon("niveles-06.png"));
+        this.btnDificil.setIcon(new ImageIcon("niveles-07.png"));
+
+        btnFacil.setSelected(true);
+        btnNormal.setSelected(false);
+        btnDificil.setSelected(false);
+
+        Main.backend.setDificultad(Dificultad.Facil);
+        btnJugar.setEnabled(true);
+
+    }//GEN-LAST:event_btnFacilActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,13 +497,31 @@ public class FormInicial extends javax.swing.JFrame
         jpInicio.setVisible(false);
     }
 
-    public void pedirDificultad()
+    private void empezarJuego()
     {
-        formNivel.setVisible(true);
+        if (contenedor != null)
+        {
+            contenedor.removeAll();
+        }
+        contenedor = jpGameplay;
+        contenedor.setLayout(new GridLayout(1, 1));
+
+        this.jpGameplay.setVisible(true);
+
+        jugar = new PanelJuego();// habria q sobrecargar el constructor y agregarle el nivel elegido
+        jugar.addComponentListener(listenerVolverAInicio);
+
+        contenedor.add(jugar);
+
+        //    this.jugar.limpiarJuego();
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnDificil;
+    private javax.swing.JToggleButton btnFacil;
     private javax.swing.JButton btnJugar;
+    private javax.swing.JToggleButton btnNormal;
     private javax.swing.JPanel jpGameplay;
     private javax.swing.JPanel jpInicio;
     private javax.swing.JPanel jpRank;

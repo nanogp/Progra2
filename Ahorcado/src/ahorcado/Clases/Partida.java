@@ -27,7 +27,7 @@ public class Partida
     //<editor-fold defaultstate="collapsed" desc="Constructores">
     public Partida()
     {
-        this.alfabetoValido = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        this.alfabetoValido = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
         this.contadorFallos = 0;
         this.contadorAciertos = 0;
         this.maxFallos = Dificultad.getMaxFallos(dificultad);

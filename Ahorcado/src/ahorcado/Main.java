@@ -68,31 +68,8 @@ public class Main
          */
 
         backend = new Ahorcado();
-        System.out.println("Diccionario:\n-----------");
-        System.out.println(backend.getDiccionario().getListaDePalabras().toString());
-        System.out.println("Ranking:\n-------");
-        System.out.println(backend.getRanking().getListaDeUsuarios().toString());
-
         gui = new FormInicial();
         gui.setLocationRelativeTo(null);
         gui.setVisible(true);
-        /*
-         */
-        //juegoNuevo.nuevaPartida();
-        //System.out.println(backend.getRanking().getListaDeUsuarios().toString());
-        /*  
-        System.out.println(toolbox.Cadena.encolumnarAlinearTexto(" | ",
-                "PALABRA", 20, toolbox.Cadena.ALINEA_IZQ,
-                "DIFICULTAD", 10, toolbox.Cadena.ALINEA_IZQ,
-                "DEFINICION", 1, toolbox.Cadena.ALINEA_IZQ));
-        System.out.println(toolbox.Cadena.repeat("-", 50));
-        System.out.println(backend.getDiccionario().getListaDePalabras().toString());
-
-        System.out.println(toolbox.Cadena.encolumnarAlinearTexto(" | ",
-                "NOMBRE", 20, toolbox.Cadena.ALINEA_IZQ,
-                "PUNTAJE", 10, toolbox.Cadena.ALINEA_IZQ,
-                "PARTIDAS JUGADAS", 1, toolbox.Cadena.ALINEA_IZQ));
-        System.out.println(toolbox.Cadena.repeat("-", 50));
-         */
     }
 }

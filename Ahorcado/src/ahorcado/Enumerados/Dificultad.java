@@ -44,7 +44,6 @@ public enum Dificultad
 
     public static int getMaxFallos(Dificultad d)
     {
-
         return fallos[d.ordinal()];
     }
 
