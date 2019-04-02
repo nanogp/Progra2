@@ -3,6 +3,7 @@ package ahorcado.Clases;
 import ahorcado.Enumerados.Dificultad;
 import ahorcado.Excepciones.GanaPartida;
 import ahorcado.Excepciones.PierdePartida;
+import ahorcado.Main;
 import java.util.ArrayList;
 
 public class Partida
@@ -30,10 +31,6 @@ public class Partida
         this.alfabetoValido = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
         this.contadorFallos = 0;
         this.contadorAciertos = 0;
-        this.maxFallos = Dificultad.getMaxFallos(dificultad);
-        this.momentoPista = Dificultad.getMomentoPista(dificultad);
-        this.valorPuntos = Dificultad.getValorPuntos(dificultad);
-
     }
 
     public Partida(Dificultad dificultad, Usuario usuario, Palabra palabra)
@@ -44,6 +41,9 @@ public class Partida
         this.palabra = palabra;
         this.setPalabraSecreta();
         this.setAlfabeto();
+        this.maxFallos = Dificultad.getMaxFallos(dificultad);
+        this.momentoPista = Dificultad.getMomentoPista(dificultad);
+        this.valorPuntos = Dificultad.getValorPuntos(dificultad);
     }
 
     //</editor-fold>

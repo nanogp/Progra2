@@ -352,15 +352,16 @@ public class FormInicial extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnJugarActionPerformed
 
         this.jpInicio.setVisible(false);
-        // this.jpGameplay.setVisible(true);
 
-        //pedir usuario
-        //pedir dificultad
-        //pedirDificultad();
         try
         {
             //llamar a nueva partida
             Main.backend.nuevoJuego(Main.backend.getUsuario(), Main.backend.getDificultad());
+
+            //mostrar palabra para debug
+            System.out.println(Main.backend.getJuego().getPalabra());
+
+            //panel de la partida
             empezarJuego();
         }
         catch (GanaJuego ex)
@@ -368,8 +369,7 @@ public class FormInicial extends javax.swing.JFrame
             pedirUsuario();
             JOptionPane.showMessageDialog(null, "GANASTE");
         }
-//jdContenedor.add(jpGameplay);
-//jpGameplay.setVisible(true);
+
     }//GEN-LAST:event_btnJugarActionPerformed
 
     private void btnDificilActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnDificilActionPerformed
@@ -498,7 +498,7 @@ public class FormInicial extends javax.swing.JFrame
 
         this.jpGameplay.setVisible(true);
 
-        jugar = new PanelJuego();// habria q sobrecargar el constructor y agregarle el nivel elegido
+        jugar = new PanelJuego();
         jugar.addComponentListener(listenerVolverAInicio);
 
         contenedor.add(jugar);

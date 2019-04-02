@@ -176,9 +176,9 @@ public class PanelJuego extends javax.swing.JPanel
         gl.setHgap(2);
         gl.setVgap(2);
         cp.setLayout(gl);
-        letras = new JLabel[5]; // hace un vector del largo de la palabra
+        letras = new JLabel[Main.backend.getJuego().getPalabra().getTamaño()]; // hace un vector del largo de la palabra
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < letras.length; i++)
         {
             letras[i] = new JLabel();
             cp.add(letras[i]);
@@ -259,10 +259,7 @@ public class PanelJuego extends javax.swing.JPanel
 
                     }
                 });
-
             }
-
         }
     }
-
 }
