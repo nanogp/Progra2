@@ -6,7 +6,6 @@ import java.util.Comparator;
 
 public class Palabra implements Comparable<Palabra>, Comparator<Palabra>
 {
-
     //<editor-fold defaultstate="collapsed" desc="Atributos">
     protected String nombre;
     protected String definicion;

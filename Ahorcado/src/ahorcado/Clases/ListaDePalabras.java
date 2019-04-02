@@ -1,12 +1,14 @@
 package ahorcado.Clases;
 
 import ahorcado.Enumerados.Dificultad;
-import ahorcado.Toolbox.Random;
+
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ListaDePalabras extends LinkedList<Palabra>
 {
+    //<editor-fold defaultstate="collapsed" desc="Metodos">
 
     public ListaDePalabras getListaPalabrasPorDificultad(Dificultad dificultad)
     {
@@ -35,7 +37,7 @@ public class ListaDePalabras extends LinkedList<Palabra>
 
     public Palabra popRandom()
     {
-        return this.remove(Random.randomSeed.nextInt(this.size()));
+        return this.remove(ThreadLocalRandom.current().nextInt(this.size()));
     }
 
     @Override
@@ -48,4 +50,5 @@ public class ListaDePalabras extends LinkedList<Palabra>
         }
         return ret.toString();
     }
+    //</editor-fold>
 }

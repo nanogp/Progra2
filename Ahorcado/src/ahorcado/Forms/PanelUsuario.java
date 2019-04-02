@@ -1,23 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ahorcado.Forms;
 
 import ahorcado.Clases.Usuario;
 import ahorcado.Main;
 
-/**
- *
- * @author Nano
- */
 public class PanelUsuario extends javax.swing.JPanel
 {
-
-    /**
-     * Creates new form PanelUsuario
-     */
+    //<editor-fold defaultstate="collapsed" desc="Constructor">
     public PanelUsuario()
     {
         initComponents();
@@ -26,8 +14,10 @@ public class PanelUsuario extends javax.swing.JPanel
             jcomboUsuario.addItem(u.getNombre());
         }
         setVisible(false);
-        
+
     }
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Autogenerado">
 
     /**
      * This method is called from within the constructor to
@@ -122,4 +112,6 @@ public class PanelUsuario extends javax.swing.JPanel
     private javax.swing.JButton btnOk;
     private javax.swing.JComboBox<String> jcomboUsuario;
     // End of variables declaration//GEN-END:variables
+//</editor-fold>
+
 }

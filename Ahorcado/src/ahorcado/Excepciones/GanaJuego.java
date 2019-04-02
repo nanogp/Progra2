@@ -2,7 +2,6 @@ package ahorcado.Excepciones;
 
 public class GanaJuego extends Exception
 {
-
     public GanaJuego()
     {
     }
@@ -11,4 +10,5 @@ public class GanaJuego extends Exception
     {
         super(msg);
     }
+
 }

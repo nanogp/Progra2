@@ -2,8 +2,7 @@ package ahorcado.Toolbox;
 
 public class Cadena
 {
-
-    //<editor-fold defaultstate="collapsed" desc="Propiedades">
+    //<editor-fold defaultstate="collapsed" desc="Atributos">
     public static final int PADLEFT = 0;
     public static final int PADRIGHT = 1;
     public static final int PADMID = 2;
@@ -253,4 +252,5 @@ public class Cadena
         return retString.toString();
     }
 //</editor-fold>
+
 }

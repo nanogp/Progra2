@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 
 public interface InterfazXml
 {
-
     public void guardarEnXml();
 
     public static Object leerDeXml(String nombreArchivo)

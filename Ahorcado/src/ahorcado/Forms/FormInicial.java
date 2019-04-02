@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
 
 public class FormInicial extends javax.swing.JFrame
 {
-
     //<editor-fold defaultstate="collapsed" desc="Atributos">
     PanelUsuario panelUsuario;
     Container contenedor;
@@ -57,6 +56,7 @@ public class FormInicial extends javax.swing.JFrame
                 jpUsuario.setVisible(false);
                 jpRank.setVisible(false);
             }
+
         };
 
         this.btnFacil.setIcon(new ImageIcon("niveles-05.png"));
@@ -70,6 +70,7 @@ public class FormInicial extends javax.swing.JFrame
     }
 
     //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Autogenerado">
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -466,6 +467,7 @@ public class FormInicial extends javax.swing.JFrame
             {
                 new FormInicial().setVisible(true);
             }
+
         });
     }
 
@@ -522,4 +524,6 @@ public class FormInicial extends javax.swing.JFrame
     private javax.swing.JMenuItem mnItemSalir;
     private javax.swing.JMenu mnMenu;
     // End of variables declaration//GEN-END:variables
+
+//</editor-fold>
 }

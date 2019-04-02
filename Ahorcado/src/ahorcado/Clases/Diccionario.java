@@ -6,7 +6,6 @@ import ahorcado.Interfaces.InterfazXml;
 
 public class Diccionario implements InterfazXml
 {
-
     //<editor-fold defaultstate="collapsed" desc="Atributos">
     protected ListaDePalabras listaDePalabras;
     protected static String nombreArchivo;
@@ -49,7 +48,7 @@ public class Diccionario implements InterfazXml
 
     public void setNombreArchivo(String nombreArchivo)
     {
-        this.nombreArchivo = nombreArchivo;
+        Diccionario.nombreArchivo = nombreArchivo;
     }
 
     //</editor-fold>

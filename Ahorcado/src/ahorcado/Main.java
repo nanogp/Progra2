@@ -3,7 +3,6 @@ package ahorcado;
 import ahorcado.Clases.*;
 import ahorcado.Enumerados.Dificultad;
 import ahorcado.Forms.FormInicial;
-import ahorcado.Toolbox.Random;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -11,23 +10,22 @@ import java.util.logging.Logger;
 
 public class Main
 {
-
+    //<editor-fold defaultstate="collapsed" desc="Atributos">
     public static Ahorcado backend;
     public static ahorcado.Forms.FormInicial gui;
 
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Metodos">
     public static void crearArchivoVacio(String nombre)
     {
-
         try
         {
             new File(nombre).createNewFile();
-
         }
         catch (IOException ex)
         {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     public static void generarDiccionarioDefault(Diccionario d)
@@ -51,12 +49,14 @@ public class Main
 
     public static void generarRankingDefault(Ranking r)
     {
+        java.util.concurrent.ThreadLocalRandom randomSeed;
+        randomSeed = java.util.concurrent.ThreadLocalRandom.current();
         crearArchivoVacio(r.getNombreArchivo());
-        r.getListaDeUsuarios().add(new Usuario("Fulano", Random.randomSeed.nextInt(10, 20), 0, Random.randomSeed.nextInt(1, 20)));
-        r.getListaDeUsuarios().add(new Usuario("Mengano", Random.randomSeed.nextInt(10, 20), 0, Random.randomSeed.nextInt(1, 20)));
-        r.getListaDeUsuarios().add(new Usuario("Sultano", Random.randomSeed.nextInt(10, 20), 0, Random.randomSeed.nextInt(1, 20)));
-        r.getListaDeUsuarios().add(new Usuario("Un-tano", Random.randomSeed.nextInt(10, 20), 0, Random.randomSeed.nextInt(1, 20)));
-        r.getListaDeUsuarios().add(new Usuario("Nano", Random.randomSeed.nextInt(10, 50), 0, Random.randomSeed.nextInt(1, 20)));
+        r.getListaDeUsuarios().add(new Usuario("Fulano", randomSeed.nextInt(10, 20), 0, randomSeed.nextInt(1, 20)));
+        r.getListaDeUsuarios().add(new Usuario("Mengano", randomSeed.nextInt(10, 20), 0, randomSeed.nextInt(1, 20)));
+        r.getListaDeUsuarios().add(new Usuario("Sultano", randomSeed.nextInt(10, 20), 0, randomSeed.nextInt(1, 20)));
+        r.getListaDeUsuarios().add(new Usuario("Un-tano", randomSeed.nextInt(10, 20), 0, randomSeed.nextInt(1, 20)));
+        r.getListaDeUsuarios().add(new Usuario("Nano", randomSeed.nextInt(10, 50), 0, randomSeed.nextInt(1, 20)));
         r.guardarEnXml();
     }
 
@@ -72,4 +72,6 @@ public class Main
         gui.setLocationRelativeTo(null);
         gui.setVisible(true);
     }
+    //</editor-fold>
+
 }

@@ -1,11 +1,12 @@
 package ahorcado.Clases;
 
-import ahorcado.Toolbox.Random;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ListaDeUsuarios extends LinkedList<Usuario>
 {
+    //<editor-fold defaultstate="collapsed" desc="Metodos">
 
     public int indexOf(Usuario u)
     {
@@ -36,7 +37,7 @@ public class ListaDeUsuarios extends LinkedList<Usuario>
 
     public Usuario getRandom()
     {
-        return (Usuario) Random.randomObject(this);
+        return this.get(ThreadLocalRandom.current().nextInt(this.size()));
     }
 
     @Override
@@ -49,4 +50,6 @@ public class ListaDeUsuarios extends LinkedList<Usuario>
         }
         return ret.toString();
     }
+
+    //</editor-fold>
 }

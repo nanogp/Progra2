@@ -36,8 +36,9 @@ public class PanelJuego extends javax.swing.JPanel
         iniciarPalabra();
 
     }
-    //</editor-fold>
 
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Autogenerado">
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -151,7 +152,8 @@ public class PanelJuego extends javax.swing.JPanel
     private javax.swing.JPanel panelPalabra;
     private javax.swing.JPanel panelTeclado;
     // End of variables declaration//GEN-END:variables
-
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Metodos">
     public void actualizarImagen(int intento)
     {
         if (this.panelImagen != null)
@@ -262,4 +264,6 @@ public class PanelJuego extends javax.swing.JPanel
             }
         }
     }
+    //</editor-fold>
+
 }

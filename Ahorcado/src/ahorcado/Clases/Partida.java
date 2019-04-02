@@ -3,12 +3,10 @@ package ahorcado.Clases;
 import ahorcado.Enumerados.Dificultad;
 import ahorcado.Excepciones.GanaPartida;
 import ahorcado.Excepciones.PierdePartida;
-import ahorcado.Main;
 import java.util.ArrayList;
 
 public class Partida
 {
-
     //<editor-fold defaultstate="collapsed" desc="Atributos">
     protected Dificultad dificultad;
     protected Usuario usuario;
@@ -213,7 +211,6 @@ public class Partida
         {
             addContadorFallos();
         }
-
     }
 
     public void validarEstadoPartida() throws GanaPartida, PierdePartida
@@ -230,4 +227,5 @@ public class Partida
 
     }
     //</editor-fold>
+
 }
