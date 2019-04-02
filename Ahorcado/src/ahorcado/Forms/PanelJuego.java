@@ -5,6 +5,8 @@
  */
 package ahorcado.Forms;
 
+import ahorcado.Clases.Partida;
+import ahorcado.Main;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -16,27 +18,25 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-/**
- *
- * @author Usuario
- */
 public class PanelJuego extends javax.swing.JPanel
 {
+    //<editor-fold defaultstate="collapsed" desc="Atributos">
 
-    JButton[] botones = new JButton[28];
+    JButton[] botones;
     Container cp;
 
-    /**
-     * Creates new form panelJuego
-     */
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Constructor">
     public PanelJuego()
     {
+        botones = new JButton[28];
         initComponents();
         iniciarTeclado();
         actualizarImagen(0);
         iniciarPalabra();
 
     }
+    //</editor-fold>
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -169,10 +169,10 @@ public class PanelJuego extends javax.swing.JPanel
 
     public void iniciarPalabra()
     {
-       JLabel[] letras;
+        JLabel[] letras;
 
         Container cp = this.panelPalabra;
-        GridLayout gl = new GridLayout(1, 5);// poner el lenght de la palabra
+        GridLayout gl = new GridLayout(1, Main.backend.getJuego().getPalabra().getTamaño());// poner el lenght de la palabra
         gl.setHgap(2);
         gl.setVgap(2);
         cp.setLayout(gl);
@@ -201,8 +201,8 @@ public class PanelJuego extends javax.swing.JPanel
         cp.setLayout(gl);
 
         String letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-        //centrar iconos
 
+        //centrar iconos
         for (int i = 0; i < 28; i++)
         {
             if (i < 27)

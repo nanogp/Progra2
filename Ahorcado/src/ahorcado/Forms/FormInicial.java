@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ahorcado.Forms;
 
 import ahorcado.Enumerados.Dificultad;
@@ -16,10 +11,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Nano
- */
 public class FormInicial extends javax.swing.JFrame
 {
 
@@ -30,9 +21,7 @@ public class FormInicial extends javax.swing.JFrame
     PanelJuego jugar;
 
     //</editor-fold>
-    /**
-     * Creates new form FormInicial
-     */
+    //<editor-fold defaultstate="collapsed" desc="Constructor">
     public FormInicial()
     {
         this.setContentPane(new JLabel(new ImageIcon("fondo-01.png")));
@@ -80,6 +69,7 @@ public class FormInicial extends javax.swing.JFrame
         this.btnJugar.setPressedIcon(new ImageIcon("jugar-10.png"));
     }
 
+    //</editor-fold>
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -370,8 +360,8 @@ public class FormInicial extends javax.swing.JFrame
         try
         {
             //llamar a nueva partida
-            empezarJuego();
             Main.backend.nuevoJuego(Main.backend.getUsuario(), Main.backend.getDificultad());
+            empezarJuego();
         }
         catch (GanaJuego ex)
         {
