@@ -5,18 +5,16 @@
  */
 package forms;
 
-import clases.Partida;
 import ahorcado.Main;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
-import static javax.swing.GroupLayout.Alignment.CENTER;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class PanelJuego extends javax.swing.JPanel
 {
@@ -24,6 +22,7 @@ public class PanelJuego extends javax.swing.JPanel
 
     JButton[] botones;
     Container cp;
+    JLabel[] letras;
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Constructor">
@@ -171,14 +170,14 @@ public class PanelJuego extends javax.swing.JPanel
 
     public void iniciarPalabra()
     {
-        JLabel[] letras;
-
         Container cp = this.panelPalabra;
-        GridLayout gl = new GridLayout(1, Main.backend.getJuego().getPalabra().getTamaño());// poner el lenght de la palabra
+        // poner el lenght de la palabra
+        GridLayout gl = new GridLayout(1, Main.backend.getJuego().getPalabra().getTamaño());
         gl.setHgap(2);
         gl.setVgap(2);
         cp.setLayout(gl);
-        letras = new JLabel[Main.backend.getJuego().getPalabra().getTamaño()]; // hace un vector del largo de la palabra
+        // hacer un vector del largo de la palabra
+        letras = new JLabel[Main.backend.getJuego().getPalabra().getTamaño()];
 
         for (int i = 0; i < letras.length; i++)
         {
@@ -189,7 +188,6 @@ public class PanelJuego extends javax.swing.JPanel
             letras[i].setHorizontalAlignment((int) CENTER_ALIGNMENT);
             letras[i].setFont(new java.awt.Font("Tahoma", 1, 20));
             letras[i].setVisible(true);
-
         }
 
     }
@@ -225,7 +223,7 @@ public class PanelJuego extends javax.swing.JPanel
                     {
                         try
                         {
-                            // presionarTeclado(evt);
+                            letraClickeada(evt);
                         }
                         catch (Exception e)
                         {
@@ -233,6 +231,7 @@ public class PanelJuego extends javax.swing.JPanel
                         }
 
                     }
+
                 });
             }
             else
@@ -260,10 +259,78 @@ public class PanelJuego extends javax.swing.JPanel
                         }
 
                     }
+
                 });
             }
         }
     }
+
+    public void letraClickeada(java.awt.event.ActionEvent evt)
+    {
+        JButton evento = (JButton) evt.getSource();
+
+        Main.backend.getJuego().setLetraElegida(evento.getText().charAt(0));
+
+        //libero el evento
+        evento.setEnabled(false);
+        evento.setContentAreaFilled(false);
+
+        Main.backend.getJuego().validarLetraElegida();
+
+        //muestro letras coincidentes
+        for (int i = 0; i < letras.length; i++)
+        {
+            letras[i].setText(" " + Main.backend.getJuego().getPalabraSecreta().get(i) + " ");
+        }
+    }
     //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="ref">
+    /*
+    public void presionarTeclado(java.awt.event.ActionEvent evt) throws DiccionaUsado, maxFallos
+    {
+        JButton evento = (JButton) evt.getSource();
+        boolean coincide = false;
+        int i;
+        
+        evento.setEnabled(false);
+
+        System.out.println("A pretado el boton " + evento.getActionCommand());
+        evento.setContentAreaFilled(false);
+
+        for (i = 0; i < this.juego.getElegida().getPalabra().length(); i++)
+        {
+            if (this.juego.getElegida().contieneLetras(evento.getText().charAt(0), i)) //compara la letra en la ubicacion
+            {
+                this.letras[i].setText(" " + evento.getText() + " ");
+                coincide = true;
+                this.juego.setContadorAciertos(this.juego.getContadorAciertos() + 1);
+
+            }
+        }
+        if (!coincide)//SI NO COINCIDE NINGUNA
+        {
+            this.juego.setContadorFallos(this.juego.getContadorFallos() + 1);
+            jIntentos.setText(Integer.toString(this.juego.getContadorFallos()));//incrementa muetras el contandor de fallos
+            String aux = lblFallidas.getText();
+            aux += evento.getText() + "  ";
+            lblFallidas.setText(aux);
+        }
+
+        if (this.juego.validarAciertoJuego())
+        {
+            JOptionPane.showMessageDialog(this, " Excelente!\n" + this.juego.getElegida().getPalabra().toUpperCase());
+            if (this.juego.proximaPalabra())
+            {
+                limpiarJuego();
+            }
+        }
+        else
+        {
+            this.validarFallos();
+        }
+
+    }
+     */
+    //</editor-fold>
 }

@@ -27,6 +27,7 @@ public class Partida
     public Partida()
     {
         this.alfabetoValido = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+        this.letrasUsadas = new ArrayList<>();
         this.contadorFallos = 0;
         this.contadorAciertos = 0;
     }
@@ -142,12 +143,7 @@ public class Partida
     }
 
     private void setPalabraSecreta()
-    {/*
-        for (int i = 0; i < getPalabra().getNombre().length(); i++)
-        {
-            this.palabraSecreta[i] = '_';
-        }
-         */
+    {
         if (this.palabraSecreta == null)
         {
             this.palabraSecreta = new ArrayList<>();
@@ -159,7 +155,7 @@ public class Partida
 
         for (char c : getPalabra().getNombre().toCharArray())
         {
-            this.palabraSecreta.add('_');
+            this.palabraSecreta.add('*');
         }
     }
 
@@ -191,21 +187,25 @@ public class Partida
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">
-    public void validarLetraIngresada(char letra)
+    public void validarLetraElegida()
     {
         boolean noHayCoincidencia = true;
 
-        letrasUsadas.add(letra);
+        System.out.println("Letra elegida:" + getLetraElegida());
 
-        for (int i = 0; i < palabraSecreta.size(); i++)
+        letrasUsadas.add(getLetraElegida());
+
+        for (int i = 0; i < palabra.getTamaño(); i++)
         {
-            if (palabraSecreta.get(i) == letra)
+            if (palabra.getNombre().charAt(i) == getLetraElegida())
             {
-                palabraSecreta.set(i, letra);
+                palabraSecreta.set(i, getLetraElegida());
                 noHayCoincidencia = false;
                 addContadorAciertos();
             }
         }
+
+        System.out.println("Palabra secreta:" + getPalabraSecreta().toString());
 
         if (noHayCoincidencia)
         {
