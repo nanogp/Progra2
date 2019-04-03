@@ -144,14 +144,14 @@ public class PanelJuego extends javax.swing.JPanel
         botones = new JButton[28];
         initComponents();
         iniciarTeclado();
-        actualizarImagen(0);
+        actualizarImagen();
         iniciarPalabra();
 
     }
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">
-    public void actualizarImagen(int intento)
+    public void actualizarImagen()
     {
         if (this.panelImagen != null)
         {
@@ -161,7 +161,9 @@ public class PanelJuego extends javax.swing.JPanel
         Container cp = this.panelImagen;
         GridLayout gl = new GridLayout(1, 1);
         cp.setLayout(gl);
-        ImageIcon tiros = new ImageIcon("meme/meme-0" + (intento + 1) + ".jpg");
+        String archivoImagen = "meme/meme-0" + Integer.toString(Main.backend.getJuego().getContadorFallos() + 1) + ".jpg";
+        System.out.println("imagen: " + archivoImagen);
+        ImageIcon tiros = new ImageIcon(archivoImagen);
         JLabel lblImagen = new JLabel(tiros);
         cp.add(lblImagen);
     }
@@ -194,7 +196,6 @@ public class PanelJuego extends javax.swing.JPanel
     {
         for (int i = 0; i < letras.length; i++)
         {
-            System.out.println(" " + Main.backend.getJuego().getPalabraSecreta().get(i) + " ");
             letras[i].setText(" " + Main.backend.getJuego().getPalabraSecreta().get(i) + " ");
         }
     }
@@ -228,7 +229,6 @@ public class PanelJuego extends javax.swing.JPanel
                 {
                     public void actionPerformed(java.awt.event.ActionEvent evt)
                     {
-
                         letraClickeada(evt);
 
                     }
@@ -281,6 +281,9 @@ public class PanelJuego extends javax.swing.JPanel
         //muestro letras coincidentes
         actualizarPalabra();
 
+        //actualizar imagen
+        actualizarImagen();
+
         try
         {
             Main.backend.getJuego().validarEstadoPartida();
@@ -304,7 +307,7 @@ public class PanelJuego extends javax.swing.JPanel
                     + "Adivinaste la palabra: "
                     + "\n"
                     + Main.backend.getJuego().getPalabra().getNombre(),
-                     "GANASTE LA PARTIDA!",
+                    "GANASTE LA PARTIDA!",
                     TrayIcon.MessageType.INFO.ordinal());
 
             //pasar siguiente nivel

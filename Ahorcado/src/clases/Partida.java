@@ -11,10 +11,7 @@ public class Partida
     protected Dificultad dificultad;
     protected Usuario usuario;
     protected Palabra palabra;
-    protected int maxFallos;
-    protected int momentoPista;
     protected boolean pistaMostrada;
-    protected int valorPuntos;
     protected int contadorFallos;
     protected int contadorAciertos;
     protected char[] alfabeto;
@@ -43,9 +40,6 @@ public class Partida
         this.palabra = palabra;
         this.setPalabraSecreta();
         this.setAlfabeto();
-        this.maxFallos = Dificultad.getMaxFallos(dificultad);
-        this.momentoPista = Dificultad.getMomentoPista(dificultad);
-        this.valorPuntos = Dificultad.getValorPuntos(dificultad);
     }
 
     //</editor-fold>
@@ -82,22 +76,12 @@ public class Partida
 
     public int getMaxFallos()
     {
-        return maxFallos;
-    }
-
-    public void setMaxFallos(int maxFallos)
-    {
-        this.maxFallos = maxFallos;
+        return Dificultad.getMaxFallos(getDificultad());
     }
 
     public int getMomentoPista()
     {
-        return momentoPista;
-    }
-
-    public void setMomentoPista(int momentoPista)
-    {
-        this.momentoPista = momentoPista;
+        return Dificultad.getMomentoPista(getDificultad());
     }
 
     public boolean isPistaMostrada()
@@ -112,12 +96,7 @@ public class Partida
 
     public int getValorPuntos()
     {
-        return valorPuntos;
-    }
-
-    public void setValorPuntos(int valorPuntos)
-    {
-        this.valorPuntos = valorPuntos;
+        return Dificultad.getValorPuntos(getDificultad());
     }
 
     public int getContadorFallos()
