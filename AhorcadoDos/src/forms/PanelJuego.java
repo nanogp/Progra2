@@ -171,6 +171,10 @@ public class PanelJuego extends javax.swing.JPanel
 
     public void iniciarPalabra()
     {
+        if (this.panelPalabra != null)
+        {
+            this.panelPalabra.removeAll();
+        }
         Container cp = this.panelPalabra;
         // poner el lenght de la palabra
         GridLayout gl = new GridLayout(1, Main.backend.getJuego().getPalabra().getTamaño());
@@ -203,6 +207,11 @@ public class PanelJuego extends javax.swing.JPanel
 
     public void iniciarTeclado()
     {
+        if (this.panelTeclado != null)
+        {
+            this.panelTeclado.removeAll();
+        }
+
         cp = this.panelTeclado;
         GridLayout gl = new GridLayout(4, 7);
         gl.setHgap(2);
@@ -291,7 +300,7 @@ public class PanelJuego extends javax.swing.JPanel
             if (Main.backend.getJuego().getContadorFallos() == Main.backend.getJuego().getMomentoPista()
                     && !Main.backend.getJuego().isPistaMostrada())
             {
-                frmAceptarCancelar pista = new frmAceptarCancelar(null, true, Main.backend.getJuego().getPalabra().getDefinicion(), 0);
+                frmDialogo pista = new frmDialogo(null, true, Main.backend.getJuego().getPalabra().getDefinicion(), 0);
                 pista.setVisible(true);
 
                 /* JOptionPane.showMessageDialog(null,
@@ -305,8 +314,16 @@ public class PanelJuego extends javax.swing.JPanel
         }
         catch (GanaPartida ex)
         {
-            frmAceptarCancelar ganaste = new frmAceptarCancelar(null, true, "F E L I C I T A C I O N E S ! ! !" + "\n" + "Adivinaste la palabra: " + "\n" + Main.backend.getJuego().getPalabra().getNombre() + "\n" +"GANASTE LA PARTIDA!", 1);
+            frmDialogo ganaste = new frmDialogo(null, true, "F E L I C I T A C I O N E S ! ! !" + "\n"
+                    + "Adivinaste la palabra: "
+                    + "\n"
+                    + Main.backend.getJuego().getPalabra().getNombre()
+                    + "\n" + "GANASTE LA PALABRA!", 1);
             ganaste.setVisible(true);
+            if (ganaste.isDialogResult)
+            {
+                limpiarTodo();
+            }
             /*  JOptionPane.showMessageDialog(null,
                     "F E L I C I T A C I O N E S ! ! !"
                     + "\n"
@@ -320,16 +337,31 @@ public class PanelJuego extends javax.swing.JPanel
         }
         catch (PierdePartida ex)
         {
-            JOptionPane.showMessageDialog(null,
+            frmDialogo perdiste = new frmDialogo(null, true, "La palabra secreta era: " + "\n" + Main.backend.getJuego().getPalabra().getNombre() + "\n\n" + "PERDISTE!", 2);
+            perdiste.setVisible(true);
+            if (perdiste.isDialogResult)
+            {
+                this.setVisible(false);
+            }
+            /*  JOptionPane.showMessageDialog(null,
                     "La palabra secreta era: "
                     + "\n"
                     + Main.backend.getJuego().getPalabra().getNombre(),
                     "PERDISTE!",
-                    TrayIcon.MessageType.ERROR.ordinal());
+                    TrayIcon.MessageType.ERROR.ordinal());*/
             //volver a inicio
         }
 
     }
-    //</editor-fold>
 
+    void limpiarTodo()
+    {
+       //ALGO Q GENERE UNA NUEVA PALABRA
+        iniciarTeclado();
+        actualizarImagen();
+        iniciarPalabra();
+
+    }
+
+    //</editor-fold>
 }

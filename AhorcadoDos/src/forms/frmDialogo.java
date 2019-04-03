@@ -1,6 +1,9 @@
 package forms;
 
 import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -8,24 +11,34 @@ import javax.swing.JLabel;
  *
  * @author capacita_mecon
  */
-public class frmAceptarCancelar extends javax.swing.JDialog
+public class frmDialogo extends javax.swing.JDialog
 {
 
     public boolean isDialogResult = false;
-    public boolean isCancel = false;
 
-    /**
-     *
-     * @param parent todo
-     * @param modal
-     * @param texto
-     */
-    public frmAceptarCancelar(java.awt.Frame parent, boolean modal, String texto, int tipoRespuesta)
+    private String nombreUsuario;
+
+    public frmDialogo(java.awt.Frame parent, boolean modal, String texto, int tipoRespuesta)
     {
         super(parent, modal);
         this.setContentPane(new JLabel(new ImageIcon("dialogo-12.png")));
         initComponents();
         reaccionesConDialogo(tipoRespuesta, texto);
+        this.txtNombre.setText("Ingrese su nombre");
+        this.txtNombre.addFocusListener(new FocusListener()
+        {
+            @Override
+            public void focusGained(FocusEvent e)
+            {
+                txtNombre.setText("");
+            }
+
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
 
     }
 
@@ -51,7 +64,8 @@ public class frmAceptarCancelar extends javax.swing.JDialog
         setAlwaysOnTop(true);
         setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         setForeground(java.awt.Color.white);
-        setMinimumSize(new java.awt.Dimension(331, 195));
+        setMaximumSize(new java.awt.Dimension(349, 228));
+        setMinimumSize(new java.awt.Dimension(349, 228));
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter()
@@ -134,31 +148,30 @@ public class frmAceptarCancelar extends javax.swing.JDialog
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(19, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblReaccion, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtNombre))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblReaccion, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombre))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblReaccion, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblReaccion, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(16, 16, 16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -167,6 +180,10 @@ public class frmAceptarCancelar extends javax.swing.JDialog
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAceptarActionPerformed
     {//GEN-HEADEREND:event_btnAceptarActionPerformed
+        if (this.getNombreUsuario() == "invitado")
+        {
+            this.setNombreUsuario(this.txtNombre.getText());
+        }
         this.isDialogResult = true;
         this.setVisible(false);
     }//GEN-LAST:event_btnAceptarActionPerformed
@@ -186,55 +203,36 @@ public class frmAceptarCancelar extends javax.swing.JDialog
      */
     private void reaccionesConDialogo(int tipoRespuesta, String texto)
     {
+        this.textoMsj.setText(texto.toUpperCase());//TEXTO QUE VA A DECIR
+        this.textoMsj.setOpaque(false);
+        jScrollPane1.setBackground(new Color(0, 0, 0));
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+        this.btnAceptar.setIcon(new ImageIcon("botones-13.png"));
+        this.btnAceptar.setDisabledIcon(new ImageIcon("botones-14.png"));
+        this.btnAceptar.setRolloverIcon(new ImageIcon("botones-14.png"));
+
         switch (tipoRespuesta)
         {
-            case 0:    //algo algoo PISTA
-                this.textoMsj.setText(texto.toUpperCase());//TEXTO QUE VA A DECIR
-                this.textoMsj.setOpaque(false);
+            case 0:
                 this.lblReaccion.setIcon(new ImageIcon("108x76_05.jpg"));
-                jScrollPane1.setBackground(new Color(0, 0, 0));
-                jScrollPane1.setOpaque(false);
-                jScrollPane1.getViewport().setOpaque(false);
-
-                /////////BOTONES
-                //      this.btnCancelar.setIcon(new ImageIcon("botones-15.png"));
-                //      this.btnCancelar.setRolloverIcon(new ImageIcon("botones-16.png"));
-                this.btnAceptar.setIcon(new ImageIcon("botones-13.png"));
-                this.btnAceptar.setDisabledIcon(new ImageIcon("botones-14.png"));
-                this.btnAceptar.setRolloverIcon(new ImageIcon("botones-14.png"));
+                this.txtNombre.setVisible(false);//algo algoo PISTA
+                this.setNombreUsuario("invitado");
                 break;
-
-            case 1:      //algo algoo PREMIO
-                this.textoMsj.setText(texto.toUpperCase());//TEXTO QUE VA A DECIR
-                this.textoMsj.setOpaque(false);
+            case 1:
+                //GANASTE LA PALABRA
+                this.txtNombre.setVisible(false);//algo algoo PISTA
                 this.lblReaccion.setIcon(new ImageIcon("108x76_15.jpg"));
-                jScrollPane1.setBackground(new Color(0, 0, 0));
-                jScrollPane1.setOpaque(false);
-                jScrollPane1.getViewport().setOpaque(false);
-
-                /////////BOTONES
-                this.btnAceptar.setIcon(new ImageIcon("botones-13.png"));
-                this.btnAceptar.setDisabledIcon(new ImageIcon("botones-14.png"));
-                this.btnAceptar.setRolloverIcon(new ImageIcon("botones-14.png"));
                 break;
-
             case 2:  //algo algoo PERDISTE
-                this.textoMsj.setText(texto.toUpperCase());//TEXTO QUE VA A DECIR
-                this.textoMsj.setOpaque(false);
+                this.txtNombre.setVisible(true);
                 this.lblReaccion.setIcon(new ImageIcon("108x76_06.jpg"));
-                jScrollPane1.setBackground(new Color(0, 0, 0));
-                jScrollPane1.setOpaque(false);
-                jScrollPane1.getViewport().setOpaque(false);
-
-                /////////BOTONES
-                this.btnAceptar.setIcon(new ImageIcon("botones-13.png"));
-                this.btnAceptar.setDisabledIcon(new ImageIcon("botones-14.png"));
-                this.btnAceptar.setRolloverIcon(new ImageIcon("botones-14.png"));
+                break;
+            case 3: //GANASTE EL JUEGO
+                this.txtNombre.setVisible(true);
+                this.lblReaccion.setIcon(new ImageIcon("108x76_15.jpg"));
                 break;
 
-            case 3:
-                //algo algoo NOMBRE
-                break;
         }
 
     }
@@ -263,27 +261,43 @@ public class frmAceptarCancelar extends javax.swing.JDialog
         }
         catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(frmAceptarCancelar.class
+            java.util.logging.Logger.getLogger(frmDialogo.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         }
         catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(frmAceptarCancelar.class
+            java.util.logging.Logger.getLogger(frmDialogo.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         }
         catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(frmAceptarCancelar.class
+            java.util.logging.Logger.getLogger(frmDialogo.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         }
         catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(frmAceptarCancelar.class
+            java.util.logging.Logger.getLogger(frmDialogo.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -306,7 +320,7 @@ public class frmAceptarCancelar extends javax.swing.JDialog
         {
             public void run()
             {
-                frmAceptarCancelar dialog = new frmAceptarCancelar(new javax.swing.JFrame(), true, null, 0);
+                frmDialogo dialog = new frmDialogo(new javax.swing.JFrame(), true, null, 0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter()
                 {
                     @Override
@@ -347,4 +361,13 @@ public class frmAceptarCancelar extends javax.swing.JDialog
     //</editor-fold>
     //<editor-fold desc="Metodo">
     // </editor-fold>
+    public String getNombreUsuario()
+    {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario)
+    {
+        this.nombreUsuario = nombreUsuario;
+    }
 }
