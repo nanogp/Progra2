@@ -13,6 +13,7 @@ public class Partida
     protected Palabra palabra;
     protected int maxFallos;
     protected int momentoPista;
+    protected boolean pistaMostrada;
     protected int valorPuntos;
     protected int contadorFallos;
     protected int contadorAciertos;
@@ -30,6 +31,7 @@ public class Partida
         this.letrasUsadas = new ArrayList<>();
         this.contadorFallos = 0;
         this.contadorAciertos = 0;
+        this.pistaMostrada = false;
 
     }
 
@@ -96,6 +98,16 @@ public class Partida
     public void setMomentoPista(int momentoPista)
     {
         this.momentoPista = momentoPista;
+    }
+
+    public boolean isPistaMostrada()
+    {
+        return pistaMostrada;
+    }
+
+    public void setPistaMostrada()
+    {
+        this.pistaMostrada = true;
     }
 
     public int getValorPuntos()

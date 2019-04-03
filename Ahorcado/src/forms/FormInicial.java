@@ -13,63 +13,6 @@ import javax.swing.JOptionPane;
 
 public class FormInicial extends javax.swing.JFrame
 {
-    //<editor-fold defaultstate="collapsed" desc="Atributos">
-    PanelUsuario panelUsuario;
-    Container contenedor;
-    ComponentListener listenerVolverAInicio;
-    PanelJuego jugar;
-
-    //</editor-fold>
-    //<editor-fold defaultstate="collapsed" desc="Constructor">
-    public FormInicial()
-    {
-        this.setContentPane(new JLabel(new ImageIcon("fondo-01.png")));
-        initComponents();
-        btnJugar.setEnabled(false);
-        panelUsuario = new PanelUsuario();
-        //   contenedor = new Container();
-        listenerVolverAInicio = new ComponentListener()
-        {
-            @Override
-            public void componentResized(ComponentEvent e)
-            {
-
-            }
-
-            @Override
-            public void componentMoved(ComponentEvent e)
-            {
-
-            }
-
-            @Override
-            public void componentShown(ComponentEvent e)
-            {
-
-            }
-
-            @Override
-            public void componentHidden(ComponentEvent e)
-            {
-                jpInicio.setVisible(true);
-                jpGameplay.setVisible(false);
-                jpUsuario.setVisible(false);
-                jpRank.setVisible(false);
-            }
-
-        };
-
-        this.btnFacil.setIcon(new ImageIcon("niveles-05.png"));
-        this.btnNormal.setIcon(new ImageIcon("niveles-06.png"));
-        this.btnDificil.setIcon(new ImageIcon("niveles-07.png"));
-
-        this.btnJugar.setDisabledIcon(new ImageIcon("jugar-08.png"));
-        this.btnJugar.setIcon(new ImageIcon("jugar-09.png"));
-        this.btnJugar.setRolloverIcon(new ImageIcon("jugar-11.png"));
-        this.btnJugar.setPressedIcon(new ImageIcon("jugar-10.png"));
-    }
-
-    //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Autogenerado">
     /**
      * This method is called from within the constructor to initialize the form.
@@ -346,7 +289,7 @@ public class FormInicial extends javax.swing.JFrame
 
     private void mnItemRankActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mnItemRankActionPerformed
     {//GEN-HEADEREND:event_mnItemRankActionPerformed
-        // TODO add your handling code here:
+        FormRanking rank = new FormRanking(this, true);
     }//GEN-LAST:event_mnItemRankActionPerformed
 
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnJugarActionPerformed
@@ -367,7 +310,7 @@ public class FormInicial extends javax.swing.JFrame
         }
         catch (GanaJuego ex)
         {
-            pedirUsuario();
+            //pedirUsuario();
             JOptionPane.showMessageDialog(null, "GANASTE");
         }
 
@@ -421,6 +364,80 @@ public class FormInicial extends javax.swing.JFrame
 
     }//GEN-LAST:event_btnFacilActionPerformed
 
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnDificil;
+    private javax.swing.JToggleButton btnFacil;
+    private javax.swing.JButton btnJugar;
+    private javax.swing.JToggleButton btnNormal;
+    private javax.swing.JPanel jpGameplay;
+    private javax.swing.JPanel jpInicio;
+    private javax.swing.JPanel jpRank;
+    private javax.swing.JPanel jpUsuario;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem mnItemNuevo;
+    private javax.swing.JMenuItem mnItemRank;
+    private javax.swing.JMenuItem mnItemSalir;
+    private javax.swing.JMenu mnMenu;
+    // End of variables declaration//GEN-END:variables
+
+//</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Atributos">
+    Container contenedor;
+    ComponentListener listenerVolverAInicio;
+    PanelJuego jugar;
+
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Constructor">
+    public FormInicial()
+    {
+        this.setContentPane(new JLabel(new ImageIcon("fondo-01.png")));
+        initComponents();
+        btnJugar.setEnabled(false);
+        //   contenedor = new Container();
+        listenerVolverAInicio = new ComponentListener()
+        {
+            @Override
+            public void componentResized(ComponentEvent e)
+            {
+
+            }
+
+            @Override
+            public void componentMoved(ComponentEvent e)
+            {
+
+            }
+
+            @Override
+            public void componentShown(ComponentEvent e)
+            {
+
+            }
+
+            @Override
+            public void componentHidden(ComponentEvent e)
+            {
+                jpInicio.setVisible(true);
+                jpGameplay.setVisible(false);
+                jpUsuario.setVisible(false);
+                jpRank.setVisible(false);
+            }
+
+        };
+
+        this.btnFacil.setIcon(new ImageIcon("niveles-05.png"));
+        this.btnNormal.setIcon(new ImageIcon("niveles-06.png"));
+        this.btnDificil.setIcon(new ImageIcon("niveles-07.png"));
+
+        this.btnJugar.setDisabledIcon(new ImageIcon("jugar-08.png"));
+        this.btnJugar.setIcon(new ImageIcon("jugar-09.png"));
+        this.btnJugar.setRolloverIcon(new ImageIcon("jugar-11.png"));
+        this.btnJugar.setPressedIcon(new ImageIcon("jugar-10.png"));
+    }
+
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Metodos">
     /**
      * @param args the command line arguments
      */
@@ -471,24 +488,6 @@ public class FormInicial extends javax.swing.JFrame
         });
     }
 
-    public void pedirUsuario()
-    {
-        panelUsuario.addComponentListener(listenerVolverAInicio);
-
-        //limpiar contenedor
-        if (contenedor != null)
-        {
-            contenedor.removeAll();
-        }
-        contenedor = jpUsuario;
-        panelUsuario.addComponentListener(listenerVolverAInicio);
-        contenedor.setLayout(new GridLayout(1, 1));
-        contenedor.add(panelUsuario);
-        jpUsuario.setVisible(true);
-        panelUsuario.setVisible(true);
-        jpInicio.setVisible(false);
-    }
-
     private void empezarJuego()
     {
         if (contenedor != null)
@@ -508,22 +507,5 @@ public class FormInicial extends javax.swing.JFrame
         //    this.jugar.limpiarJuego();
     }
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnDificil;
-    private javax.swing.JToggleButton btnFacil;
-    private javax.swing.JButton btnJugar;
-    private javax.swing.JToggleButton btnNormal;
-    private javax.swing.JPanel jpGameplay;
-    private javax.swing.JPanel jpInicio;
-    private javax.swing.JPanel jpRank;
-    private javax.swing.JPanel jpUsuario;
-    private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem mnItemNuevo;
-    private javax.swing.JMenuItem mnItemRank;
-    private javax.swing.JMenuItem mnItemSalir;
-    private javax.swing.JMenu mnMenu;
-    // End of variables declaration//GEN-END:variables
-
-//</editor-fold>
+    //</editor-fold>
 }

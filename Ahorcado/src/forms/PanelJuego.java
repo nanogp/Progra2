@@ -16,25 +16,6 @@ import javax.swing.JOptionPane;
 
 public class PanelJuego extends javax.swing.JPanel
 {
-    //<editor-fold defaultstate="collapsed" desc="Atributos">
-
-    JButton[] botones;
-    Container cp;
-    JLabel[] letras;
-
-    //</editor-fold>
-    //<editor-fold defaultstate="collapsed" desc="Constructor">
-    public PanelJuego()
-    {
-        botones = new JButton[28];
-        initComponents();
-        iniciarTeclado();
-        actualizarImagen(0);
-        iniciarPalabra();
-
-    }
-
-    //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Autogenerado">
     /**
      * This method is called from within the constructor to initialize the form.
@@ -149,6 +130,25 @@ public class PanelJuego extends javax.swing.JPanel
     private javax.swing.JPanel panelPalabra;
     private javax.swing.JPanel panelTeclado;
     // End of variables declaration//GEN-END:variables
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Atributos">
+
+    JButton[] botones;
+    Container cp;
+    JLabel[] letras;
+
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Constructor">
+    public PanelJuego()
+    {
+        botones = new JButton[28];
+        initComponents();
+        iniciarTeclado();
+        actualizarImagen(0);
+        iniciarPalabra();
+
+    }
+
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">
     public void actualizarImagen(int intento)
@@ -284,7 +284,8 @@ public class PanelJuego extends javax.swing.JPanel
         try
         {
             Main.backend.getJuego().validarEstadoPartida();
-            if (Main.backend.getJuego().getContadorFallos() == Main.backend.getJuego().getMomentoPista())
+            if (Main.backend.getJuego().getContadorFallos() == Main.backend.getJuego().getMomentoPista()
+                    && !Main.backend.getJuego().isPistaMostrada())
             {
                 JOptionPane.showMessageDialog(null,
                         "Pista:\n"
@@ -292,17 +293,18 @@ public class PanelJuego extends javax.swing.JPanel
                         "PISTA",
                         TrayIcon.MessageType.WARNING.ordinal()
                 );
+                Main.backend.getJuego().setPistaMostrada();
             }
         }
         catch (GanaPartida ex)
         {
             JOptionPane.showMessageDialog(null,
-                    "Adivinaste la palabra: "
+                    "F E L I C I T A C I O N E S ! ! !"
                     + "\n"
-                    + Main.backend.getJuego().getPalabra().getNombre()
+                    + "Adivinaste la palabra: "
                     + "\n"
-                    + "F E L I C I T A C I O N E S ! ! !",
-                    "GANASTE LA PARTIDA!",
+                    + Main.backend.getJuego().getPalabra().getNombre(),
+                     "GANASTE LA PARTIDA!",
                     TrayIcon.MessageType.INFO.ordinal());
 
             //pasar siguiente nivel

@@ -3,6 +3,7 @@ package clases;
 import toolbox.Archivo;
 import java.io.FileNotFoundException;
 import interfaces.InterfazXml;
+import toolbox.Cadena;
 
 public class Ranking implements InterfazXml
 {
@@ -46,6 +47,23 @@ public class Ranking implements InterfazXml
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">
+    @Override
+    public String toString()
+    {
+        StringBuilder ret = new StringBuilder();
+
+        ret.append(Cadena.encolumnarAlinearTexto(" | ",
+                "NOMBRE", 20, Cadena.ALINEA_IZQ,
+                "PUNTAJE", 10, Cadena.ALINEA_MED,
+                "PARTIDAS JUGADAS", 1, Cadena.ALINEA_MED));
+        ret.append("\n");
+        ret.append(Cadena.repeat("-", ret.toString().length()));
+        ret.append("\n");
+        ret.append(this.getListaDeUsuarios().toString());
+
+        return ret.toString();
+    }
+
     public static Ranking leerDeXml(String nombreArchivo)
     {
         return (Ranking) InterfazXml.leerDeXml(nombreArchivo);

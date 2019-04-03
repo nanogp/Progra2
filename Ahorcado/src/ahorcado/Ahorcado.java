@@ -152,7 +152,6 @@ public class Ahorcado
     //<editor-fold defaultstate="collapsed" desc="Metodos">
     public void nuevoJuego(Usuario nuevoJugador, Dificultad dificultad) throws GanaJuego
     {
-
         if (getRanking().getListaDeUsuarios().contains(nuevoJugador))
         {
             setUsuarioExistia(true);
@@ -173,7 +172,6 @@ public class Ahorcado
 
         //crear una nueva partida del juego
         nuevaPartida();
-
     }
 
     public void nuevaPartida() throws GanaJuego
