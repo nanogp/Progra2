@@ -78,6 +78,27 @@ public class Usuario implements Comparable<Usuario>, Comparator<Usuario>
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">
+    public void addPuntajeUltimo(int puntaje)
+    {
+        setPuntajeUltimo(getPuntajeUltimo() + puntaje);
+    }
+
+    public void addPuntajeAcumulado(int puntaje)
+    {
+        setPuntajeAcumulado(getPuntajeAcumulado() + puntaje);
+    }
+
+    public void addPuntaje(int puntaje)
+    {
+        addPuntajeUltimo(puntaje);
+        addPuntajeAcumulado(puntaje);
+    }
+
+    public void addPartidasJugadas()
+    {
+        setPartidasJugadas(getPartidasJugadas() + 1);
+    }
+
     @Override
     public String toString()
     {

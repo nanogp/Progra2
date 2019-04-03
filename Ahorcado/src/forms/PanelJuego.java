@@ -1,15 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package forms;
 
 import ahorcado.Main;
+import excepciones.GanaPartida;
+import excepciones.PierdePartida;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.TrayIcon;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -177,7 +175,7 @@ public class PanelJuego extends javax.swing.JPanel
         gl.setVgap(2);
         cp.setLayout(gl);
         // hacer un vector del largo de la palabra
-        letras = new JLabel[Main.backend.getJuego().getPalabra().getTamaño()];
+        letras = new JLabel[Main.backend.getJuego().getPalabra().getNombre().length()];
 
         for (int i = 0; i < letras.length; i++)
         {
@@ -190,6 +188,15 @@ public class PanelJuego extends javax.swing.JPanel
             letras[i].setVisible(true);
         }
 
+    }
+
+    public void actualizarPalabra()
+    {
+        for (int i = 0; i < letras.length; i++)
+        {
+            System.out.println(" " + Main.backend.getJuego().getPalabraSecreta().get(i) + " ");
+            letras[i].setText(" " + Main.backend.getJuego().getPalabraSecreta().get(i) + " ");
+        }
     }
 
     public void iniciarTeclado()
@@ -221,14 +228,8 @@ public class PanelJuego extends javax.swing.JPanel
                 {
                     public void actionPerformed(java.awt.event.ActionEvent evt)
                     {
-                        try
-                        {
-                            letraClickeada(evt);
-                        }
-                        catch (Exception e)
-                        {
 
-                        }
+                        letraClickeada(evt);
 
                     }
 
@@ -278,59 +279,46 @@ public class PanelJuego extends javax.swing.JPanel
         Main.backend.getJuego().validarLetraElegida();
 
         //muestro letras coincidentes
-        for (int i = 0; i < letras.length; i++)
+        actualizarPalabra();
+
+        try
         {
-            letras[i].setText(" " + Main.backend.getJuego().getPalabraSecreta().get(i) + " ");
+            Main.backend.getJuego().validarEstadoPartida();
+            if (Main.backend.getJuego().getContadorFallos() == Main.backend.getJuego().getMomentoPista())
+            {
+                JOptionPane.showMessageDialog(null,
+                        "Pista:\n"
+                        + Main.backend.getJuego().getPalabra().getDefinicion(),
+                        "PISTA",
+                        TrayIcon.MessageType.WARNING.ordinal()
+                );
+            }
         }
+        catch (GanaPartida ex)
+        {
+            JOptionPane.showMessageDialog(null,
+                    "Adivinaste la palabra: "
+                    + "\n"
+                    + Main.backend.getJuego().getPalabra().getNombre()
+                    + "\n"
+                    + "F E L I C I T A C I O N E S ! ! !",
+                    "GANASTE LA PARTIDA!",
+                    TrayIcon.MessageType.INFO.ordinal());
+
+            //pasar siguiente nivel
+        }
+        catch (PierdePartida ex)
+        {
+            JOptionPane.showMessageDialog(null,
+                    "La palabra secreta era: "
+                    + "\n"
+                    + Main.backend.getJuego().getPalabra().getNombre(),
+                    "PERDISTE!",
+                    TrayIcon.MessageType.ERROR.ordinal());
+            //volver a inicio
+        }
+
     }
     //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="ref">
-    /*
-    public void presionarTeclado(java.awt.event.ActionEvent evt) throws DiccionaUsado, maxFallos
-    {
-        JButton evento = (JButton) evt.getSource();
-        boolean coincide = false;
-        int i;
-        
-        evento.setEnabled(false);
-
-        System.out.println("A pretado el boton " + evento.getActionCommand());
-        evento.setContentAreaFilled(false);
-
-        for (i = 0; i < this.juego.getElegida().getPalabra().length(); i++)
-        {
-            if (this.juego.getElegida().contieneLetras(evento.getText().charAt(0), i)) //compara la letra en la ubicacion
-            {
-                this.letras[i].setText(" " + evento.getText() + " ");
-                coincide = true;
-                this.juego.setContadorAciertos(this.juego.getContadorAciertos() + 1);
-
-            }
-        }
-        if (!coincide)//SI NO COINCIDE NINGUNA
-        {
-            this.juego.setContadorFallos(this.juego.getContadorFallos() + 1);
-            jIntentos.setText(Integer.toString(this.juego.getContadorFallos()));//incrementa muetras el contandor de fallos
-            String aux = lblFallidas.getText();
-            aux += evento.getText() + "  ";
-            lblFallidas.setText(aux);
-        }
-
-        if (this.juego.validarAciertoJuego())
-        {
-            JOptionPane.showMessageDialog(this, " Excelente!\n" + this.juego.getElegida().getPalabra().toUpperCase());
-            if (this.juego.proximaPalabra())
-            {
-                limpiarJuego();
-            }
-        }
-        else
-        {
-            this.validarFallos();
-        }
-
-    }
-     */
-    //</editor-fold>
 }

@@ -30,6 +30,7 @@ public class Partida
         this.letrasUsadas = new ArrayList<>();
         this.contadorFallos = 0;
         this.contadorAciertos = 0;
+
     }
 
     public Partida(Dificultad dificultad, Usuario usuario, Palabra palabra)
@@ -195,7 +196,7 @@ public class Partida
 
         letrasUsadas.add(getLetraElegida());
 
-        for (int i = 0; i < palabra.getTamaño(); i++)
+        for (int i = 0; i < palabra.getNombre().length(); i++)
         {
             if (palabra.getNombre().charAt(i) == getLetraElegida())
             {
@@ -205,27 +206,35 @@ public class Partida
             }
         }
 
-        System.out.println("Palabra secreta:" + getPalabraSecreta().toString());
-
         if (noHayCoincidencia)
         {
             addContadorFallos();
         }
+
+        System.out.println("Palabra secreta:" + getPalabraSecreta().toString());
+        System.out.println("Contador aciertos:" + getContadorAciertos());
+        System.out.println("Contador fallos:" + getContadorFallos());
     }
 
     public void validarEstadoPartida() throws GanaPartida, PierdePartida
     {
-        if (getContadorAciertos() == getPalabra().getTamaño())
+        if (getContadorAciertos() == getPalabra().getNombre().length())
         {
+            actualizarEstadisticaUsuario();
             throw new GanaPartida();
         }
-
-        if (getContadorFallos() == getMaxFallos())
+        else if (getContadorFallos() == getMaxFallos())
         {
+            actualizarEstadisticaUsuario();
             throw new PierdePartida();
         }
 
     }
-    //</editor-fold>
+
+    public void actualizarEstadisticaUsuario()
+    {
+        getUsuario().addPuntaje(getValorPuntos());
+        getUsuario().addPartidasJugadas();
+    } //</editor-fold>
 
 }

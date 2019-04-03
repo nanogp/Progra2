@@ -18,7 +18,10 @@ public class Ahorcado
     private Partida partida;
     private Usuario usuario;
     private boolean usuarioExistia;
-    public Dificultad dificultad;
+    private int contadorPartidas;
+    private int puntajeActual;
+    private int puntajeAcumulado;
+    private Dificultad dificultad;
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Constructores">
@@ -29,10 +32,13 @@ public class Ahorcado
 
         this.ranking = new Ranking();
         this.ranking = Ranking.leerDeXml(ranking.getNombreArchivo());
-        
-        this.usuario= new Usuario(); 
-       
 
+        this.usuario = new Usuario();
+
+        this.getUsuario().setNombre("Anonimo");
+        this.contadorPartidas = 0;
+        this.puntajeActual = 0;
+        this.puntajeAcumulado = 0;
     }
 
     //</editor-fold>
@@ -87,7 +93,7 @@ public class Ahorcado
         this.usuario = usuario;
     }
 
-    public boolean isUsuarioExistia()
+    public boolean getUsuarioExistia()
     {
         return usuarioExistia;
     }
@@ -95,6 +101,41 @@ public class Ahorcado
     public void setUsuarioExistia(boolean usuarioExistia)
     {
         this.usuarioExistia = usuarioExistia;
+    }
+
+    public int getContadorPartidas()
+    {
+        return contadorPartidas;
+    }
+
+    public void setContadorPartidas(int contadorPartidas)
+    {
+        this.contadorPartidas = contadorPartidas;
+    }
+
+    public void addContadorPartidas()
+    {
+        this.contadorPartidas++;
+    }
+
+    public int getPuntajeActual()
+    {
+        return puntajeActual;
+    }
+
+    public void setPuntajeActual(int puntajeActual)
+    {
+        this.puntajeActual = puntajeActual;
+    }
+
+    public int getPuntajeAcumulado()
+    {
+        return puntajeAcumulado;
+    }
+
+    public void setPuntajeAcumulado(int puntajeAcumulado)
+    {
+        this.puntajeAcumulado = puntajeAcumulado;
     }
 
     public Dificultad getDificultad()
@@ -111,9 +152,6 @@ public class Ahorcado
     //<editor-fold defaultstate="collapsed" desc="Metodos">
     public void nuevoJuego(Usuario nuevoJugador, Dificultad dificultad) throws GanaJuego
     {
-        //setear usuario y si existe, cargar sus datos
-        //System.out.println("Ingresar nombre jugador: ");
-        //Usuario nuevoJugador = new Usuario(toolbox.Toolbox.leerDeConsola.next());
 
         if (getRanking().getListaDeUsuarios().contains(nuevoJugador))
         {
@@ -147,6 +185,8 @@ public class Ahorcado
             //subir de nivel o lanzar GanaJuego
             setDificultad(getDificultad().levelUp());
         }
+
+        addContadorPartidas();
 
         //crear parida nueva
         partida = new Partida(getDificultad(), getUsuario(), getPalabrasEnJuego().popRandom());
