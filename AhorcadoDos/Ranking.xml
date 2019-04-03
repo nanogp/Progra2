@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_201" class="java.beans.XMLDecoder">
+ <object class="clases.Ranking" id="Ranking0">
+  <void property="listaDeUsuarios">
+   <void method="add">
+    <object class="clases.Usuario">
+     <void property="nombre">
+      <string>Fulano</string>
+     </void>
+     <void property="partidasJugadas">
+      <int>4</int>
+     </void>
+     <void property="puntajeAcumulado">
+      <int>10</int>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="clases.Usuario">
+     <void property="nombre">
+      <string>Mengano</string>
+     </void>
+     <void property="partidasJugadas">
+      <int>3</int>
+     </void>
+     <void property="puntajeAcumulado">
+      <int>16</int>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="clases.Usuario">
+     <void property="nombre">
+      <string>Sultano</string>
+     </void>
+     <void property="partidasJugadas">
+      <int>10</int>
+     </void>
+     <void property="puntajeAcumulado">
+      <int>12</int>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="clases.Usuario">
+     <void property="nombre">
+      <string>Un-tano</string>
+     </void>
+     <void property="partidasJugadas">
+      <int>11</int>
+     </void>
+     <void property="puntajeAcumulado">
+      <int>15</int>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="clases.Usuario">
+     <void property="nombre">
+      <string>Nano</string>
+     </void>
+     <void property="partidasJugadas">
+      <int>16</int>
+     </void>
+     <void property="puntajeAcumulado">
+      <int>32</int>
+     </void>
+    </object>
+   </void>
+  </void>
+ </object>
+</java>
