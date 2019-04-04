@@ -30,13 +30,13 @@ public class Ahorcado
     {
         this.diccionario = new Diccionario();
         this.diccionario = Diccionario.leerDeXml(diccionario.getNombreArchivo());
-
+        
         this.ranking = new Ranking();
         this.ranking = Ranking.leerDeXml(ranking.getNombreArchivo());
-
+        
         this.usuario = new Usuario();
         this.getUsuario().setNombre("Anonimo");
-
+        
         this.palabraSecreta = new ArrayList<>();
         this.letrasUsadas = new ArrayList<>();
         this.alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
@@ -48,132 +48,138 @@ public class Ahorcado
     {
         return diccionario;
     }
-
+    
     public void setDiccionario(Diccionario diccionario)
     {
         this.diccionario = diccionario;
     }
-
+    
     public ListaDePalabras getPalabrasEnJuego()
     {
         return palabrasEnJuego;
     }
-
+    
     public void setPalabrasEnJuego(ListaDePalabras palabrasEnJuego)
     {
         this.palabrasEnJuego = palabrasEnJuego;
     }
-
+    
     public Ranking getRanking()
     {
         return ranking;
     }
-
+    
+    public Ranking getSortedRanking()
+    {
+        getRanking().getListaDeUsuarios().sort(Usuario.ComparatorPuntaje);
+        return ranking;
+    }
+    
     public void setRanking(Ranking ranking)
     {
         this.ranking = ranking;
     }
-
+    
     public Usuario getUsuario()
     {
         return usuario;
     }
-
+    
     public void setUsuario(Usuario usuario)
     {
         this.usuario = usuario;
     }
-
+    
     public boolean getUsuarioExistia()
     {
         return usuarioExistia;
     }
-
+    
     public void isUsuarioExistia(boolean usuarioExistia)
     {
         this.usuarioExistia = usuarioExistia;
     }
-
+    
     public Dificultad getDificultad()
     {
         return dificultad;
     }
-
+    
     public void setDificultad(Dificultad dificultad)
     {
         this.dificultad = dificultad;
     }
-
+    
     public Palabra getPalabra()
     {
         return palabra;
     }
-
+    
     public void setPalabra(Palabra palabra)
     {
         this.palabra = palabra;
     }
-
+    
     public int getMaxFallos()
     {
         return Dificultad.getMaxFallos(getDificultad());
     }
-
+    
     public int getMomentoPista()
     {
         return Dificultad.getMomentoPista(getDificultad());
     }
-
+    
     public boolean isPistaMostrada()
     {
         return pistaMostrada;
     }
-
+    
     public void setPistaMostrada(boolean b)
     {
         this.pistaMostrada = b;
     }
-
+    
     public int getValorPuntos()
     {
         return Dificultad.getValorPuntos(getDificultad());
     }
-
+    
     public int getContadorFallos()
     {
         return contadorFallos;
     }
-
+    
     public void setContadorFallos(int contadorFallos)
     {
         this.contadorFallos = contadorFallos;
     }
-
+    
     public void addContadorFallos()
     {
         this.contadorFallos++;
     }
-
+    
     public int getContadorAciertos()
     {
         return contadorAciertos;
     }
-
+    
     public void setContadorAciertos(int contadorAciertos)
     {
         this.contadorAciertos = contadorAciertos;
     }
-
+    
     public void addContadorAciertos()
     {
         this.contadorAciertos++;
     }
-
+    
     public ArrayList<Character> getPalabraSecreta()
     {
         return palabraSecreta;
     }
-
+    
     private void setPalabraSecreta()
     {
         if (this.palabraSecreta == null)
@@ -184,23 +190,23 @@ public class Ahorcado
         {
             this.palabraSecreta.clear();
         }
-
+        
         for (char c : getPalabra().getNombre().toCharArray())
         {
             this.palabraSecreta.add('*');
         }
     }
-
+    
     public char getLetraElegida()
     {
         return letraElegida;
     }
-
+    
     public void setLetraElegida(char letraElegida)
     {
         this.letraElegida = letraElegida;
     }
-
+    
     public String getAlfabeto()
     {
         return alfabeto;
@@ -231,7 +237,7 @@ public class Ahorcado
         //crear una nueva partida del juego
         nuevaPartida();
     }
-
+    
     public void nuevaPartida() throws GanaJuego
     {
         System.out.println("usuario:" + getUsuario().getNombre());
@@ -262,17 +268,17 @@ public class Ahorcado
         setPalabra(getPalabrasEnJuego().popRandom());
         System.out.println("Palabra a adivinar:" + getPalabra());
         setPalabraSecreta();
-
+        
     }
-
+    
     public void validarLetraElegida()
     {
         boolean noHayCoincidencia = true;
-
+        
         System.out.println("Letra elegida:" + getLetraElegida());
-
+        
         letrasUsadas.add(getLetraElegida());
-
+        
         for (int i = 0; i < palabra.getNombre().length(); i++)
         {
             if (palabra.getNombre().charAt(i) == getLetraElegida())
@@ -282,17 +288,17 @@ public class Ahorcado
                 addContadorAciertos();
             }
         }
-
+        
         if (noHayCoincidencia)
         {
             addContadorFallos();
         }
-
+        
         System.out.println("Palabra secreta:" + getPalabraSecreta().toString());
         System.out.println("Contador aciertos:" + getContadorAciertos());
         System.out.println("Contador fallos:" + getContadorFallos());
     }
-
+    
     public void validarEstadoPartida() throws GanaPartida, PierdePartida
     {
         if (getContadorAciertos() == getPalabra().getNombre().length())
@@ -305,9 +311,9 @@ public class Ahorcado
             actualizarEstadisticaUsuario();
             throw new PierdePartida();
         }
-
+        
     }
-
+    
     public void actualizarEstadisticaUsuario()
     {
         getUsuario().addPuntaje(getValorPuntos());

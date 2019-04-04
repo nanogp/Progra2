@@ -8,6 +8,8 @@ import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.util.Collection;
+import java.util.Collections;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -586,9 +588,9 @@ public class FormInicial extends javax.swing.JFrame
             }
         });
 
-        jTextArea1.setFont(new java.awt.Font("Impact", 0, 25));
+        jTextArea1.setFont(new java.awt.Font("Courier New", 1, 16));
         jTextArea1.setForeground(Color.white);
-        jTextArea1.setText(Main.backend.getRanking().toString());
+        jTextArea1.setText(Main.backend.getSortedRanking().toString());
         this.setLocationRelativeTo(null);
         this.jpRank.setVisible(true);
 

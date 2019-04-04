@@ -111,7 +111,7 @@ public class Usuario implements Comparable<Usuario>, Comparator<Usuario>
 
     public int compareByPuntajeTo(Usuario u)
     {
-        return (int) Math.signum(this.getPuntajeAcumulado() - u.getPuntajeAcumulado());
+        return (int) Math.signum(u.getPuntajeAcumulado() - this.getPuntajeAcumulado());
     }
 
     @Override

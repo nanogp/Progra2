@@ -32,7 +32,9 @@ public class FormRanking extends javax.swing.JDialog
         });
 
         txtRank.setColumns(20);
+        txtRank.setFont(new java.awt.Font("Courier New", 1, 13)); // NOI18N
         txtRank.setRows(5);
+        txtRank.setTabSize(0);
         scrollRank.setViewportView(txtRank);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
