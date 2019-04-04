@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 
 public class Main
 {
+
     //<editor-fold defaultstate="collapsed" desc="Atributos">
     public static Ahorcado backend;
     public static FormInicial gui;

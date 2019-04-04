@@ -2,6 +2,7 @@ package excepciones;
 
 public class GanaJuego extends Exception
 {
+
     public GanaJuego()
     {
     }

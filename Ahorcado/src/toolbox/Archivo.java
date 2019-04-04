@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 
 public class Archivo
 {
+
     //<editor-fold defaultstate="collapsed" desc="Metodos">
     public static void serializarXml(Object objeto, String nombreArchivo) throws FileNotFoundException
     {

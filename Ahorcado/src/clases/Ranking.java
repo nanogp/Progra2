@@ -7,6 +7,7 @@ import toolbox.Cadena;
 
 public class Ranking implements InterfazXml
 {
+
     //<editor-fold defaultstate="collapsed" desc="Atributos">
     protected ListaDeUsuarios listaDeUsuarios;
     protected static String nombreArchivo = null;

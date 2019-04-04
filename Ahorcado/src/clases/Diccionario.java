@@ -6,6 +6,7 @@ import interfaces.InterfazXml;
 
 public class Diccionario implements InterfazXml
 {
+
     //<editor-fold defaultstate="collapsed" desc="Atributos">
     protected ListaDePalabras listaDePalabras;
     protected static String nombreArchivo;

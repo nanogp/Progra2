@@ -54,8 +54,8 @@ public class FormDialogo extends javax.swing.JDialog
 
         jCheckBox1 = new javax.swing.JCheckBox();
         btnAceptar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textoMsj = new javax.swing.JTextArea();
+        scrollDialogo = new javax.swing.JScrollPane();
+        txtMsj = new javax.swing.JTextArea();
         lblReaccion = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
 
@@ -93,40 +93,40 @@ public class FormDialogo extends javax.swing.JDialog
             }
         });
 
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        jScrollPane1.setInheritsPopupMenu(true);
-        jScrollPane1.setMaximumSize(new java.awt.Dimension(520, 135));
-        jScrollPane1.setMinimumSize(new java.awt.Dimension(520, 135));
-        jScrollPane1.setName(""); // NOI18N
-        jScrollPane1.setOpaque(false);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(520, 135));
-        jScrollPane1.setRequestFocusEnabled(false);
-        jScrollPane1.setVerifyInputWhenFocusTarget(false);
-        jScrollPane1.setWheelScrollingEnabled(false);
+        scrollDialogo.setBorder(null);
+        scrollDialogo.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollDialogo.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        scrollDialogo.setInheritsPopupMenu(true);
+        scrollDialogo.setMaximumSize(new java.awt.Dimension(520, 135));
+        scrollDialogo.setMinimumSize(new java.awt.Dimension(520, 135));
+        scrollDialogo.setName(""); // NOI18N
+        scrollDialogo.setOpaque(false);
+        scrollDialogo.setPreferredSize(new java.awt.Dimension(520, 135));
+        scrollDialogo.setRequestFocusEnabled(false);
+        scrollDialogo.setVerifyInputWhenFocusTarget(false);
+        scrollDialogo.setWheelScrollingEnabled(false);
 
-        textoMsj.setEditable(false);
-        textoMsj.setBackground(new java.awt.Color(35, 44, 105));
-        textoMsj.setColumns(20);
-        textoMsj.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        textoMsj.setForeground(new java.awt.Color(255, 255, 255));
-        textoMsj.setLineWrap(true);
-        textoMsj.setRows(2);
-        textoMsj.setToolTipText("");
-        textoMsj.setWrapStyleWord(true);
-        textoMsj.setAutoscrolls(false);
-        textoMsj.setBorder(null);
-        textoMsj.setCaretColor(new java.awt.Color(153, 0, 204));
-        textoMsj.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        textoMsj.setKeymap(null);
-        textoMsj.setMaximumSize(new java.awt.Dimension(259, 80));
-        textoMsj.setMinimumSize(new java.awt.Dimension(259, 80));
-        textoMsj.setOpaque(false);
-        textoMsj.setPreferredSize(new java.awt.Dimension(259, 80));
-        textoMsj.setRequestFocusEnabled(false);
-        textoMsj.setVerifyInputWhenFocusTarget(false);
-        jScrollPane1.setViewportView(textoMsj);
+        txtMsj.setEditable(false);
+        txtMsj.setBackground(new java.awt.Color(35, 44, 105));
+        txtMsj.setColumns(20);
+        txtMsj.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtMsj.setForeground(new java.awt.Color(255, 255, 255));
+        txtMsj.setLineWrap(true);
+        txtMsj.setRows(2);
+        txtMsj.setToolTipText("");
+        txtMsj.setWrapStyleWord(true);
+        txtMsj.setAutoscrolls(false);
+        txtMsj.setBorder(null);
+        txtMsj.setCaretColor(new java.awt.Color(153, 0, 204));
+        txtMsj.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtMsj.setKeymap(null);
+        txtMsj.setMaximumSize(new java.awt.Dimension(259, 80));
+        txtMsj.setMinimumSize(new java.awt.Dimension(259, 80));
+        txtMsj.setOpaque(false);
+        txtMsj.setPreferredSize(new java.awt.Dimension(259, 80));
+        txtMsj.setRequestFocusEnabled(false);
+        txtMsj.setVerifyInputWhenFocusTarget(false);
+        scrollDialogo.setViewportView(txtMsj);
 
         lblReaccion.setToolTipText("");
         lblReaccion.setMaximumSize(new java.awt.Dimension(108, 76));
@@ -151,7 +151,7 @@ public class FormDialogo extends javax.swing.JDialog
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblReaccion, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(scrollDialogo, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtNombre))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -165,7 +165,7 @@ public class FormDialogo extends javax.swing.JDialog
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblReaccion, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scrollDialogo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -202,11 +202,11 @@ public class FormDialogo extends javax.swing.JDialog
      */
     private void reaccionesConDialogo(int tipoRespuesta, String texto)
     {
-        this.textoMsj.setText(texto.toUpperCase());//TEXTO QUE VA A DECIR
-        this.textoMsj.setOpaque(false);
-        jScrollPane1.setBackground(new Color(0, 0, 0));
-        jScrollPane1.setOpaque(false);
-        jScrollPane1.getViewport().setOpaque(false);
+        this.txtMsj.setText(texto.toUpperCase());//TEXTO QUE VA A DECIR
+        this.txtMsj.setOpaque(false);
+        scrollDialogo.setBackground(new Color(0, 0, 0));
+        scrollDialogo.setOpaque(false);
+        scrollDialogo.getViewport().setOpaque(false);
         this.btnAceptar.setIcon(new ImageIcon("botones-13.png"));
         this.btnAceptar.setDisabledIcon(new ImageIcon("botones-14.png"));
         this.btnAceptar.setRolloverIcon(new ImageIcon("botones-14.png"));
@@ -368,9 +368,9 @@ public class FormDialogo extends javax.swing.JDialog
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblReaccion;
-    private javax.swing.JTextArea textoMsj;
+    private javax.swing.JScrollPane scrollDialogo;
+    private javax.swing.JTextArea txtMsj;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 

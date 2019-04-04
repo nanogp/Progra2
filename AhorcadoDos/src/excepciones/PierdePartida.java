@@ -2,6 +2,7 @@ package excepciones;
 
 public class PierdePartida extends Exception
 {
+
     public PierdePartida()
     {
     }

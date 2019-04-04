@@ -2,6 +2,7 @@ package toolbox;
 
 public class Cadena
 {
+
     //<editor-fold defaultstate="collapsed" desc="Atributos">
     public static final int PADLEFT = 0;
     public static final int PADRIGHT = 1;
@@ -180,8 +181,8 @@ public class Cadena
      * alineacion)
      *
      * @param separador cadena que separa las columnas
-     * @param args      1er argumento dato, 2do argumento ancho de columnna, 3er
-     *                  argumento alineacion, ... etc
+     * @param args 1er argumento dato, 2do argumento ancho de columnna, 3er
+     * argumento alineacion, ... etc
      * @return una cadena encolumnada
      */
     public static String encolumnarAlinearTexto(String separador, Object... args)

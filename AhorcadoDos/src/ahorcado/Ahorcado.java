@@ -244,12 +244,14 @@ public class Ahorcado
         {
             //subir de nivel o lanzar GanaJuego
             setDificultad(getDificultad().levelUp());
+
+            //obtener lista de palabras acorde a nueva dificultad
+            setPalabrasEnJuego(getDiccionario().getListaDePalabras().getListaPalabrasPorDificultad(getDificultad()));
         }
 
         /**
-         * getUsuario().addPartidasJugadas();
-         * cuento las partidas del usuario solo cuando las termina
-         * en actualizarEstadisticaUsuario();
+         * getUsuario().addPartidasJugadas(); cuento las partidas del usuario
+         * solo cuando las termina en actualizarEstadisticaUsuario();
          */
         //resetear variables
         setContadorFallos(0);

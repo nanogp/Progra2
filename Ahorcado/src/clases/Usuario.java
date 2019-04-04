@@ -5,6 +5,7 @@ import java.util.Comparator;
 
 public class Usuario implements Comparable<Usuario>, Comparator<Usuario>
 {
+
     //<editor-fold defaultstate="collapsed" desc="Atributos">
     private String nombre;
     private int puntajeAcumulado;

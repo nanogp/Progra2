@@ -366,7 +366,6 @@ public class FormInicial extends javax.swing.JFrame
         Main.backend.setDificultad(Dificultad.Dificil);
         btnJugar.setEnabled(true);
 
-
     }//GEN-LAST:event_btnDificilActionPerformed
 
     private void btnNormalActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnNormalActionPerformed
@@ -404,7 +403,6 @@ public class FormInicial extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnOKActionPerformed
         this.jpRank.setVisible(false);
     }//GEN-LAST:event_btnOKActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnDificil;
