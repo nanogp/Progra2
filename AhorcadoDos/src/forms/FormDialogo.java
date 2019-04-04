@@ -11,14 +11,14 @@ import javax.swing.JLabel;
  *
  * @author capacita_mecon
  */
-public class frmDialogo extends javax.swing.JDialog
+public class FormDialogo extends javax.swing.JDialog
 {
 
     public boolean isDialogResult = false;
 
     private String nombreUsuario;
 
-    public frmDialogo(java.awt.Frame parent, boolean modal, String texto, int tipoRespuesta)
+    public FormDialogo(java.awt.Frame parent, boolean modal, String texto, int tipoRespuesta)
     {
         super(parent, modal);
         this.setContentPane(new JLabel(new ImageIcon("dialogo-12.png")));
@@ -64,7 +64,6 @@ public class frmDialogo extends javax.swing.JDialog
         setAlwaysOnTop(true);
         setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         setForeground(java.awt.Color.white);
-        setMaximumSize(new java.awt.Dimension(349, 228));
         setMinimumSize(new java.awt.Dimension(349, 228));
         setUndecorated(true);
         setResizable(false);
@@ -261,27 +260,59 @@ public class frmDialogo extends javax.swing.JDialog
         }
         catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(frmDialogo.class
+            java.util.logging.Logger.getLogger(FormDialogo.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         }
         catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(frmDialogo.class
+            java.util.logging.Logger.getLogger(FormDialogo.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         }
         catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(frmDialogo.class
+            java.util.logging.Logger.getLogger(FormDialogo.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         }
         catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(frmDialogo.class
+            java.util.logging.Logger.getLogger(FormDialogo.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -320,7 +351,7 @@ public class frmDialogo extends javax.swing.JDialog
         {
             public void run()
             {
-                frmDialogo dialog = new frmDialogo(new javax.swing.JFrame(), true, null, 0);
+                FormDialogo dialog = new FormDialogo(new javax.swing.JFrame(), true, null, 0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter()
                 {
                     @Override

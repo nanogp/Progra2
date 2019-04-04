@@ -298,7 +298,7 @@ public class PanelJuego extends javax.swing.JPanel
             if (Main.backend.getContadorFallos() == Main.backend.getMomentoPista()
                     && !Main.backend.isPistaMostrada())
             {
-                frmDialogo pista = new frmDialogo(null, true, Main.backend.getPalabra().getDefinicion(), 0);
+                FormDialogo pista = new FormDialogo(null, true, Main.backend.getPalabra().getDefinicion(), 0);
                 pista.setVisible(true);
 
                 /*
@@ -313,7 +313,7 @@ public class PanelJuego extends javax.swing.JPanel
         }
         catch (GanaPartida ex)
         {
-            frmDialogo ganaste = new frmDialogo(null, true, "F E L I C I T A C I O N E S ! ! !" + "\n"
+            FormDialogo ganaste = new FormDialogo(null, true, "F E L I C I T A C I O N E S ! ! !" + "\n"
                     + "Adivinaste la palabra: "
                     + "\n"
                     + Main.backend.getPalabra().getNombre()
@@ -338,7 +338,7 @@ public class PanelJuego extends javax.swing.JPanel
         }
         catch (PierdePartida ex)
         {
-            frmDialogo perdiste = new frmDialogo(null, true, "La palabra secreta era: " + "\n" + Main.backend.getPalabra().getNombre() + "\n\n" + "PERDISTE!", 2);
+            FormDialogo perdiste = new FormDialogo(null, true, "La palabra secreta era: " + "\n" + Main.backend.getPalabra().getNombre() + "\n\n" + "PERDISTE!", 2);
             perdiste.setVisible(true);
             if (perdiste.isDialogResult)
             {
@@ -368,7 +368,7 @@ public class PanelJuego extends javax.swing.JPanel
         }
         catch (GanaJuego ex)
         {
-            frmDialogo ganaste = new frmDialogo(null,
+            FormDialogo ganaste = new FormDialogo(null,
                     true,
                     "SOS EL PUTO AMO SARASASASA",
                     1);
