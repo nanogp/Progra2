@@ -8,13 +8,13 @@
       <string>Fulano</string>
      </void>
      <void property="partidasJugadas">
-      <int>4</int>
+      <int>6</int>
      </void>
      <void property="puntajeAcumulado">
-      <int>19</int>
+      <int>10</int>
      </void>
      <void property="puntajeUltimo">
-      <int>1</int>
+      <int>2</int>
      </void>
     </object>
    </void>
@@ -24,13 +24,13 @@
       <string>Mengano</string>
      </void>
      <void property="partidasJugadas">
-      <int>16</int>
+      <int>15</int>
      </void>
      <void property="puntajeAcumulado">
-      <int>19</int>
+      <int>15</int>
      </void>
      <void property="puntajeUltimo">
-      <int>3</int>
+      <int>4</int>
      </void>
     </object>
    </void>
@@ -40,10 +40,10 @@
       <string>Sultano</string>
      </void>
      <void property="partidasJugadas">
-      <int>10</int>
+      <int>14</int>
      </void>
      <void property="puntajeAcumulado">
-      <int>13</int>
+      <int>14</int>
      </void>
      <void property="puntajeUltimo">
       <int>2</int>
@@ -56,13 +56,13 @@
       <string>Un-tano</string>
      </void>
      <void property="partidasJugadas">
-      <int>4</int>
+      <int>1</int>
      </void>
      <void property="puntajeAcumulado">
-      <int>19</int>
+      <int>17</int>
      </void>
      <void property="puntajeUltimo">
-      <int>1</int>
+      <int>3</int>
      </void>
     </object>
    </void>
@@ -72,13 +72,13 @@
       <string>Nano</string>
      </void>
      <void property="partidasJugadas">
-      <int>15</int>
+      <int>10</int>
      </void>
      <void property="puntajeAcumulado">
-      <int>49</int>
+      <int>36</int>
      </void>
      <void property="puntajeUltimo">
-      <int>1</int>
+      <int>2</int>
      </void>
     </object>
    </void>
