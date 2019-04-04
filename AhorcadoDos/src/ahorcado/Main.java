@@ -15,7 +15,7 @@ public class Main
 {
     //<editor-fold defaultstate="collapsed" desc="Atributos">
     public static Ahorcado backend;
-    public static forms.FormInicial gui;
+    public static FormInicial gui;
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">
@@ -66,8 +66,8 @@ public class Main
     public static void main(String[] args)
     {
         /*
-        generarDiccionarioDefault(new Diccionario());
-        generarRankingDefault(new Ranking());
+         * generarDiccionarioDefault(new Diccionario());
+         * generarRankingDefault(new Ranking());
          */
 
         backend = new Ahorcado();

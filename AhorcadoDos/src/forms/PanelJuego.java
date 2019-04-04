@@ -1,18 +1,17 @@
 package forms;
 
 import ahorcado.Main;
+import excepciones.GanaJuego;
 import excepciones.GanaPartida;
 import excepciones.PierdePartida;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.TrayIcon;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 public class PanelJuego extends javax.swing.JPanel
 {
@@ -162,7 +161,7 @@ public class PanelJuego extends javax.swing.JPanel
         Container cp = this.panelImagen;
         GridLayout gl = new GridLayout(1, 1);
         cp.setLayout(gl);
-        String archivoImagen = "meme/meme-0" + Integer.toString(Main.backend.getJuego().getContadorFallos() + 1) + ".jpg";
+        String archivoImagen = "meme/meme-0" + Integer.toString(Main.backend.getContadorFallos() + 1) + ".jpg";
         System.out.println("imagen: " + archivoImagen);
         ImageIcon tiros = new ImageIcon(archivoImagen);
         JLabel lblImagen = new JLabel(tiros);
@@ -177,12 +176,12 @@ public class PanelJuego extends javax.swing.JPanel
         }
         Container cp = this.panelPalabra;
         // poner el lenght de la palabra
-        GridLayout gl = new GridLayout(1, Main.backend.getJuego().getPalabra().getTamaño());
+        GridLayout gl = new GridLayout(1, Main.backend.getPalabra().getTamaño());
         gl.setHgap(2);
         gl.setVgap(2);
         cp.setLayout(gl);
         // hacer un vector del largo de la palabra
-        letras = new JLabel[Main.backend.getJuego().getPalabra().getNombre().length()];
+        letras = new JLabel[Main.backend.getPalabra().getNombre().length()];
 
         for (int i = 0; i < letras.length; i++)
         {
@@ -201,7 +200,7 @@ public class PanelJuego extends javax.swing.JPanel
     {
         for (int i = 0; i < letras.length; i++)
         {
-            letras[i].setText(" " + Main.backend.getJuego().getPalabraSecreta().get(i) + " ");
+            letras[i].setText(" " + Main.backend.getPalabraSecreta().get(i) + " ");
         }
     }
 
@@ -218,16 +217,14 @@ public class PanelJuego extends javax.swing.JPanel
         gl.setVgap(2);
         cp.setLayout(gl);
 
-        String letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-
         //centrar iconos
-        for (int i = 0; i < 28; i++)
+        for (int i = 0; i < Main.backend.getAlfabeto().length(); i++)
         {
-            if (i < 27)
+            if (i < Main.backend.getAlfabeto().length() - 1)
             {
                 botones[i] = new JButton();
                 cp.add(botones[i]);
-                botones[i].setText(String.valueOf(letras.charAt(i)));
+                botones[i].setText(String.valueOf(Main.backend.getAlfabeto().charAt(i)));
                 botones[i].setVisible(true);
                 botones[i].setForeground(new Color(0, 0, 0));
                 botones[i].setFont(new Font("Tahoma", 1, 20));
@@ -280,13 +277,14 @@ public class PanelJuego extends javax.swing.JPanel
     {
         JButton evento = (JButton) evt.getSource();
 
-        Main.backend.getJuego().setLetraElegida(evento.getText().charAt(0));
+        Main.backend.setLetraElegida(evento.getText().charAt(0));
 
         //libero el evento
         evento.setEnabled(false);
         evento.setContentAreaFilled(false);
 
-        Main.backend.getJuego().validarLetraElegida();
+        //valida la letra
+        Main.backend.validarLetraElegida();
 
         //muestro letras coincidentes
         actualizarPalabra();
@@ -296,20 +294,23 @@ public class PanelJuego extends javax.swing.JPanel
 
         try
         {
-            Main.backend.getJuego().validarEstadoPartida();
-            if (Main.backend.getJuego().getContadorFallos() == Main.backend.getJuego().getMomentoPista()
-                    && !Main.backend.getJuego().isPistaMostrada())
+            //valida partida
+            Main.backend.validarEstadoPartida();
+
+            if (Main.backend.getContadorFallos() == Main.backend.getMomentoPista()
+                    && !Main.backend.isPistaMostrada())
             {
-                frmDialogo pista = new frmDialogo(null, true, Main.backend.getJuego().getPalabra().getDefinicion(), 0);
+                frmDialogo pista = new frmDialogo(null, true, Main.backend.getPalabra().getDefinicion(), 0);
                 pista.setVisible(true);
 
-                /* JOptionPane.showMessageDialog(null,
-                        Main.backend.getJuego().getPalabra().getDefinicion(),
-                        "PISTA",
-                        TrayIcon.MessageType.WARNING.ordinal()
-                );
+                /*
+                 * JOptionPane.showMessageDialog(null,
+                 * Main.backend.getPalabra().getDefinicion(),
+                 * "PISTA",
+                 * TrayIcon.MessageType.WARNING.ordinal()
+                 * );
                  */
-                Main.backend.getJuego().setPistaMostrada();
+                Main.backend.setPistaMostrada(true);
             }
         }
         catch (GanaPartida ex)
@@ -317,38 +318,42 @@ public class PanelJuego extends javax.swing.JPanel
             frmDialogo ganaste = new frmDialogo(null, true, "F E L I C I T A C I O N E S ! ! !" + "\n"
                     + "Adivinaste la palabra: "
                     + "\n"
-                    + Main.backend.getJuego().getPalabra().getNombre()
+                    + Main.backend.getPalabra().getNombre()
                     + "\n" + "GANASTE LA PALABRA!", 1);
             ganaste.setVisible(true);
             if (ganaste.isDialogResult)
             {
                 limpiarTodo();
             }
-            /*  JOptionPane.showMessageDialog(null,
-                    "F E L I C I T A C I O N E S ! ! !"
-                    + "\n"
-                    + "Adivinaste la palabra: "
-                    + "\n"
-                    + Main.backend.getJuego().getPalabra().getNombre(),
-                    "GANASTE LA PARTIDA!",
-                    TrayIcon.MessageType.INFO.ordinal());*/
+            /*
+             * JOptionPane.showMessageDialog(null,
+             * "F E L I C I T A C I O N E S ! ! !"
+             * + "\n"
+             * + "Adivinaste la palabra: "
+             * + "\n"
+             * + Main.backend.getPalabra().getNombre(),
+             * "GANASTE LA PARTIDA!",
+             * TrayIcon.MessageType.INFO.ordinal());
+             */
 
             //pasar siguiente nivel
         }
         catch (PierdePartida ex)
         {
-            frmDialogo perdiste = new frmDialogo(null, true, "La palabra secreta era: " + "\n" + Main.backend.getJuego().getPalabra().getNombre() + "\n\n" + "PERDISTE!", 2);
+            frmDialogo perdiste = new frmDialogo(null, true, "La palabra secreta era: " + "\n" + Main.backend.getPalabra().getNombre() + "\n\n" + "PERDISTE!", 2);
             perdiste.setVisible(true);
             if (perdiste.isDialogResult)
             {
                 this.setVisible(false);
             }
-            /*  JOptionPane.showMessageDialog(null,
-                    "La palabra secreta era: "
-                    + "\n"
-                    + Main.backend.getJuego().getPalabra().getNombre(),
-                    "PERDISTE!",
-                    TrayIcon.MessageType.ERROR.ordinal());*/
+            /*
+             * JOptionPane.showMessageDialog(null,
+             * "La palabra secreta era: "
+             * + "\n"
+             * + Main.backend.getPalabra().getNombre(),
+             * "PERDISTE!",
+             * TrayIcon.MessageType.ERROR.ordinal());
+             */
             //volver a inicio
         }
 
@@ -356,10 +361,20 @@ public class PanelJuego extends javax.swing.JPanel
 
     void limpiarTodo()
     {
-       //ALGO Q GENERE UNA NUEVA PALABRA
-        iniciarTeclado();
-        actualizarImagen();
-        iniciarPalabra();
+        try
+        {
+            Main.backend.nuevaPartida();
+            iniciarTeclado();
+            actualizarImagen();
+            iniciarPalabra();
+        }
+        catch (GanaJuego ex)
+        {
+            frmDialogo ganaste = new frmDialogo(null,
+                    true,
+                    "SOS EL PUTO AMO SARASASASA",
+                    1);
+        }
 
     }
 

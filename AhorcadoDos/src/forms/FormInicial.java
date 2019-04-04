@@ -1,8 +1,8 @@
 package forms;
 
+import ahorcado.Main;
 import enumerados.Dificultad;
 import excepciones.GanaJuego;
-import ahorcado.Main;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ComponentEvent;
@@ -303,7 +303,7 @@ public class FormInicial extends javax.swing.JFrame
             Main.backend.nuevoJuego(Main.backend.getUsuario(), Main.backend.getDificultad());
 
             //mostrar palabra para debug
-            System.out.println(Main.backend.getJuego().getPalabra());
+            System.out.println(Main.backend.getPalabra());
 
             //panel de la partida
             empezarJuego();
