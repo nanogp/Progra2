@@ -1,12 +1,9 @@
 package ahorcado;
 
-import enumerados.Dificultad;
-import clases.Diccionario;
-import clases.ListaDePalabras;
-import clases.Partida;
-import clases.Usuario;
-import clases.Ranking;
-import excepciones.GanaJuego;
+import enumerados.*;
+import clases.*;
+import excepciones.*;
+import java.util.ArrayList;
 
 public class Ahorcado
 {
@@ -15,13 +12,17 @@ public class Ahorcado
     private Diccionario diccionario;
     private ListaDePalabras palabrasEnJuego;
     private Ranking ranking;
-    private Partida partida;
     private Usuario usuario;
     private boolean usuarioExistia;
-    private int contadorPartidas;
-    private int puntajeActual;
-    private int puntajeAcumulado;
     private Dificultad dificultad;
+    protected Palabra palabra;
+    protected boolean pistaMostrada;
+    protected int contadorFallos;
+    protected int contadorAciertos;
+    private final String alfabeto;
+    protected ArrayList<Character> palabraSecreta;
+    protected ArrayList<Character> letrasUsadas;
+    protected char letraElegida;
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Constructores">
@@ -34,11 +35,11 @@ public class Ahorcado
         this.ranking = Ranking.leerDeXml(ranking.getNombreArchivo());
 
         this.usuario = new Usuario();
-
         this.getUsuario().setNombre("Anonimo");
-        this.contadorPartidas = 0;
-        this.puntajeActual = 0;
-        this.puntajeAcumulado = 0;
+
+        this.palabraSecreta = new ArrayList<>();
+        this.letrasUsadas = new ArrayList<>();
+        this.alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
     }
 
     //</editor-fold>
@@ -73,16 +74,6 @@ public class Ahorcado
         this.ranking = ranking;
     }
 
-    public Partida getJuego()
-    {
-        return partida;
-    }
-
-    public void setJuego(Partida juego)
-    {
-        this.partida = juego;
-    }
-
     public Usuario getUsuario()
     {
         return usuario;
@@ -98,44 +89,9 @@ public class Ahorcado
         return usuarioExistia;
     }
 
-    public void setUsuarioExistia(boolean usuarioExistia)
+    public void isUsuarioExistia(boolean usuarioExistia)
     {
         this.usuarioExistia = usuarioExistia;
-    }
-
-    public int getContadorPartidas()
-    {
-        return contadorPartidas;
-    }
-
-    public void setContadorPartidas(int contadorPartidas)
-    {
-        this.contadorPartidas = contadorPartidas;
-    }
-
-    public void addContadorPartidas()
-    {
-        this.contadorPartidas++;
-    }
-
-    public int getPuntajeActual()
-    {
-        return puntajeActual;
-    }
-
-    public void setPuntajeActual(int puntajeActual)
-    {
-        this.puntajeActual = puntajeActual;
-    }
-
-    public int getPuntajeAcumulado()
-    {
-        return puntajeAcumulado;
-    }
-
-    public void setPuntajeAcumulado(int puntajeAcumulado)
-    {
-        this.puntajeAcumulado = puntajeAcumulado;
     }
 
     public Dificultad getDificultad()
@@ -148,23 +104,125 @@ public class Ahorcado
         this.dificultad = dificultad;
     }
 
+    public Palabra getPalabra()
+    {
+        return palabra;
+    }
+
+    public void setPalabra(Palabra palabra)
+    {
+        this.palabra = palabra;
+    }
+
+    public int getMaxFallos()
+    {
+        return Dificultad.getMaxFallos(getDificultad());
+    }
+
+    public int getMomentoPista()
+    {
+        return Dificultad.getMomentoPista(getDificultad());
+    }
+
+    public boolean isPistaMostrada()
+    {
+        return pistaMostrada;
+    }
+
+    public void setPistaMostrada(boolean b)
+    {
+        this.pistaMostrada = b;
+    }
+
+    public int getValorPuntos()
+    {
+        return Dificultad.getValorPuntos(getDificultad());
+    }
+
+    public int getContadorFallos()
+    {
+        return contadorFallos;
+    }
+
+    public void setContadorFallos(int contadorFallos)
+    {
+        this.contadorFallos = contadorFallos;
+    }
+
+    public void addContadorFallos()
+    {
+        this.contadorFallos++;
+    }
+
+    public int getContadorAciertos()
+    {
+        return contadorAciertos;
+    }
+
+    public void setContadorAciertos(int contadorAciertos)
+    {
+        this.contadorAciertos = contadorAciertos;
+    }
+
+    public void addContadorAciertos()
+    {
+        this.contadorAciertos++;
+    }
+
+    public ArrayList<Character> getPalabraSecreta()
+    {
+        return palabraSecreta;
+    }
+
+    private void setPalabraSecreta()
+    {
+        if (this.palabraSecreta == null)
+        {
+            this.palabraSecreta = new ArrayList<>();
+        }
+        else
+        {
+            this.palabraSecreta.clear();
+        }
+
+        for (char c : getPalabra().getNombre().toCharArray())
+        {
+            this.palabraSecreta.add('*');
+        }
+    }
+
+    public char getLetraElegida()
+    {
+        return letraElegida;
+    }
+
+    public void setLetraElegida(char letraElegida)
+    {
+        this.letraElegida = letraElegida;
+    }
+
+    public String getAlfabeto()
+    {
+        return alfabeto;
+    }
+
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">
     public void nuevoJuego(Usuario nuevoJugador, Dificultad dificultad) throws GanaJuego
     {
         if (getRanking().getListaDeUsuarios().contains(nuevoJugador))
         {
-            setUsuarioExistia(true);
+            isUsuarioExistia(true);
             setUsuario(getRanking().getListaDeUsuarios().get(getRanking().getListaDeUsuarios().indexOf(nuevoJugador)));
         }
         else
         {
-            setUsuarioExistia(false);
+            isUsuarioExistia(false);
             getRanking().getListaDeUsuarios().addLast(nuevoJugador);
             setUsuario(getRanking().getListaDeUsuarios().getLast());
         }
 
-        //setear dificultad
+        //setear variables para el juego
         setDificultad(dificultad);
 
         //obtener lista de palabras acorde a dificultad
@@ -176,6 +234,10 @@ public class Ahorcado
 
     public void nuevaPartida() throws GanaJuego
     {
+        System.out.println("usuario:" + getUsuario().getNombre());
+        System.out.println("partidas jugadas: " + getUsuario().getPartidasJugadas());
+        System.out.println("puntaje ultimo:" + getUsuario().getPuntajeUltimo());
+        System.out.println("puntaje acumulado:" + getUsuario().getPuntajeAcumulado());
 
         //verificar si quedan mas palabras
         if (getPalabrasEnJuego().isEmpty())
@@ -184,12 +246,72 @@ public class Ahorcado
             setDificultad(getDificultad().levelUp());
         }
 
-        addContadorPartidas();
+        /**
+         * getUsuario().addPartidasJugadas();
+         * cuento las partidas del usuario solo cuando las termina
+         * en actualizarEstadisticaUsuario();
+         */
+        //resetear variables
+        setContadorFallos(0);
+        setContadorAciertos(0);
+        setPistaMostrada(false);
 
-        //crear parida nueva
-        partida = new Partida(getDificultad(), getUsuario(), getPalabrasEnJuego().popRandom());
+        //elegir palabra nueva
+        setPalabra(getPalabrasEnJuego().popRandom());
+        System.out.println("Palabra a adivinar:" + getPalabra());
+        setPalabraSecreta();
 
     }
+
+    public void validarLetraElegida()
+    {
+        boolean noHayCoincidencia = true;
+
+        System.out.println("Letra elegida:" + getLetraElegida());
+
+        letrasUsadas.add(getLetraElegida());
+
+        for (int i = 0; i < palabra.getNombre().length(); i++)
+        {
+            if (palabra.getNombre().charAt(i) == getLetraElegida())
+            {
+                palabraSecreta.set(i, getLetraElegida());
+                noHayCoincidencia = false;
+                addContadorAciertos();
+            }
+        }
+
+        if (noHayCoincidencia)
+        {
+            addContadorFallos();
+        }
+
+        System.out.println("Palabra secreta:" + getPalabraSecreta().toString());
+        System.out.println("Contador aciertos:" + getContadorAciertos());
+        System.out.println("Contador fallos:" + getContadorFallos());
+    }
+
+    public void validarEstadoPartida() throws GanaPartida, PierdePartida
+    {
+        if (getContadorAciertos() == getPalabra().getNombre().length())
+        {
+            actualizarEstadisticaUsuario();
+            throw new GanaPartida();
+        }
+        else if (getContadorFallos() == getMaxFallos())
+        {
+            actualizarEstadisticaUsuario();
+            throw new PierdePartida();
+        }
+
+    }
+
+    public void actualizarEstadisticaUsuario()
+    {
+        getUsuario().addPuntaje(getValorPuntos());
+        getUsuario().addPuntajeUltimo(getValorPuntos());
+        getUsuario().addPartidasJugadas();
+    } //</editor-fold>
 
     //</editor-fold>
 }

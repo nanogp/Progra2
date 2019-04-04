@@ -1,8 +1,9 @@
 package forms;
 
+import ahorcado.Main;
 import enumerados.Dificultad;
 import excepciones.GanaJuego;
-import ahorcado.Main;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ComponentEvent;
@@ -13,6 +14,7 @@ import javax.swing.JOptionPane;
 
 public class FormInicial extends javax.swing.JFrame
 {
+
     //<editor-fold defaultstate="collapsed" desc="Autogenerado">
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,6 +34,9 @@ public class FormInicial extends javax.swing.JFrame
         jpGameplay = new javax.swing.JPanel();
         jpUsuario = new javax.swing.JPanel();
         jpRank = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        btnOK = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         mnMenu = new javax.swing.JMenu();
         mnItemNuevo = new javax.swing.JMenuItem();
@@ -126,7 +131,7 @@ public class FormInicial extends javax.swing.JFrame
                     .addGroup(jpInicioLayout.createSequentialGroup()
                         .addGap(139, 139, 139)
                         .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         jpInicioLayout.setVerticalGroup(
             jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,6 +148,7 @@ public class FormInicial extends javax.swing.JFrame
 
         jpGameplay.setAlignmentX(0.0F);
         jpGameplay.setAlignmentY(0.0F);
+        jpGameplay.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
         jpGameplay.setMaximumSize(null);
         jpGameplay.setOpaque(false);
         jpGameplay.setPreferredSize(new java.awt.Dimension(800, 600));
@@ -174,15 +180,41 @@ public class FormInicial extends javax.swing.JFrame
         jpRank.setMaximumSize(null);
         jpRank.setOpaque(false);
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setOpaque(false);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        btnOK.setText("OK");
+        btnOK.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnOKActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpRankLayout = new javax.swing.GroupLayout(jpRank);
         jpRank.setLayout(jpRankLayout);
         jpRankLayout.setHorizontalGroup(
             jpRankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpRankLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+            .addGroup(jpRankLayout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpRankLayout.setVerticalGroup(
             jpRankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
+            .addGroup(jpRankLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnOK)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         mnMenu.setMnemonic('J');
@@ -289,7 +321,10 @@ public class FormInicial extends javax.swing.JFrame
 
     private void mnItemRankActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mnItemRankActionPerformed
     {//GEN-HEADEREND:event_mnItemRankActionPerformed
-        FormRanking rank = new FormRanking(this, true);
+        jpInicio.setVisible(false);
+        jpGameplay.setVisible(false);
+        jpUsuario.setVisible(false);
+        lanzarRanking();
     }//GEN-LAST:event_mnItemRankActionPerformed
 
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnJugarActionPerformed
@@ -303,7 +338,7 @@ public class FormInicial extends javax.swing.JFrame
             Main.backend.nuevoJuego(Main.backend.getUsuario(), Main.backend.getDificultad());
 
             //mostrar palabra para debug
-            System.out.println(Main.backend.getJuego().getPalabra());
+            System.out.println(Main.backend.getPalabra());
 
             //panel de la partida
             empezarJuego();
@@ -312,6 +347,7 @@ public class FormInicial extends javax.swing.JFrame
         {
             //pedirUsuario();
             JOptionPane.showMessageDialog(null, "GANASTE");
+
         }
 
     }//GEN-LAST:event_btnJugarActionPerformed
@@ -364,12 +400,20 @@ public class FormInicial extends javax.swing.JFrame
 
     }//GEN-LAST:event_btnFacilActionPerformed
 
+    private void btnOKActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnOKActionPerformed
+    {//GEN-HEADEREND:event_btnOKActionPerformed
+        this.jpRank.setVisible(false);
+    }//GEN-LAST:event_btnOKActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnDificil;
     private javax.swing.JToggleButton btnFacil;
     private javax.swing.JButton btnJugar;
     private javax.swing.JToggleButton btnNormal;
+    private javax.swing.JButton btnOK;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JPanel jpGameplay;
     private javax.swing.JPanel jpInicio;
     private javax.swing.JPanel jpRank;
@@ -394,6 +438,7 @@ public class FormInicial extends javax.swing.JFrame
         this.setContentPane(new JLabel(new ImageIcon("fondo-01.png")));
         initComponents();
         btnJugar.setEnabled(false);
+        this.jpRank.setVisible(false);
         //   contenedor = new Container();
         listenerVolverAInicio = new ComponentListener()
         {
@@ -418,10 +463,10 @@ public class FormInicial extends javax.swing.JFrame
             @Override
             public void componentHidden(ComponentEvent e)
             {
-                jpInicio.setVisible(true);
+                jpInicio.setVisible(false);
                 jpGameplay.setVisible(false);
                 jpUsuario.setVisible(false);
-                jpRank.setVisible(false);
+                lanzarRanking();
             }
 
         };
@@ -504,7 +549,51 @@ public class FormInicial extends javax.swing.JFrame
 
         contenedor.add(jugar);
 
-        //    this.jugar.limpiarJuego();
+    }
+
+    private void lanzarRanking()
+    {
+
+        jScrollPane1.setBackground(new Color(0, 0, 0));
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+
+        this.jpRank.addComponentListener(new ComponentListener()
+        {
+            @Override
+            public void componentResized(ComponentEvent e)
+            {
+                //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void componentMoved(ComponentEvent e)
+            {
+                //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void componentShown(ComponentEvent e)
+            {
+                // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void componentHidden(ComponentEvent e)
+            {
+                jpInicio.setVisible(true);
+                jpGameplay.setVisible(false);
+                jpUsuario.setVisible(false);
+                jpRank.setVisible(false);
+            }
+        });
+
+        jTextArea1.setFont(new java.awt.Font("Impact", 0, 25));
+        jTextArea1.setForeground(Color.white);
+        jTextArea1.setText(Main.backend.getRanking().toString());
+        this.setLocationRelativeTo(null);
+        this.jpRank.setVisible(true);
+
     }
 
     //</editor-fold>

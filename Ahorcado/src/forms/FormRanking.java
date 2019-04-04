@@ -78,10 +78,7 @@ public class FormRanking extends javax.swing.JDialog
     {
         super(parent, modal);
         initComponents();
-        jTextArea1.setFont(new java.awt.Font("Courier new", 1, 14));
-        jTextArea1.setText(Main.backend.getRanking().toString());
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
+  
 
     }
     //</editor-fold>
