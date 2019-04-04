@@ -297,61 +297,35 @@ public class PanelJuego extends javax.swing.JPanel
             if (Main.backend.getContadorFallos() == Main.backend.getMomentoPista()
                     && !Main.backend.isPistaMostrada())
             {
-                FormDialogo pista = new FormDialogo(null, true, Main.backend.getPalabra().getDefinicion(), 0);
+                FormDialogo pista = new FormDialogo(null,
+                        true,
+                        Main.backend.getPalabra().getDefinicion(),
+                        FormDialogo.TipoRespuesta.Pista);
                 pista.setVisible(true);
 
-                /*
-                 * JOptionPane.showMessageDialog(null,
-                 * Main.backend.getPalabra().getDefinicion(),
-                 * "PISTA",
-                 * TrayIcon.MessageType.WARNING.ordinal()
-                 * );
-                 */
                 Main.backend.setPistaMostrada(true);
             }
         }
         catch (GanaPartida ex)
         {
-            FormDialogo ganaste = new FormDialogo(null, true, "F E L I C I T A C I O N E S ! ! !" + "\n"
-                    + "Adivinaste la palabra: "
-                    + "\n"
-                    + Main.backend.getPalabra().getNombre(),
-                     1);
+            FormDialogo ganaste = new FormDialogo(null, true, "F E L I C I T A C I O N E S ! ! !" + "\n" + "Adivinaste la palabra: " + "\n" + Main.backend.getPalabra().getNombre(), FormDialogo.TipoRespuesta.GanaPartida);
             ganaste.setVisible(true);
             if (ganaste.isDialogResult)
             {
+                //pasar siguiente nivel
                 limpiarTodo();
             }
-            /*
-             * JOptionPane.showMessageDialog(null,
-             * "F E L I C I T A C I O N E S ! ! !"
-             * + "\n"
-             * + "Adivinaste la palabra: "
-             * + "\n"
-             * + Main.backend.getPalabra().getNombre(),
-             * "GANASTE LA PARTIDA!",
-             * TrayIcon.MessageType.INFO.ordinal());
-             */
-
-            //pasar siguiente nivel
         }
         catch (PierdePartida ex)
         {
-            FormDialogo perdiste = new FormDialogo(null, true, "La palabra secreta era: " + "\n" + Main.backend.getPalabra().getNombre() + "\n\n" + "PERDISTE!", 2);
+            FormDialogo perdiste = new FormDialogo(null, true, "La palabra secreta era: " + "\n" + Main.backend.getPalabra().getNombre() + "\n\n" + "PERDISTE!", FormDialogo.TipoRespuesta.PierdePartida);
             perdiste.setVisible(true);
             if (perdiste.isDialogResult)
             {
+                //volver a inicio
                 this.setVisible(false);
             }
-            /*
-             * JOptionPane.showMessageDialog(null,
-             * "La palabra secreta era: "
-             * + "\n"
-             * + Main.backend.getPalabra().getNombre(),
-             * "PERDISTE!",
-             * TrayIcon.MessageType.ERROR.ordinal());
-             */
-            //volver a inicio
+
         }
 
     }
@@ -367,10 +341,7 @@ public class PanelJuego extends javax.swing.JPanel
         }
         catch (GanaJuego ex)
         {
-            FormDialogo ganaste = new FormDialogo(null,
-                    true,
-                    "SOS EL PUTO AMO SARASASASA",
-                    1);
+            FormDialogo ganaste = new FormDialogo(null, true, "SOS EL PUTO AMO SARASASASA", FormDialogo.TipoRespuesta.GanaJuego);
         }
 
     }

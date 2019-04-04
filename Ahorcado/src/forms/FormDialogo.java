@@ -181,9 +181,14 @@ public class FormDialogo extends javax.swing.JDialog
     public boolean isDialogResult = false;
     private String nombreUsuario;
 
+    public enum TipoRespuesta
+    {
+        Pista, GanaPartida, PierdePartida, GanaJuego;
+    }
+
     // </editor-fold>
     //<editor-fold desc="Constructores">
-    public FormDialogo(java.awt.Frame parent, boolean modal, String texto, int tipoRespuesta)
+    public FormDialogo(java.awt.Frame parent, boolean modal, String texto, TipoRespuesta tipoRespuesta)
     {
         super(parent, modal);
         this.setContentPane(new JLabel(new ImageIcon("dialogo-12.png")));
@@ -291,7 +296,7 @@ public class FormDialogo extends javax.swing.JDialog
         {
             public void run()
             {
-                FormDialogo dialog = new FormDialogo(new javax.swing.JFrame(), true, null, 0);
+                FormDialogo dialog = new FormDialogo(new javax.swing.JFrame(), true, null, TipoRespuesta.Pista);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter()
                 {
                     @Override
@@ -305,7 +310,7 @@ public class FormDialogo extends javax.swing.JDialog
         });
     }
 
-    private void reaccionesConDialogo(int tipoRespuesta, String texto)
+    private void reaccionesConDialogo(TipoRespuesta tipoRespuesta, String texto)
     {
         this.txtMsj.setText(texto.toUpperCase());//TEXTO QUE VA A DECIR
         this.txtMsj.setOpaque(false);
@@ -318,21 +323,20 @@ public class FormDialogo extends javax.swing.JDialog
 
         switch (tipoRespuesta)
         {
-            case 0:
+            case Pista:
                 this.lblReaccion.setIcon(new ImageIcon("108x76_05.jpg"));
-                this.txtNombre.setVisible(false);//algo algoo PISTA
+                this.txtNombre.setVisible(false);
                 this.setNombreUsuario("invitado");
                 break;
-            case 1:
-                //GANASTE LA PALABRA
-                this.txtNombre.setVisible(false);//algo algoo PISTA
+            case GanaPartida:
+                this.txtNombre.setVisible(false);
                 this.lblReaccion.setIcon(new ImageIcon("108x76_15.jpg"));
                 break;
-            case 2:  //algo algoo PERDISTE
+            case PierdePartida:
                 this.txtNombre.setVisible(true);
                 this.lblReaccion.setIcon(new ImageIcon("108x76_06.jpg"));
                 break;
-            case 3: //GANASTE EL JUEGO
+            case GanaJuego:
                 this.txtNombre.setVisible(true);
                 this.lblReaccion.setIcon(new ImageIcon("108x76_15.jpg"));
                 break;
