@@ -149,10 +149,7 @@ public class FormDialogo extends javax.swing.JDialog
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAceptarActionPerformed
     {//GEN-HEADEREND:event_btnAceptarActionPerformed
-        if (this.getNombreUsuario() == Main.backend.getUsuarioDefault())
-        {
-            Main.backend.getUsuario().setNombre(this.txtNombre.getText());
-        }
+        Main.backend.getUsuario().setNombre(this.txtNombre.getText());
         this.isDialogResult = true;
         this.setVisible(false);
     }//GEN-LAST:event_btnAceptarActionPerformed
@@ -179,11 +176,10 @@ public class FormDialogo extends javax.swing.JDialog
    // </editor-fold>
     //<editor-fold desc="Atributos">
     public boolean isDialogResult = false;
-    private String nombreUsuario;
 
     public enum TipoRespuesta
     {
-        Pista, GanaPartida, PierdePartida, GanaJuego;
+        Pista, GanaPartida, PierdePartidaSinPuntos, PierdePartidaConPuntos, SubeNivel, GanaJuego;
     }
 
     // </editor-fold>
@@ -194,43 +190,29 @@ public class FormDialogo extends javax.swing.JDialog
         this.setContentPane(new JLabel(new ImageIcon("dialogo-12.png")));
         initComponents();
         reaccionesConDialogo(tipoRespuesta, texto);
-        if (Main.backend.getUsuario().getPuntajeUltimo() > 0)
+
+        //pide ingresar nombre
+        this.txtNombre.setText("Ingresá tu nombre");
+
+        this.txtNombre.addFocusListener(new FocusListener()
         {
-            this.txtNombre.setText("Ingresá tu nombre");
-            this.txtNombre.addFocusListener(new FocusListener()
+            @Override
+            public void focusGained(FocusEvent e)
             {
-                @Override
-                public void focusGained(FocusEvent e)
-                {
-                    txtNombre.setText("");
-                }
+                txtNombre.setText("");
+            }
 
-                @Override
-                public void focusLost(FocusEvent e)
-                {
-                    // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                }
-            });
-        }
-        else
-        {
-            this.txtNombre.setVisible(false);
+            @Override
+            public void focusLost(FocusEvent e)
+            {
+                // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
 
-        }
     }
 
     // </editor-fold>    
     //<editor-fold desc="GetSet">
-    public String getNombreUsuario()
-    {
-        return nombreUsuario;
-    }
-
-    public void setNombreUsuario(String nombreUsuario)
-    {
-        this.nombreUsuario = nombreUsuario;
-    }
-
     public boolean isIsDialogResult()
     {
         return isDialogResult;
@@ -324,23 +306,29 @@ public class FormDialogo extends javax.swing.JDialog
         switch (tipoRespuesta)
         {
             case Pista:
-                this.lblReaccion.setIcon(new ImageIcon("108x76_05.jpg"));
                 this.txtNombre.setVisible(false);
-                this.setNombreUsuario("invitado");
+                this.lblReaccion.setIcon(new ImageIcon("108x76_05.jpg"));
                 break;
             case GanaPartida:
                 this.txtNombre.setVisible(false);
                 this.lblReaccion.setIcon(new ImageIcon("108x76_15.jpg"));
                 break;
-            case PierdePartida:
+            case PierdePartidaConPuntos:
                 this.txtNombre.setVisible(true);
                 this.lblReaccion.setIcon(new ImageIcon("108x76_06.jpg"));
+                break;
+            case PierdePartidaSinPuntos:
+                this.txtNombre.setVisible(false);
+                this.lblReaccion.setIcon(new ImageIcon("108x76_06.jpg"));
+                break;
+            case SubeNivel:
+                this.txtNombre.setVisible(false);
+                this.lblReaccion.setIcon(new ImageIcon("108x76_15.jpg"));
                 break;
             case GanaJuego:
                 this.txtNombre.setVisible(true);
                 this.lblReaccion.setIcon(new ImageIcon("108x76_15.jpg"));
                 break;
-
         }
 
     }

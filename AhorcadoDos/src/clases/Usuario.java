@@ -100,9 +100,9 @@ public class Usuario implements Comparable<Usuario>, Comparator<Usuario>
         addPuntajeAcumulado(puntaje);
     }
 
-    public void addPartidasJugadas()
+    public void addPartidasJugadas(int partidas)
     {
-        setPartidasJugadas(getPartidasJugadas() + 1);
+        setPartidasJugadas(getPartidasJugadas() + partidas);
     }
 
     @Override
@@ -111,8 +111,8 @@ public class Usuario implements Comparable<Usuario>, Comparator<Usuario>
         return Cadena.encolumnarAlinearTexto(" | ",
                 this.getNombre(), 20, Cadena.ALINEA_IZQ,
                 this.getPuntajeAcumulado(), 10, Cadena.ALINEA_MED,
-                this.getPuntajeUltimo(), 10, Cadena.ALINEA_MED,
-                Integer.toString(this.getPartidasJugadas()), 1, Cadena.ALINEA_MED);
+                this.getPuntajeUltimo(), 14, Cadena.ALINEA_MED,
+                Integer.toString(this.getPartidasJugadas()), 16, Cadena.ALINEA_MED);
     }
 
     public int compareByPuntajeTo(Usuario u)

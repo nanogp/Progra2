@@ -21,7 +21,8 @@ public enum Dificultad
     //definir maximo intentos fallidos
     private static final int[] fallos =
     {
-        10, 7, 5
+        1, 1, 1
+    /*10, 7, 5*/
     };
 
     //</editor-fold>

@@ -16,9 +16,7 @@ public class Ahorcado
     private boolean usuarioExistia;
     private Dificultad dificultad;
     private final String alfabeto;
-    private String usuarioDefault;
-    private final boolean ganaPartida;
-    private final boolean pierdePartida;
+    private String nombreUsuarioDefault;
     protected Palabra palabra;
     protected boolean pistaMostrada;
     protected int contadorFallos;
@@ -26,26 +24,28 @@ public class Ahorcado
     protected ArrayList<Character> palabraSecreta;
     protected ArrayList<Character> letrasUsadas;
     protected char letraElegida;
+    public final boolean ganaPartida;
+    public final boolean pierdePartida;
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Constructores">
     public Ahorcado()
     {
+        this.alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+        this.nombreUsuarioDefault = "Anonimo";
+        this.ganaPartida = true;
+        this.pierdePartida = false;
+
         this.diccionario = new Diccionario();
         this.diccionario = Diccionario.leerDeXml(diccionario.getNombreArchivo());
 
         this.ranking = new Ranking();
         this.ranking = Ranking.leerDeXml(ranking.getNombreArchivo());
 
-        this.usuario = new Usuario();
-        this.getUsuario().setNombre("Anonimo");
+        this.usuario = new Usuario(getNombreUsuarioDefault());
 
         this.palabraSecreta = new ArrayList<>();
         this.letrasUsadas = new ArrayList<>();
-        this.alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-        this.usuarioDefault = "Anonimo";
-        this.ganaPartida = true;
-        this.pierdePartida = false;
     }
 
     //</editor-fold>
@@ -218,20 +218,23 @@ public class Ahorcado
         return alfabeto;
     }
 
-    public String getUsuarioDefault()
+    public String getNombreUsuarioDefault()
     {
-        return usuarioDefault;
+        return nombreUsuarioDefault;
     }
 
     public void setUsuarioDefault(String usuarioDefault)
     {
-        this.usuarioDefault = usuarioDefault;
+        this.nombreUsuarioDefault = usuarioDefault;
     }
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">
     public void nuevoJuego() throws GanaJuego
     {
+
+        //setear usuario por default
+        setUsuario(new Usuario(getNombreUsuarioDefault()));
 
         //setear variables para el juego
         setDificultad(dificultad);
@@ -321,9 +324,9 @@ public class Ahorcado
 
     public void actualizarEstadisticaUsuario(boolean b)
     {
-        getUsuario().addPartidasJugadas();
+        getUsuario().addPartidasJugadas(1);
 
-        if (ganaPartida)
+        if (b == ganaPartida)
         {
             getUsuario().addPuntaje(getValorPuntos());
         }
@@ -336,36 +339,33 @@ public class Ahorcado
 
     public void actualizarRanking()
     {
+
+        System.out.println("getUsuario().toString()");
+        System.out.println(getUsuario().toString());
+        System.out.println("!getRanking().getListaDeUsuarios().contains(getUsuario())");
+        System.out.println(!getRanking().getListaDeUsuarios().contains(getUsuario()));
+
         //ver si ya existe el usuario en el ranking
         if (getRanking().getListaDeUsuarios().contains(getUsuario()))
         {
-            //copiar usuario en juego y acumular estadisticas en existente
-            Usuario copiaUsuarioEnJuego = new Usuario(getUsuario());
+            //tomar usuario del ranking
+            Usuario aux = getRanking().getListaDeUsuarios().get(getRanking().getListaDeUsuarios().indexOf(getUsuario()));
 
-            //setear usuario actual con el ranking
-            setUsuario(getRanking().getListaDeUsuarios().get(getRanking().getListaDeUsuarios().indexOf(getUsuario())));
-
-            //copiar el ultimo puntaje
-            getUsuario().setPuntajeUltimo(copiaUsuarioEnJuego.getPuntajeUltimo());
-
-            //sumar puntaje acumulado
-            getUsuario().setPuntajeAcumulado(getUsuario().getPuntajeAcumulado() + copiaUsuarioEnJuego.getPuntajeAcumulado());
-
-            //sumar partidas
-            getUsuario().setPartidasJugadas(getUsuario().getPartidasJugadas() + copiaUsuarioEnJuego.getPartidasJugadas());
-
+            //actualizar stats
+            aux.addPartidasJugadas(getUsuario().getPartidasJugadas());
+            aux.addPuntajeAcumulado(getUsuario().getPuntajeAcumulado());
+            aux.setPuntajeUltimo(getUsuario().getPuntajeUltimo());
         }
         else
         {
             //agregar al ranking
             getRanking().getListaDeUsuarios().addLast(getUsuario());
 
-            //tomar usuario del ranking
-            setUsuario(getRanking().getListaDeUsuarios().getLast());
         }
 
         //actualizar archivo ranking
         Main.backend.getRanking().guardarEnXml();
+
     }
 
     //</editor-fold>

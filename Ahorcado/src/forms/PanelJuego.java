@@ -297,10 +297,7 @@ public class PanelJuego extends javax.swing.JPanel
             if (Main.backend.getContadorFallos() == Main.backend.getMomentoPista()
                     && !Main.backend.isPistaMostrada())
             {
-                FormDialogo pista = new FormDialogo(null,
-                        true,
-                        Main.backend.getPalabra().getDefinicion(),
-                        FormDialogo.TipoRespuesta.Pista);
+                FormDialogo pista = new FormDialogo(null, true, Main.backend.getPalabra().getDefinicion(), FormDialogo.TipoRespuesta.Pista);
                 pista.setVisible(true);
 
                 Main.backend.setPistaMostrada(true);
@@ -318,7 +315,7 @@ public class PanelJuego extends javax.swing.JPanel
         }
         catch (PierdePartida ex)
         {
-            FormDialogo perdiste = new FormDialogo(null, true, "La palabra secreta era: " + "\n" + Main.backend.getPalabra().getNombre() + "\n\n" + "PERDISTE!", FormDialogo.TipoRespuesta.PierdePartida);
+            FormDialogo perdiste = new FormDialogo(null, true, "La palabra secreta era: " + "\n" + Main.backend.getPalabra().getNombre() + "\n\n" + "PERDISTE!", (Main.backend.getUsuario().getPuntajeUltimo() > 0) ? FormDialogo.TipoRespuesta.PierdePartidaConPuntos : FormDialogo.TipoRespuesta.PierdePartidaSinPuntos);
             perdiste.setVisible(true);
             if (perdiste.isDialogResult)
             {
@@ -334,6 +331,7 @@ public class PanelJuego extends javax.swing.JPanel
     {
         try
         {
+            System.out.println("Main.backend.nuevaPartida()");
             Main.backend.nuevaPartida();
             iniciarTeclado();
             actualizarImagen();
