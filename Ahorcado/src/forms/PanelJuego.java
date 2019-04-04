@@ -315,8 +315,8 @@ public class PanelJuego extends javax.swing.JPanel
             FormDialogo ganaste = new FormDialogo(null, true, "F E L I C I T A C I O N E S ! ! !" + "\n"
                     + "Adivinaste la palabra: "
                     + "\n"
-                    + Main.backend.getPalabra().getNombre()
-                    + "\n" + "GANASTE LA PALABRA!", 1);
+                    + Main.backend.getPalabra().getNombre(),
+                     1);
             ganaste.setVisible(true);
             if (ganaste.isDialogResult)
             {

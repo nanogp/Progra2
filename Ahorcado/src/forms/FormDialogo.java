@@ -1,5 +1,6 @@
 package forms;
 
+import ahorcado.Main;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -7,40 +8,9 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-/**
- *
- * @author capacita_mecon
- */
 public class FormDialogo extends javax.swing.JDialog
 {
-
-    public boolean isDialogResult = false;
-
-    private String nombreUsuario;
-
-    public FormDialogo(java.awt.Frame parent, boolean modal, String texto, int tipoRespuesta)
-    {
-        super(parent, modal);
-        this.setContentPane(new JLabel(new ImageIcon("dialogo-12.png")));
-        initComponents();
-        reaccionesConDialogo(tipoRespuesta, texto);
-        this.txtNombre.setText("Ingrese su nombre");
-        this.txtNombre.addFocusListener(new FocusListener()
-        {
-            @Override
-            public void focusGained(FocusEvent e)
-            {
-                txtNombre.setText("");
-            }
-
-            @Override
-            public void focusLost(FocusEvent e)
-            {
-                // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        });
-
-    }
+    //<editor-fold desc="Autogenerado">
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -179,9 +149,9 @@ public class FormDialogo extends javax.swing.JDialog
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAceptarActionPerformed
     {//GEN-HEADEREND:event_btnAceptarActionPerformed
-        if (this.getNombreUsuario() == "invitado")
+        if (this.getNombreUsuario() == Main.backend.getUsuarioDefault())
         {
-            this.setNombreUsuario(this.txtNombre.getText());
+            Main.backend.getUsuario().setNombre(this.txtNombre.getText());
         }
         this.isDialogResult = true;
         this.setVisible(false);
@@ -197,45 +167,77 @@ public class FormDialogo extends javax.swing.JDialog
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
-    /**
-     *
-     */
-    private void reaccionesConDialogo(int tipoRespuesta, String texto)
-    {
-        this.txtMsj.setText(texto.toUpperCase());//TEXTO QUE VA A DECIR
-        this.txtMsj.setOpaque(false);
-        scrollDialogo.setBackground(new Color(0, 0, 0));
-        scrollDialogo.setOpaque(false);
-        scrollDialogo.getViewport().setOpaque(false);
-        this.btnAceptar.setIcon(new ImageIcon("botones-13.png"));
-        this.btnAceptar.setDisabledIcon(new ImageIcon("botones-14.png"));
-        this.btnAceptar.setRolloverIcon(new ImageIcon("botones-14.png"));
 
-        switch (tipoRespuesta)
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAceptar;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel lblReaccion;
+    private javax.swing.JScrollPane scrollDialogo;
+    private javax.swing.JTextArea txtMsj;
+    private javax.swing.JTextField txtNombre;
+    // End of variables declaration//GEN-END:variables
+   // </editor-fold>
+    //<editor-fold desc="Atributos">
+    public boolean isDialogResult = false;
+    private String nombreUsuario;
+
+    // </editor-fold>
+    //<editor-fold desc="Constructores">
+    public FormDialogo(java.awt.Frame parent, boolean modal, String texto, int tipoRespuesta)
+    {
+        super(parent, modal);
+        this.setContentPane(new JLabel(new ImageIcon("dialogo-12.png")));
+        initComponents();
+        reaccionesConDialogo(tipoRespuesta, texto);
+        if (Main.backend.getUsuario().getPuntajeUltimo() > 0)
         {
-            case 0:
-                this.lblReaccion.setIcon(new ImageIcon("108x76_05.jpg"));
-                this.txtNombre.setVisible(false);//algo algoo PISTA
-                this.setNombreUsuario("invitado");
-                break;
-            case 1:
-                //GANASTE LA PALABRA
-                this.txtNombre.setVisible(false);//algo algoo PISTA
-                this.lblReaccion.setIcon(new ImageIcon("108x76_15.jpg"));
-                break;
-            case 2:  //algo algoo PERDISTE
-                this.txtNombre.setVisible(true);
-                this.lblReaccion.setIcon(new ImageIcon("108x76_06.jpg"));
-                break;
-            case 3: //GANASTE EL JUEGO
-                this.txtNombre.setVisible(true);
-                this.lblReaccion.setIcon(new ImageIcon("108x76_15.jpg"));
-                break;
+            this.txtNombre.setText("Ingresá tu nombre");
+            this.txtNombre.addFocusListener(new FocusListener()
+            {
+                @Override
+                public void focusGained(FocusEvent e)
+                {
+                    txtNombre.setText("");
+                }
+
+                @Override
+                public void focusLost(FocusEvent e)
+                {
+                    // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
+            });
+        }
+        else
+        {
+            this.txtNombre.setVisible(false);
 
         }
-
     }
 
+    // </editor-fold>    
+    //<editor-fold desc="GetSet">
+    public String getNombreUsuario()
+    {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario)
+    {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public boolean isIsDialogResult()
+    {
+        return isDialogResult;
+    }
+
+    public void setIsDialogResult(boolean isDialogResult)
+    {
+        this.isDialogResult = isDialogResult;
+    }
+
+    //</editor-fold>
+    //<editor-fold desc="Metodos">
     /**
      * @param args the command line arguments
      */
@@ -282,69 +284,7 @@ public class FormDialogo extends javax.swing.JDialog
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable()
@@ -365,40 +305,40 @@ public class FormDialogo extends javax.swing.JDialog
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAceptar;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel lblReaccion;
-    private javax.swing.JScrollPane scrollDialogo;
-    private javax.swing.JTextArea txtMsj;
-    private javax.swing.JTextField txtNombre;
-    // End of variables declaration//GEN-END:variables
-
-    public boolean isIsDialogResult()
+    private void reaccionesConDialogo(int tipoRespuesta, String texto)
     {
-        return isDialogResult;
-    }
+        this.txtMsj.setText(texto.toUpperCase());//TEXTO QUE VA A DECIR
+        this.txtMsj.setOpaque(false);
+        scrollDialogo.setBackground(new Color(0, 0, 0));
+        scrollDialogo.setOpaque(false);
+        scrollDialogo.getViewport().setOpaque(false);
+        this.btnAceptar.setIcon(new ImageIcon("botones-13.png"));
+        this.btnAceptar.setDisabledIcon(new ImageIcon("botones-14.png"));
+        this.btnAceptar.setRolloverIcon(new ImageIcon("botones-14.png"));
 
-    public void setIsDialogResult(boolean isDialogResult)
-    {
-        this.isDialogResult = isDialogResult;
-    }
+        switch (tipoRespuesta)
+        {
+            case 0:
+                this.lblReaccion.setIcon(new ImageIcon("108x76_05.jpg"));
+                this.txtNombre.setVisible(false);//algo algoo PISTA
+                this.setNombreUsuario("invitado");
+                break;
+            case 1:
+                //GANASTE LA PALABRA
+                this.txtNombre.setVisible(false);//algo algoo PISTA
+                this.lblReaccion.setIcon(new ImageIcon("108x76_15.jpg"));
+                break;
+            case 2:  //algo algoo PERDISTE
+                this.txtNombre.setVisible(true);
+                this.lblReaccion.setIcon(new ImageIcon("108x76_06.jpg"));
+                break;
+            case 3: //GANASTE EL JUEGO
+                this.txtNombre.setVisible(true);
+                this.lblReaccion.setIcon(new ImageIcon("108x76_15.jpg"));
+                break;
 
-    //<editor-fold desc="Atributos">
+        }
+
+    }
     // </editor-fold>
-    //<editor-fold desc="Constructores">
-    // </editor-fold>    
-    //<editor-fold desc="Get-Set">
-    //</editor-fold>
-    //<editor-fold desc="Metodo">
-    // </editor-fold>
-    public String getNombreUsuario()
-    {
-        return nombreUsuario;
-    }
-
-    public void setNombreUsuario(String nombreUsuario)
-    {
-        this.nombreUsuario = nombreUsuario;
-    }
 }

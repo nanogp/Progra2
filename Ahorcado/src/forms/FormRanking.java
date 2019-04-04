@@ -31,6 +31,8 @@ public class FormRanking extends javax.swing.JDialog
             }
         });
 
+        scrollRank.setPreferredSize(new java.awt.Dimension(700, 600));
+
         txtRank.setColumns(20);
         txtRank.setFont(new java.awt.Font("Courier New", 1, 13)); // NOI18N
         txtRank.setRows(5);
@@ -47,7 +49,7 @@ public class FormRanking extends javax.swing.JDialog
                 .addContainerGap(333, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollRank)
+                .addComponent(scrollRank, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

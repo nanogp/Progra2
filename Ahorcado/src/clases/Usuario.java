@@ -35,6 +35,11 @@ public class Usuario implements Comparable<Usuario>, Comparator<Usuario>
         this.partidasJugadas = partidasJugadas;
     }
 
+    public Usuario(Usuario u)
+    {
+        this(u.getNombre(), u.getPuntajeAcumulado(), u.getPuntajeUltimo(), u.getPartidasJugadas());
+    }
+
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="GetSet">
     public String getNombre()
@@ -106,6 +111,7 @@ public class Usuario implements Comparable<Usuario>, Comparator<Usuario>
         return Cadena.encolumnarAlinearTexto(" | ",
                 this.getNombre(), 20, Cadena.ALINEA_IZQ,
                 this.getPuntajeAcumulado(), 10, Cadena.ALINEA_MED,
+                this.getPuntajeUltimo(), 10, Cadena.ALINEA_MED,
                 Integer.toString(this.getPartidasJugadas()), 1, Cadena.ALINEA_MED);
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_201" class="java.beans.XMLDecoder">
+<java version="1.8.0_131" class="java.beans.XMLDecoder">
  <object class="clases.Ranking" id="Ranking0">
   <void property="listaDeUsuarios">
    <void method="add">
@@ -11,7 +11,10 @@
       <int>4</int>
      </void>
      <void property="puntajeAcumulado">
-      <int>10</int>
+      <int>19</int>
+     </void>
+     <void property="puntajeUltimo">
+      <int>1</int>
      </void>
     </object>
    </void>
@@ -21,10 +24,13 @@
       <string>Mengano</string>
      </void>
      <void property="partidasJugadas">
-      <int>3</int>
+      <int>16</int>
      </void>
      <void property="puntajeAcumulado">
-      <int>16</int>
+      <int>19</int>
+     </void>
+     <void property="puntajeUltimo">
+      <int>3</int>
      </void>
     </object>
    </void>
@@ -37,7 +43,10 @@
       <int>10</int>
      </void>
      <void property="puntajeAcumulado">
-      <int>12</int>
+      <int>13</int>
+     </void>
+     <void property="puntajeUltimo">
+      <int>2</int>
      </void>
     </object>
    </void>
@@ -47,10 +56,13 @@
       <string>Un-tano</string>
      </void>
      <void property="partidasJugadas">
-      <int>11</int>
+      <int>4</int>
      </void>
      <void property="puntajeAcumulado">
-      <int>15</int>
+      <int>19</int>
+     </void>
+     <void property="puntajeUltimo">
+      <int>1</int>
      </void>
     </object>
    </void>
@@ -60,10 +72,13 @@
       <string>Nano</string>
      </void>
      <void property="partidasJugadas">
-      <int>16</int>
+      <int>15</int>
      </void>
      <void property="puntajeAcumulado">
-      <int>32</int>
+      <int>49</int>
+     </void>
+     <void property="puntajeUltimo">
+      <int>1</int>
      </void>
     </object>
    </void>

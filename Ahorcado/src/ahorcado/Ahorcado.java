@@ -15,11 +15,14 @@ public class Ahorcado
     private Usuario usuario;
     private boolean usuarioExistia;
     private Dificultad dificultad;
+    private final String alfabeto;
+    private String usuarioDefault;
+    private final boolean ganaPartida;
+    private final boolean pierdePartida;
     protected Palabra palabra;
     protected boolean pistaMostrada;
     protected int contadorFallos;
     protected int contadorAciertos;
-    private final String alfabeto;
     protected ArrayList<Character> palabraSecreta;
     protected ArrayList<Character> letrasUsadas;
     protected char letraElegida;
@@ -30,16 +33,19 @@ public class Ahorcado
     {
         this.diccionario = new Diccionario();
         this.diccionario = Diccionario.leerDeXml(diccionario.getNombreArchivo());
-        
+
         this.ranking = new Ranking();
         this.ranking = Ranking.leerDeXml(ranking.getNombreArchivo());
-        
+
         this.usuario = new Usuario();
         this.getUsuario().setNombre("Anonimo");
-        
+
         this.palabraSecreta = new ArrayList<>();
         this.letrasUsadas = new ArrayList<>();
         this.alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+        this.usuarioDefault = "Anonimo";
+        this.ganaPartida = true;
+        this.pierdePartida = false;
     }
 
     //</editor-fold>
@@ -48,138 +54,138 @@ public class Ahorcado
     {
         return diccionario;
     }
-    
+
     public void setDiccionario(Diccionario diccionario)
     {
         this.diccionario = diccionario;
     }
-    
+
     public ListaDePalabras getPalabrasEnJuego()
     {
         return palabrasEnJuego;
     }
-    
+
     public void setPalabrasEnJuego(ListaDePalabras palabrasEnJuego)
     {
         this.palabrasEnJuego = palabrasEnJuego;
     }
-    
+
     public Ranking getRanking()
     {
         return ranking;
     }
-    
+
     public Ranking getSortedRanking()
     {
         getRanking().getListaDeUsuarios().sort(Usuario.ComparatorPuntaje);
         return ranking;
     }
-    
+
     public void setRanking(Ranking ranking)
     {
         this.ranking = ranking;
     }
-    
+
     public Usuario getUsuario()
     {
         return usuario;
     }
-    
+
     public void setUsuario(Usuario usuario)
     {
         this.usuario = usuario;
     }
-    
+
     public boolean getUsuarioExistia()
     {
         return usuarioExistia;
     }
-    
-    public void isUsuarioExistia(boolean usuarioExistia)
+
+    public void setUsuarioExistia(boolean usuarioExistia)
     {
         this.usuarioExistia = usuarioExistia;
     }
-    
+
     public Dificultad getDificultad()
     {
         return dificultad;
     }
-    
+
     public void setDificultad(Dificultad dificultad)
     {
         this.dificultad = dificultad;
     }
-    
+
     public Palabra getPalabra()
     {
         return palabra;
     }
-    
+
     public void setPalabra(Palabra palabra)
     {
         this.palabra = palabra;
     }
-    
+
     public int getMaxFallos()
     {
         return Dificultad.getMaxFallos(getDificultad());
     }
-    
+
     public int getMomentoPista()
     {
         return Dificultad.getMomentoPista(getDificultad());
     }
-    
+
     public boolean isPistaMostrada()
     {
         return pistaMostrada;
     }
-    
+
     public void setPistaMostrada(boolean b)
     {
         this.pistaMostrada = b;
     }
-    
+
     public int getValorPuntos()
     {
         return Dificultad.getValorPuntos(getDificultad());
     }
-    
+
     public int getContadorFallos()
     {
         return contadorFallos;
     }
-    
+
     public void setContadorFallos(int contadorFallos)
     {
         this.contadorFallos = contadorFallos;
     }
-    
+
     public void addContadorFallos()
     {
         this.contadorFallos++;
     }
-    
+
     public int getContadorAciertos()
     {
         return contadorAciertos;
     }
-    
+
     public void setContadorAciertos(int contadorAciertos)
     {
         this.contadorAciertos = contadorAciertos;
     }
-    
+
     public void addContadorAciertos()
     {
         this.contadorAciertos++;
     }
-    
+
     public ArrayList<Character> getPalabraSecreta()
     {
         return palabraSecreta;
     }
-    
+
     private void setPalabraSecreta()
     {
         if (this.palabraSecreta == null)
@@ -190,43 +196,42 @@ public class Ahorcado
         {
             this.palabraSecreta.clear();
         }
-        
+
         for (char c : getPalabra().getNombre().toCharArray())
         {
             this.palabraSecreta.add('*');
         }
     }
-    
+
     public char getLetraElegida()
     {
         return letraElegida;
     }
-    
+
     public void setLetraElegida(char letraElegida)
     {
         this.letraElegida = letraElegida;
     }
-    
+
     public String getAlfabeto()
     {
         return alfabeto;
     }
 
+    public String getUsuarioDefault()
+    {
+        return usuarioDefault;
+    }
+
+    public void setUsuarioDefault(String usuarioDefault)
+    {
+        this.usuarioDefault = usuarioDefault;
+    }
+
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Metodos">
-    public void nuevoJuego(Usuario nuevoJugador, Dificultad dificultad) throws GanaJuego
+    public void nuevoJuego() throws GanaJuego
     {
-        if (getRanking().getListaDeUsuarios().contains(nuevoJugador))
-        {
-            isUsuarioExistia(true);
-            setUsuario(getRanking().getListaDeUsuarios().get(getRanking().getListaDeUsuarios().indexOf(nuevoJugador)));
-        }
-        else
-        {
-            isUsuarioExistia(false);
-            getRanking().getListaDeUsuarios().addLast(nuevoJugador);
-            setUsuario(getRanking().getListaDeUsuarios().getLast());
-        }
 
         //setear variables para el juego
         setDificultad(dificultad);
@@ -237,7 +242,7 @@ public class Ahorcado
         //crear una nueva partida del juego
         nuevaPartida();
     }
-    
+
     public void nuevaPartida() throws GanaJuego
     {
         System.out.println("usuario:" + getUsuario().getNombre());
@@ -268,17 +273,17 @@ public class Ahorcado
         setPalabra(getPalabrasEnJuego().popRandom());
         System.out.println("Palabra a adivinar:" + getPalabra());
         setPalabraSecreta();
-        
+
     }
-    
+
     public void validarLetraElegida()
     {
         boolean noHayCoincidencia = true;
-        
+
         System.out.println("Letra elegida:" + getLetraElegida());
-        
+
         letrasUsadas.add(getLetraElegida());
-        
+
         for (int i = 0; i < palabra.getNombre().length(); i++)
         {
             if (palabra.getNombre().charAt(i) == getLetraElegida())
@@ -288,38 +293,80 @@ public class Ahorcado
                 addContadorAciertos();
             }
         }
-        
+
         if (noHayCoincidencia)
         {
             addContadorFallos();
         }
-        
+
         System.out.println("Palabra secreta:" + getPalabraSecreta().toString());
         System.out.println("Contador aciertos:" + getContadorAciertos());
         System.out.println("Contador fallos:" + getContadorFallos());
     }
-    
+
     public void validarEstadoPartida() throws GanaPartida, PierdePartida
     {
         if (getContadorAciertos() == getPalabra().getNombre().length())
         {
-            actualizarEstadisticaUsuario();
+            actualizarEstadisticaUsuario(ganaPartida);
             throw new GanaPartida();
         }
         else if (getContadorFallos() == getMaxFallos())
         {
-            actualizarEstadisticaUsuario();
+            actualizarEstadisticaUsuario(pierdePartida);
             throw new PierdePartida();
         }
-        
+
     }
-    
-    public void actualizarEstadisticaUsuario()
+
+    public void actualizarEstadisticaUsuario(boolean b)
     {
-        getUsuario().addPuntaje(getValorPuntos());
-        getUsuario().addPuntajeUltimo(getValorPuntos());
         getUsuario().addPartidasJugadas();
-    } //</editor-fold>
+
+        if (ganaPartida)
+        {
+            getUsuario().addPuntaje(getValorPuntos());
+        }
+        else
+        {
+            actualizarRanking();
+        }
+
+    }
+
+    public void actualizarRanking()
+    {
+        //ver si ya existe el usuario en el ranking
+        if (getRanking().getListaDeUsuarios().contains(getUsuario()))
+        {
+            //copiar usuario en juego y acumular estadisticas en existente
+            Usuario copiaUsuarioEnJuego = new Usuario(getUsuario());
+
+            //setear usuario actual con el ranking
+            setUsuario(getRanking().getListaDeUsuarios().get(getRanking().getListaDeUsuarios().indexOf(getUsuario())));
+
+            //copiar el ultimo puntaje
+            getUsuario().setPuntajeUltimo(copiaUsuarioEnJuego.getPuntajeUltimo());
+
+            //sumar puntaje acumulado
+            getUsuario().setPuntajeAcumulado(getUsuario().getPuntajeAcumulado() + copiaUsuarioEnJuego.getPuntajeAcumulado());
+
+            //sumar partidas
+            getUsuario().setPartidasJugadas(getUsuario().getPartidasJugadas() + copiaUsuarioEnJuego.getPartidasJugadas());
+
+        }
+        else
+        {
+            //agregar al ranking
+            getRanking().getListaDeUsuarios().addLast(getUsuario());
+
+            //tomar usuario del ranking
+            setUsuario(getRanking().getListaDeUsuarios().getLast());
+        }
+
+        //actualizar archivo ranking
+        Main.backend.getRanking().guardarEnXml();
+    }
 
     //</editor-fold>
 }

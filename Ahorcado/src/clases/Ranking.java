@@ -56,6 +56,7 @@ public class Ranking implements InterfazXml
         ret.append(Cadena.encolumnarAlinearTexto(" | ",
                 "NOMBRE", 20, Cadena.ALINEA_IZQ,
                 "PUNTAJE", 10, Cadena.ALINEA_MED,
+                "PUNTAJE ULTIMA PARTIDA", 10, Cadena.ALINEA_MED,
                 "PARTIDAS JUGADAS", 1, Cadena.ALINEA_MED));
         ret.append("\n");
         ret.append(Cadena.repeat("-", ret.toString().length()));

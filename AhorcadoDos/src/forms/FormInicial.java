@@ -336,11 +336,8 @@ public class FormInicial extends javax.swing.JFrame
 
         try
         {
-            //llamar a nueva partida
-            Main.backend.nuevoJuego(Main.backend.getUsuario(), Main.backend.getDificultad());
-
-            //mostrar palabra para debug
-            System.out.println(Main.backend.getPalabra());
+            //iniciar nuevo juego
+            Main.backend.nuevoJuego();
 
             //panel de la partida
             empezarJuego();

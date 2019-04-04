@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_201" class="java.beans.XMLDecoder">
+<java version="1.8.0_131" class="java.beans.XMLDecoder">
  <object class="clases.Diccionario" id="Diccionario0">
   <void property="listaDePalabras">
    <void method="add">
@@ -17,7 +17,7 @@
       <string>HORA</string>
      </void>
      <void property="tamaño">
-      <int>5</int>
+      <int>3</int>
      </void>
     </object>
    </void>
@@ -33,7 +33,7 @@
       <string>TECHO</string>
      </void>
      <void property="tamaño">
-      <int>6</int>
+      <int>4</int>
      </void>
     </object>
    </void>
@@ -49,7 +49,7 @@
       <string>CINTA</string>
      </void>
      <void property="tamaño">
-      <int>6</int>
+      <int>4</int>
      </void>
     </object>
    </void>
@@ -65,7 +65,7 @@
       <string>CUENTA</string>
      </void>
      <void property="tamaño">
-      <int>7</int>
+      <int>5</int>
      </void>
     </object>
    </void>
@@ -84,7 +84,7 @@
       <string>OVULO</string>
      </void>
      <void property="tamaño">
-      <int>6</int>
+      <int>4</int>
      </void>
     </object>
    </void>
@@ -100,7 +100,7 @@
       <string>REDITO</string>
      </void>
      <void property="tamaño">
-      <int>7</int>
+      <int>5</int>
      </void>
     </object>
    </void>
@@ -116,7 +116,7 @@
       <string>CUERDA</string>
      </void>
      <void property="tamaño">
-      <int>7</int>
+      <int>5</int>
      </void>
     </object>
    </void>
@@ -132,7 +132,7 @@
       <string>VIOLIN</string>
      </void>
      <void property="tamaño">
-      <int>7</int>
+      <int>5</int>
      </void>
     </object>
    </void>
@@ -148,7 +148,7 @@
       <string>ZAPATILLA</string>
      </void>
      <void property="tamaño">
-      <int>10</int>
+      <int>8</int>
      </void>
     </object>
    </void>
@@ -167,7 +167,7 @@
       <string>VENTILADOR</string>
      </void>
      <void property="tamaño">
-      <int>11</int>
+      <int>9</int>
      </void>
     </object>
    </void>
@@ -183,7 +183,7 @@
       <string>PARACAIDAS</string>
      </void>
      <void property="tamaño">
-      <int>11</int>
+      <int>9</int>
      </void>
     </object>
    </void>
@@ -199,7 +199,7 @@
       <string>DECORACION</string>
      </void>
      <void property="tamaño">
-      <int>11</int>
+      <int>9</int>
      </void>
     </object>
    </void>
@@ -215,7 +215,7 @@
       <string>MATRIMONIO</string>
      </void>
      <void property="tamaño">
-      <int>11</int>
+      <int>9</int>
      </void>
     </object>
    </void>
