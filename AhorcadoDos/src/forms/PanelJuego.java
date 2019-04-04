@@ -218,9 +218,9 @@ public class PanelJuego extends javax.swing.JPanel
         cp.setLayout(gl);
 
         //centrar iconos
-        for (int i = 0; i < Main.backend.getAlfabeto().length(); i++)
+        for (int i = 0; i < 28; i++)
         {
-            if (i < Main.backend.getAlfabeto().length() - 1)
+            if (i < 27)
             {
                 botones[i] = new JButton();
                 cp.add(botones[i]);
@@ -237,7 +237,6 @@ public class PanelJuego extends javax.swing.JPanel
                     public void actionPerformed(java.awt.event.ActionEvent evt)
                     {
                         letraClickeada(evt);
-
                     }
 
                 });
@@ -267,7 +266,6 @@ public class PanelJuego extends javax.swing.JPanel
                         }
 
                     }
-
                 });
             }
         }
