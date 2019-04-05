@@ -15,14 +15,13 @@ public enum Dificultad
     //definir momento de pista
     private static final int[] pista =
     {
-        3, 4, 3
+        5, 4, 3
     };
 
     //definir maximo intentos fallidos
     private static final int[] fallos =
     {
-        1, 1, 1
-    /*10, 7, 5*/
+        7, 5, 4
     };
 
     //</editor-fold>

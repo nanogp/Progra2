@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import toolbox.Cadena;
 
 public class PanelJuego extends javax.swing.JPanel
 {
@@ -160,10 +161,10 @@ public class PanelJuego extends javax.swing.JPanel
         Container cp = this.panelImagen;
         GridLayout gl = new GridLayout(1, 1);
         cp.setLayout(gl);
-        String archivoImagen = "meme/meme-0" + Integer.toString(Main.backend.getContadorFallos() + 1) + ".jpg";
+        String archivoImagen = "meme/meme-" + Cadena.lPad(Integer.toString(Main.backend.getContadorFallos()), 2, "0") + ".jpg";
         System.out.println("imagen: " + archivoImagen);
-        ImageIcon tiros = new ImageIcon(archivoImagen);
-        JLabel lblImagen = new JLabel(tiros);
+        ImageIcon intentos = new ImageIcon(archivoImagen);
+        JLabel lblImagen = new JLabel(intentos);
         cp.add(lblImagen);
     }
 
@@ -310,7 +311,7 @@ public class PanelJuego extends javax.swing.JPanel
             if (ganaste.isDialogResult)
             {
                 Main.backend.actualizarEstadisticaUsuario(Main.backend.ganaPartida);
-                        
+
                 //pasar siguiente nivel
                 limpiarTodo();
             }
@@ -322,7 +323,7 @@ public class PanelJuego extends javax.swing.JPanel
             if (perdiste.isDialogResult)
             {
                 Main.backend.actualizarEstadisticaUsuario(Main.backend.pierdePartida);
-                        
+
                 //volver a inicio
                 this.setVisible(false);
             }
