@@ -261,7 +261,7 @@ public class Ahorcado
         System.out.println("puntaje acumulado:" + getUsuario().getPuntajeAcumulado());
 
         setPartidaEnCurso(true);
-        
+
         //verificar si quedan mas palabras
         if (getPalabrasEnJuego().isEmpty())
         {
@@ -283,6 +283,7 @@ public class Ahorcado
 
         //elegir palabra nueva
         setPalabra(getPalabrasEnJuego().popRandom());
+        //for (Palabra p : palabrasEnJuego){setPalabra(p);} //agotar diccionario para debug
         System.out.println("Palabra a adivinar:" + getPalabra());
 
         //armar palabra secreta con los puntitos
@@ -372,7 +373,7 @@ public class Ahorcado
 
             //actualizar archivo ranking
             Main.backend.getRanking().guardarEnXml();
-            
+
             //terminar partida luego de guardar
             setPartidaEnCurso(false);
         }

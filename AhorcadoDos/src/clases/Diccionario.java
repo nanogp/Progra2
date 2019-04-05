@@ -3,6 +3,7 @@ package clases;
 import toolbox.Archivo;
 import java.io.FileNotFoundException;
 import interfaces.InterfazXml;
+import toolbox.Cadena;
 
 public class Diccionario implements InterfazXml
 {
@@ -58,6 +59,13 @@ public class Diccionario implements InterfazXml
     public String toString()
     {
         StringBuilder retorno = new StringBuilder();
+        retorno.append(Cadena.encolumnarAlinearTexto(" | ",
+                "PALABRA", 20, Cadena.ALINEA_IZQ,
+                "DIFICULTAD", 10, Cadena.ALINEA_MED,
+                "DEFINICION", 1, Cadena.ALINEA_IZQ));
+        retorno.append("\n");
+        retorno.append(Cadena.repeat("-", retorno.toString().length()));
+        retorno.append("\n");
         for (Palabra palabra : this.getListaDePalabras())
         {
             retorno.append(palabra.toString());

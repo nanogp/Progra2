@@ -12,11 +12,6 @@ public class Main
     //<editor-fold defaultstate="collapsed" desc="Metodos">
     public static void main(String[] args)
     {
-        /*
-         * DatosDefault.generarDiccionarioDefault();
-         * DatosDefault.generarRankingDefault();
-         */
-
         backend = new Ahorcado();
         gui = new FormInicial();
         gui.setLocationRelativeTo(null);

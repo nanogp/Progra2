@@ -277,14 +277,14 @@ public class PanelJuego extends javax.swing.JPanel
 
         Main.backend.setLetraElegida(evento.getText().charAt(0));
 
-        //libero el evento
+        //liberar evento
         evento.setEnabled(false);
         evento.setContentAreaFilled(false);
 
-        //valida la letra
+        //validar letra
         Main.backend.validarLetraElegida();
 
-        //muestro letras coincidentes
+        //mostrar letras coincidentes
         actualizarPalabra();
 
         //actualizar imagen
@@ -292,11 +292,10 @@ public class PanelJuego extends javax.swing.JPanel
 
         try
         {
-            //valida partida
+            //validar partida
             Main.backend.validarEstadoPartida();
 
-            if (Main.backend.getContadorFallos() == Main.backend.getMomentoPista()
-                    && !Main.backend.isPistaMostrada())
+            if (!Main.backend.isPistaMostrada() && Main.backend.getContadorFallos() == Main.backend.getMomentoPista())
             {
                 FormDialogo pista = new FormDialogo(null, true, Main.backend.getPalabra().getDefinicion(), FormDialogo.TipoRespuesta.Pista);
                 pista.setVisible(true);
@@ -343,7 +342,16 @@ public class PanelJuego extends javax.swing.JPanel
         }
         catch (GanaJuego ex)
         {
-            FormDialogo ganaste = new FormDialogo(null, true, "SOS EL PUTO AMO SARASASASA", FormDialogo.TipoRespuesta.GanaJuego);
+            FormDialogo ganaJuego = new FormDialogo(null, true, "AGOTASTE LAS PALABRAS Y GANASTE EL JUEGO", FormDialogo.TipoRespuesta.GanaJuego);
+            ganaJuego.setVisible(true);
+            if (ganaJuego.isDialogResult)
+            {
+                Main.backend.setPartidaEnCurso(false);
+                Main.backend.actualizarRanking();
+
+                //volver a inicio
+                this.setVisible(false);
+            }
         }
 
     }

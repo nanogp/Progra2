@@ -152,7 +152,12 @@ public class FormDialogo extends javax.swing.JDialog
         //guardar nombre de usuario ingresado para el ranking
         if (this.setearNombre)
         {
+            System.out.println("guardar nombre");
             Main.backend.getUsuario().setNombre(this.txtNombre.getText().toUpperCase());
+            //System.out.println("this.txtNombre.getText().toUpperCase()");
+            //System.out.println(this.txtNombre.getText().toUpperCase());
+            //System.out.println("Main.backend.getUsuario().getNombre");
+            //System.out.println(Main.backend.getUsuario().getNombre());
         }
 
         this.isDialogResult = true;
@@ -307,6 +312,8 @@ public class FormDialogo extends javax.swing.JDialog
 
     private void reaccionesConDialogo(TipoRespuesta tipoRespuesta, String texto)
     {
+        System.out.println(tipoRespuesta.toString().toUpperCase());
+
         this.txtMsj.setText(texto.toUpperCase());//TEXTO QUE VA A DECIR
         this.txtMsj.setOpaque(false);
         scrollDialogo.setBackground(new Color(0, 0, 0));

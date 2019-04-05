@@ -43,6 +43,7 @@ public class DatosDefault
         d.getListaDePalabras().add(new Palabra("DECORACION", "Arte que estudia la combinación de elementos ornamentales y la acomodación del espacio interior", Dificultad.Dificil));
         d.getListaDePalabras().add(new Palabra("MATRIMONIO", "Antigua institución social, presente en gran cantidad de culturas, que establece un vínculo conyugal entre personas naturales, reconocido y consolidado por medio de prácticas comunitarias y normas legales, consuetudinarias, religiosas o morales", Dificultad.Dificil));
         d.guardarEnXml();
+        System.out.println("DICCIONARIO DEFAULT GENERADO");
     }
 
     public static void generarRankingDefault()
@@ -57,6 +58,13 @@ public class DatosDefault
         r.getListaDeUsuarios().add(new Usuario("UN-TANO", randomSeed.nextInt(10, 20), randomSeed.nextInt(1, 5), randomSeed.nextInt(1, 20)));
         r.getListaDeUsuarios().add(new Usuario("NANO", randomSeed.nextInt(10, 50), randomSeed.nextInt(1, 5), randomSeed.nextInt(1, 20)));
         r.guardarEnXml();
+        System.out.println("RANKING DEFAULT GENERADO");
+    }
+
+    public static void main(String[] args)
+    {
+        generarDiccionarioDefault();
+        generarRankingDefault();
     }
     //</editor-fold>
 }
