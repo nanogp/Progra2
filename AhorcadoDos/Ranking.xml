@@ -114,6 +114,22 @@
      </void>
     </object>
    </void>
+   <void method="add">
+    <object class="clases.Usuario">
+     <void property="nombre">
+      <string>MANSPLAIN</string>
+     </void>
+     <void property="partidasJugadas">
+      <int>2</int>
+     </void>
+     <void property="puntajeAcumulado">
+      <int>1</int>
+     </void>
+     <void property="puntajeUltimo">
+      <int>1</int>
+     </void>
+    </object>
+   </void>
   </void>
  </object>
 </java>

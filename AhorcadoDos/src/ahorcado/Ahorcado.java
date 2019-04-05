@@ -17,24 +17,25 @@ public class Ahorcado
     private Dificultad dificultad;
     protected Palabra palabra;
     protected boolean pistaMostrada;
+    protected boolean partidaEnCurso;
     protected int contadorFallos;
     protected int contadorAciertos;
     protected ArrayList<Character> palabraSecreta;
     protected ArrayList<Character> letrasUsadas;
     protected char letraElegida;
-    private static String nombreUsuarioDefault;
-    private static final String alfabeto;
-    public static final boolean ganaPartida;
-    public static final boolean pierdePartida;
+    private static final String NOMBRE_USUARIO_DEFAULT;
+    private static final String ALFABETO;
+    public static final boolean GANA_PARTIDA;
+    public static final boolean PIERDE_PARTIDA;
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Constructores">
     static
     {
-        alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-        nombreUsuarioDefault = "Anonimo";
-        ganaPartida = true;
-        pierdePartida = false;
+        ALFABETO = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+        NOMBRE_USUARIO_DEFAULT = "Anonimo";
+        GANA_PARTIDA = true;
+        PIERDE_PARTIDA = false;
     }
 
     public Ahorcado()
@@ -46,6 +47,7 @@ public class Ahorcado
         this.usuario = new Usuario(getNombreUsuarioDefault());
         this.palabraSecreta = new ArrayList<>();
         this.letrasUsadas = new ArrayList<>();
+        this.partidaEnCurso = false;
     }
 
     //</editor-fold>
@@ -146,6 +148,16 @@ public class Ahorcado
         this.pistaMostrada = b;
     }
 
+    public boolean isPartidaEnCurso()
+    {
+        return partidaEnCurso;
+    }
+
+    public void setPartidaEnCurso(boolean partidaEnCurso)
+    {
+        this.partidaEnCurso = partidaEnCurso;
+    }
+
     public int getValorPuntos()
     {
         return Dificultad.getValorPuntos(getDificultad());
@@ -215,17 +227,12 @@ public class Ahorcado
 
     public String getAlfabeto()
     {
-        return alfabeto;
+        return ALFABETO;
     }
 
     public String getNombreUsuarioDefault()
     {
-        return nombreUsuarioDefault;
-    }
-
-    public void setUsuarioDefault(String usuarioDefault)
-    {
-        Ahorcado.nombreUsuarioDefault = usuarioDefault;
+        return NOMBRE_USUARIO_DEFAULT;
     }
 
     //</editor-fold>
@@ -253,6 +260,8 @@ public class Ahorcado
         System.out.println("puntaje ultimo:" + getUsuario().getPuntajeUltimo());
         System.out.println("puntaje acumulado:" + getUsuario().getPuntajeAcumulado());
 
+        setPartidaEnCurso(true);
+        
         //verificar si quedan mas palabras
         if (getPalabrasEnJuego().isEmpty())
         {
@@ -327,7 +336,7 @@ public class Ahorcado
     {
         getUsuario().addPartidasJugadas(1);
 
-        if (b == ganaPartida)
+        if (b == GANA_PARTIDA)
         {
             getUsuario().addPuntaje(getValorPuntos());
         }
@@ -363,6 +372,9 @@ public class Ahorcado
 
             //actualizar archivo ranking
             Main.backend.getRanking().guardarEnXml();
+            
+            //terminar partida luego de guardar
+            setPartidaEnCurso(false);
         }
     }
 

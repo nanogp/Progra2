@@ -1,7 +1,5 @@
 package forms;
 
-import ahorcado.Main;
-
 public class FormRanking extends javax.swing.JDialog
 {
 
