@@ -5,7 +5,7 @@
             <url>src/forms/PanelJuego.java</url>
             <bookmark id="6">
                 <name/>
-                <line>311</line>
+                <line>319</line>
                 <key/>
             </bookmark>
         </file>
@@ -13,7 +13,7 @@
             <url>src/forms/FormInicial.java</url>
             <bookmark id="8">
                 <name/>
-                <line>610</line>
+                <line>630</line>
                 <key/>
             </bookmark>
         </file>
@@ -33,22 +33,9 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/github/Progra2/AhorcadoDos/src/enumerados/Dificultad.java</file>
-            <file>file:/C:/github/Progra2/AhorcadoDos/src/clases/ListaDePalabras.java</file>
-            <file>file:/C:/github/Progra2/AhorcadoDos/src/forms/FormDialogo.java</file>
-            <file>file:/C:/github/Progra2/AhorcadoDos/src/excepciones/GanaJuego.java</file>
-            <file>file:/C:/github/Progra2/AhorcadoDos/src/ahorcado/Ahorcado.java</file>
-            <file>file:/C:/github/Progra2/AhorcadoDos/src/forms/PanelJuego.java</file>
-            <file>file:/C:/github/Progra2/AhorcadoDos/src/ahorcado/DatosDefault.java</file>
-            <file>file:/C:/github/Progra2/AhorcadoDos/src/clases/Diccionario.java</file>
-            <file>file:/C:/github/Progra2/AhorcadoDos/src/forms/Bundle.properties</file>
-            <file>file:/C:/github/Progra2/AhorcadoDos/src/forms/FormInicial.java</file>
-            <file>file:/C:/github/Progra2/AhorcadoDos/src/forms/FormRanking.java</file>
-            <file>file:/C:/github/Progra2/AhorcadoDos/src/clases/ListaDeUsuarios.java</file>
-            <file>file:/C:/github/Progra2/AhorcadoDos/src/clases/Usuario.java</file>
-            <file>file:/C:/github/Progra2/AhorcadoDos/src/clases/Palabra.java</file>
-            <file>file:/C:/github/Progra2/AhorcadoDos/src/ahorcado/Main.java</file>
-            <file>file:/C:/github/Progra2/AhorcadoDos/src/clases/Ranking.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/Progra2/AhorcadoDos/src/forms/FormDialogo.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/Progra2/AhorcadoDos/src/forms/PanelJuego.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/Progra2/AhorcadoDos/src/ahorcado/Ahorcado.java</file>
         </group>
     </open-files>
 </project-private>

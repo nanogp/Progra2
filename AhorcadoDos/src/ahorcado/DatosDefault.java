@@ -36,12 +36,11 @@ public class DatosDefault
         d.getListaDePalabras().add(new Palabra("OVULO", "Células sexuales o gametos femeninos.1​ Son células grandes, esféricas e inmóviles.", Dificultad.Normal));
         d.getListaDePalabras().add(new Palabra("REDITO", "Renta, utilidad o beneficio renovable que rinde un capital", Dificultad.Normal));
         d.getListaDePalabras().add(new Palabra("CUERDA", "Conjunto de hilos entrelazados que forman un solo cuerpo largo y flexible que sirve para atar, suspender pesos, etc.", Dificultad.Normal));
-        d.getListaDePalabras().add(new Palabra("VIOLIN", "Instrumento musical de cuerda, el más pequeño y agudo entre los de su clase, que se compone de una caja de resonancia en forma de 8, un mástil sin trastes y cuatro cuerdas que se hacen sonar con un arco", Dificultad.Normal));
+        d.getListaDePalabras().add(new Palabra("VIOLIN", "Instrumento musical de cuerda, el más pequeño y agudo entre los de su clase, que se compone de una caja de resonancia en forma de 8, un mástil sin trastes y cuatro cuerdas ", Dificultad.Normal));
         d.getListaDePalabras().add(new Palabra("ZAPATILLA", "Calzado cómodo y ligero, de paño, piel, etc., y con suela delgada, que se usa para estar en casa", Dificultad.Normal));
         d.getListaDePalabras().add(new Palabra("VENTILADOR", "Instrumento o aparato con aspas giratorias que impulsa o remueve el aire", Dificultad.Dificil));
-        d.getListaDePalabras().add(new Palabra("PARACAIDAS", "Artefacto de tela resistente o de otra materia análoga, que se extiende en el aire en forma de sombrilla grande, cuya función es la de moderar la velocidad de caída de un cuerpo que se arroja desde una aeronave", Dificultad.Dificil));
+        d.getListaDePalabras().add(new Palabra("PARACAIDAS", "Artefacto de tela resistente o de otra materia análoga, que se extiende en el aire en forma de sombrilla grande, cuya función es la de moderar la velocidad de caída", Dificultad.Dificil));
         d.getListaDePalabras().add(new Palabra("DECORACION", "Arte que estudia la combinación de elementos ornamentales y la acomodación del espacio interior", Dificultad.Dificil));
-        d.getListaDePalabras().add(new Palabra("MATRIMONIO", "Antigua institución social, presente en gran cantidad de culturas, que establece un vínculo conyugal entre personas naturales, reconocido y consolidado por medio de prácticas comunitarias y normas legales, consuetudinarias, religiosas o morales", Dificultad.Dificil));
         d.guardarEnXml();
         System.out.println("DICCIONARIO DEFAULT GENERADO");
     }

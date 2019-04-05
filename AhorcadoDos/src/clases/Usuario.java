@@ -109,10 +109,10 @@ public class Usuario implements Comparable<Usuario>, Comparator<Usuario>
     public String toString()
     {
         return Cadena.encolumnarAlinearTexto(" | ",
-                this.getNombre(), 20, Cadena.ALINEA_IZQ,
-                this.getPuntajeAcumulado(), 10, Cadena.ALINEA_MED,
-                this.getPuntajeUltimo(), 14, Cadena.ALINEA_MED,
-                Integer.toString(this.getPartidasJugadas()), 16, Cadena.ALINEA_MED);
+                this.getNombre(), 15, Cadena.ALINEA_IZQ,
+                this.getPuntajeAcumulado(), 7, Cadena.ALINEA_MED,
+                this.getPuntajeUltimo(), 7, Cadena.ALINEA_MED,
+                Integer.toString(this.getPartidasJugadas()), 7, Cadena.ALINEA_MED);
     }
 
     public int compareByPuntajeTo(Usuario u)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_201" class="java.beans.XMLDecoder">
+<java version="1.8.0_181" class="java.beans.XMLDecoder">
  <object class="clases.Diccionario" id="Diccionario0">
   <void property="listaDePalabras">
    <void method="add">
@@ -123,7 +123,7 @@
    <void method="add">
     <object class="clases.Palabra">
      <void property="definicion">
-      <string>Instrumento musical de cuerda, el más pequeño y agudo entre los de su clase, que se compone de una caja de resonancia en forma de 8, un mástil sin trastes y cuatro cuerdas que se hacen sonar con un arco</string>
+      <string>Instrumento musical de cuerda, el más pequeño y agudo entre los de su clase, que se compone de una caja de resonancia en forma de 8, un mástil sin trastes y cuatro cuerdas </string>
      </void>
      <void property="dificultad">
       <object idref="Dificultad1"/>
@@ -174,7 +174,7 @@
    <void method="add">
     <object class="clases.Palabra">
      <void property="definicion">
-      <string>Artefacto de tela resistente o de otra materia análoga, que se extiende en el aire en forma de sombrilla grande, cuya función es la de moderar la velocidad de caída de un cuerpo que se arroja desde una aeronave</string>
+      <string>Artefacto de tela resistente o de otra materia análoga, que se extiende en el aire en forma de sombrilla grande, cuya función es la de moderar la velocidad de caída</string>
      </void>
      <void property="dificultad">
       <object idref="Dificultad2"/>
@@ -197,22 +197,6 @@
      </void>
      <void property="nombre">
       <string>DECORACION</string>
-     </void>
-     <void property="tamaño">
-      <int>9</int>
-     </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="clases.Palabra">
-     <void property="definicion">
-      <string>Antigua institución social, presente en gran cantidad de culturas, que establece un vínculo conyugal entre personas naturales, reconocido y consolidado por medio de prácticas comunitarias y normas legales, consuetudinarias, religiosas o morales</string>
-     </void>
-     <void property="dificultad">
-      <object idref="Dificultad2"/>
-     </void>
-     <void property="nombre">
-      <string>MATRIMONIO</string>
      </void>
      <void property="tamaño">
       <int>9</int>

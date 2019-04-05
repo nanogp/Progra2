@@ -9,6 +9,13 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -31,6 +38,8 @@ public class PanelJuego extends javax.swing.JPanel
         panelTeclado = new javax.swing.JPanel();
         panelImagen = new javax.swing.JPanel();
         panelPalabra = new javax.swing.JPanel();
+        lblPuntos = new javax.swing.JLabel();
+        lblPuntos1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(791, 536));
         setMinimumSize(new java.awt.Dimension(791, 536));
@@ -43,7 +52,6 @@ public class PanelJuego extends javax.swing.JPanel
             }
         });
 
-        panelTeclado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         panelTeclado.setMaximumSize(new java.awt.Dimension(443, 227));
         panelTeclado.setMinimumSize(new java.awt.Dimension(443, 227));
         panelTeclado.setOpaque(false);
@@ -53,30 +61,29 @@ public class PanelJuego extends javax.swing.JPanel
         panelTeclado.setLayout(panelTecladoLayout);
         panelTecladoLayout.setHorizontalGroup(
             panelTecladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 441, Short.MAX_VALUE)
+            .addGap(0, 443, Short.MAX_VALUE)
         );
         panelTecladoLayout.setVerticalGroup(
             panelTecladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 225, Short.MAX_VALUE)
+            .addGap(0, 227, Short.MAX_VALUE)
         );
 
-        panelImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         panelImagen.setMaximumSize(new java.awt.Dimension(300, 360));
         panelImagen.setMinimumSize(new java.awt.Dimension(300, 360));
+        panelImagen.setPreferredSize(new java.awt.Dimension(300, 361));
 
         javax.swing.GroupLayout panelImagenLayout = new javax.swing.GroupLayout(panelImagen);
         panelImagen.setLayout(panelImagenLayout);
         panelImagenLayout.setHorizontalGroup(
             panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 298, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
         panelImagenLayout.setVerticalGroup(
             panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 358, Short.MAX_VALUE)
+            .addGap(0, 361, Short.MAX_VALUE)
         );
 
         panelPalabra.setBackground(new java.awt.Color(255, 255, 255));
-        panelPalabra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         panelPalabra.setMaximumSize(new java.awt.Dimension(749, 50));
         panelPalabra.setMinimumSize(new java.awt.Dimension(749, 50));
         panelPalabra.setPreferredSize(new java.awt.Dimension(749, 50));
@@ -85,38 +92,55 @@ public class PanelJuego extends javax.swing.JPanel
         panelPalabra.setLayout(panelPalabraLayout);
         panelPalabraLayout.setHorizontalGroup(
             panelPalabraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 749, Short.MAX_VALUE)
         );
         panelPalabraLayout.setVerticalGroup(
             panelPalabraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 48, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
+
+        lblPuntos.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lblPuntos.setForeground(new java.awt.Color(255, 255, 255));
+        lblPuntos.setText("PUNTOS: ");
+
+        lblPuntos1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lblPuntos1.setForeground(new java.awt.Color(255, 255, 255));
+        lblPuntos1.setText("PUNTOS: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelPalabra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelPalabra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelTeclado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelTeclado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPuntos)
+                            .addComponent(lblPuntos1))))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelTeclado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(lblPuntos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblPuntos1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelTeclado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(panelPalabra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -126,6 +150,8 @@ public class PanelJuego extends javax.swing.JPanel
     }//GEN-LAST:event_formComponentShown
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblPuntos;
+    private javax.swing.JLabel lblPuntos1;
     private javax.swing.JPanel panelImagen;
     private javax.swing.JPanel panelPalabra;
     private javax.swing.JPanel panelTeclado;
@@ -136,6 +162,7 @@ public class PanelJuego extends javax.swing.JPanel
     JButton[] botones;
     Container cp;
     JLabel[] letras;
+    int easterEgg = 0;
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Constructor">
@@ -145,6 +172,7 @@ public class PanelJuego extends javax.swing.JPanel
         initComponents();
         iniciarTeclado();
         actualizarImagen();
+        actualizarStats();
         iniciarPalabra();
 
     }
@@ -168,6 +196,29 @@ public class PanelJuego extends javax.swing.JPanel
         cp.add(lblImagen);
         this.panelImagen.setVisible(false);
         this.panelImagen.setVisible(true);
+    }
+
+    public void actualizarStats()
+    {
+        StringBuilder txt1 = new StringBuilder();
+
+        txt1.append("ACIERTOS: ");
+        txt1.append(Main.backend.getContadorAciertos());
+        txt1.append(" | ");
+        txt1.append("FALLOS: ");
+        txt1.append(Main.backend.getContadorFallos());
+        txt1.append(" | ");
+        txt1.append("INTENTOS RESTANTES: ");
+        txt1.append(Main.backend.getMaxFallos() - Main.backend.getContadorFallos());
+        this.lblPuntos.setText(txt1.toString());
+
+        StringBuilder txt = new StringBuilder();
+        txt.append("PARTIDAS JUGADAS: ");
+        txt.append(Main.backend.getUsuario().getPartidasJugadas());
+        txt.append(" | ");
+        txt.append("PUNTAJE: ");
+        txt.append(Main.backend.getUsuario().getPuntajeAcumulado());
+        this.lblPuntos1.setText(txt.toString());
     }
 
     public void iniciarPalabra()
@@ -260,7 +311,7 @@ public class PanelJuego extends javax.swing.JPanel
                     {
                         try
                         {
-                            // LANZA PISTA O ALGO
+                            sonido(easterEgg);
                         }
                         catch (Exception e)
                         {
@@ -291,6 +342,9 @@ public class PanelJuego extends javax.swing.JPanel
 
         //actualizar imagen
         actualizarImagen();
+
+        //actualizar stats
+        actualizarStats();
 
         try
         {
@@ -343,6 +397,7 @@ public class PanelJuego extends javax.swing.JPanel
             Main.backend.nuevaPartida();
             iniciarTeclado();
             actualizarImagen();
+            actualizarStats();
             iniciarPalabra();
         }
         catch (GanaJuego ex)
@@ -357,6 +412,49 @@ public class PanelJuego extends javax.swing.JPanel
                 //volver a inicio
                 this.setVisible(false);
             }
+        }
+
+    }
+
+    public void sonido(int tipo)
+    {
+        String archSonido = "musica//shooting_star.wav";
+        this.easterEgg++;
+
+        switch (tipo)
+        {
+            case 0:
+                archSonido = "musica//shooting_star.wav";
+                break;
+            case 1:
+                archSonido = "musica//sonido1.wav";
+                break;
+            case 4:
+                archSonido = "musica//sonido4.wav";
+                break;
+            case 5:
+                archSonido = "musica//sonido5.wav";
+                break;
+            case 6:
+                archSonido = "musica/sonido6.wav";
+                break;
+            default:
+                archSonido = "musica//shooting_star.wav";
+                break;
+
+        }
+
+        System.out.println("Reproduccir sonido");
+        try
+        {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(archSonido).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        }
+        catch (IOException | UnsupportedAudioFileException | LineUnavailableException e)
+        {
+            System.out.println(e.getMessage());
         }
 
     }
