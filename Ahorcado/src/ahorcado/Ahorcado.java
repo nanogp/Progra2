@@ -15,8 +15,6 @@ public class Ahorcado
     private Usuario usuario;
     private boolean usuarioExistia;
     private Dificultad dificultad;
-    private final String alfabeto;
-    private String nombreUsuarioDefault;
     protected Palabra palabra;
     protected boolean pistaMostrada;
     protected int contadorFallos;
@@ -24,26 +22,28 @@ public class Ahorcado
     protected ArrayList<Character> palabraSecreta;
     protected ArrayList<Character> letrasUsadas;
     protected char letraElegida;
-    public final boolean ganaPartida;
-    public final boolean pierdePartida;
+    private static String nombreUsuarioDefault;
+    private static final String alfabeto;
+    public static final boolean ganaPartida;
+    public static final boolean pierdePartida;
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Constructores">
+    static
+    {
+        alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+        nombreUsuarioDefault = "Anonimo";
+        ganaPartida = true;
+        pierdePartida = false;
+    }
+
     public Ahorcado()
     {
-        this.alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-        this.nombreUsuarioDefault = "Anonimo";
-        this.ganaPartida = true;
-        this.pierdePartida = false;
-
         this.diccionario = new Diccionario();
         this.diccionario = Diccionario.leerDeXml(diccionario.getNombreArchivo());
-
         this.ranking = new Ranking();
         this.ranking = Ranking.leerDeXml(ranking.getNombreArchivo());
-
         this.usuario = new Usuario(getNombreUsuarioDefault());
-
         this.palabraSecreta = new ArrayList<>();
         this.letrasUsadas = new ArrayList<>();
     }
@@ -225,7 +225,7 @@ public class Ahorcado
 
     public void setUsuarioDefault(String usuarioDefault)
     {
-        this.nombreUsuarioDefault = usuarioDefault;
+        Ahorcado.nombreUsuarioDefault = usuarioDefault;
     }
 
     //</editor-fold>
@@ -311,12 +311,12 @@ public class Ahorcado
     {
         if (getContadorAciertos() == getPalabra().getNombre().length())
         {
-            actualizarEstadisticaUsuario(ganaPartida);
+            //actualizarEstadisticaUsuario(ganaPartida);
             throw new GanaPartida();
         }
         else if (getContadorFallos() == getMaxFallos())
         {
-            actualizarEstadisticaUsuario(pierdePartida);
+            //actualizarEstadisticaUsuario(pierdePartida);
             throw new PierdePartida();
         }
 
@@ -344,10 +344,15 @@ public class Ahorcado
         System.out.println(getUsuario().toString());
         System.out.println("!getRanking().getListaDeUsuarios().contains(getUsuario())");
         System.out.println(!getRanking().getListaDeUsuarios().contains(getUsuario()));
+        System.out.println("getUsuario().getPuntajeUltimo()");
+        System.out.println(getUsuario().getPuntajeUltimo());
 
-        //ver si ya existe el usuario en el ranking
+        //solo si suma puntos
         if (getUsuario().getPuntajeUltimo() > 0)
         {
+            System.out.println("getRanking().getListaDeUsuarios().contains(getUsuario())");
+            System.out.println(getRanking().getListaDeUsuarios().contains(getUsuario()));
+            //ver si ya existe el usuario en el ranking
             if (getRanking().getListaDeUsuarios().contains(getUsuario()))
             {
                 //tomar usuario del ranking
