@@ -56,19 +56,19 @@ public class Main
         java.util.concurrent.ThreadLocalRandom randomSeed;
         randomSeed = java.util.concurrent.ThreadLocalRandom.current();
         crearArchivoVacio(r.getNombreArchivo());
-        r.getListaDeUsuarios().add(new Usuario("Fulano", randomSeed.nextInt(10, 20), randomSeed.nextInt(1, 5), randomSeed.nextInt(1, 20)));
-        r.getListaDeUsuarios().add(new Usuario("Mengano", randomSeed.nextInt(10, 20), randomSeed.nextInt(1, 5), randomSeed.nextInt(1, 20)));
-        r.getListaDeUsuarios().add(new Usuario("Sultano", randomSeed.nextInt(10, 20), randomSeed.nextInt(1, 5), randomSeed.nextInt(1, 20)));
-        r.getListaDeUsuarios().add(new Usuario("Un-tano", randomSeed.nextInt(10, 20), randomSeed.nextInt(1, 5), randomSeed.nextInt(1, 20)));
-        r.getListaDeUsuarios().add(new Usuario("Nano", randomSeed.nextInt(10, 50), randomSeed.nextInt(1, 5), randomSeed.nextInt(1, 20)));
+        r.getListaDeUsuarios().add(new Usuario("FULANO", randomSeed.nextInt(10, 20), randomSeed.nextInt(1, 5), randomSeed.nextInt(1, 20)));
+        r.getListaDeUsuarios().add(new Usuario("MENGANO", randomSeed.nextInt(10, 20), randomSeed.nextInt(1, 5), randomSeed.nextInt(1, 20)));
+        r.getListaDeUsuarios().add(new Usuario("SULTANO", randomSeed.nextInt(10, 20), randomSeed.nextInt(1, 5), randomSeed.nextInt(1, 20)));
+        r.getListaDeUsuarios().add(new Usuario("UN-TANO", randomSeed.nextInt(10, 20), randomSeed.nextInt(1, 5), randomSeed.nextInt(1, 20)));
+        r.getListaDeUsuarios().add(new Usuario("NANO", randomSeed.nextInt(10, 50), randomSeed.nextInt(1, 5), randomSeed.nextInt(1, 20)));
         r.guardarEnXml();
     }
 
     public static void main(String[] args)
     {
         /*
-        generarDiccionarioDefault(new Diccionario());
-        generarRankingDefault(new Ranking());
+         * generarDiccionarioDefault(new Diccionario());
+         * generarRankingDefault(new Ranking());
          */
 
         backend = new Ahorcado();

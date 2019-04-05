@@ -275,6 +275,8 @@ public class Ahorcado
         //elegir palabra nueva
         setPalabra(getPalabrasEnJuego().popRandom());
         System.out.println("Palabra a adivinar:" + getPalabra());
+
+        //armar palabra secreta con los puntitos
         setPalabraSecreta();
 
     }
@@ -283,8 +285,7 @@ public class Ahorcado
     {
         boolean noHayCoincidencia = true;
 
-        System.out.println("Letra elegida:" + getLetraElegida());
-
+        //System.out.println("Letra elegida:" + getLetraElegida());
         letrasUsadas.add(getLetraElegida());
 
         for (int i = 0; i < palabra.getNombre().length(); i++)
@@ -339,19 +340,9 @@ public class Ahorcado
 
     public void actualizarRanking()
     {
-
-        System.out.println("getUsuario().toString()");
-        System.out.println(getUsuario().toString());
-        System.out.println("!getRanking().getListaDeUsuarios().contains(getUsuario())");
-        System.out.println(!getRanking().getListaDeUsuarios().contains(getUsuario()));
-        System.out.println("getUsuario().getPuntajeUltimo()");
-        System.out.println(getUsuario().getPuntajeUltimo());
-
         //solo si suma puntos
         if (getUsuario().getPuntajeUltimo() > 0)
         {
-            System.out.println("getRanking().getListaDeUsuarios().contains(getUsuario())");
-            System.out.println(getRanking().getListaDeUsuarios().contains(getUsuario()));
             //ver si ya existe el usuario en el ranking
             if (getRanking().getListaDeUsuarios().contains(getUsuario()))
             {

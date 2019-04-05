@@ -4,7 +4,6 @@ import ahorcado.Main;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -149,18 +148,12 @@ public class FormDialogo extends javax.swing.JDialog
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAceptarActionPerformed
     {//GEN-HEADEREND:event_btnAceptarActionPerformed
-        System.out.println("OK En dialogo");
 
-        System.out.println("this.txtNombre.getText()");
-        System.out.println(this.txtNombre.getText());
-
-        System.out.println("Main.backend.getUsuario().getNombre() antes");
-        System.out.println(Main.backend.getUsuario().getNombre());
-
-        Main.backend.getUsuario().setNombre(this.txtNombre.getText());
-
-        System.out.println("Main.backend.getUsuario().getNombre() dps");
-        System.out.println(Main.backend.getUsuario().getNombre());
+        //guardar nombre de usuario ingresado para el ranking
+        if (this.setearNombre)
+        {
+            Main.backend.getUsuario().setNombre(this.txtNombre.getText().toUpperCase());
+        }
 
         this.isDialogResult = true;
         this.setVisible(false);
@@ -188,6 +181,7 @@ public class FormDialogo extends javax.swing.JDialog
    // </editor-fold>
     //<editor-fold desc="Atributos">
     public boolean isDialogResult = false;
+    private boolean setearNombre = false;
 
     public enum TipoRespuesta
     {
@@ -201,14 +195,11 @@ public class FormDialogo extends javax.swing.JDialog
         super(parent, modal);
         this.setContentPane(new JLabel(new ImageIcon("dialogo-12.png")));
         initComponents();
+
+        //armar diferentes tipos de dialogo
         reaccionesConDialogo(tipoRespuesta, texto);
 
-        System.out.println("Main.backend.getUsuario().getNombre() constructor");
-        System.out.println(Main.backend.getUsuario().getNombre());
-        
-        //pide ingresar nombre
         this.txtNombre.setText("Ingresá tu nombre");
-
         this.txtNombre.addFocusListener(new FocusListener()
         {
             @Override
@@ -220,7 +211,7 @@ public class FormDialogo extends javax.swing.JDialog
             @Override
             public void focusLost(FocusEvent e)
             {
-                // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                txtNombre.setText(txtNombre.getText().toUpperCase());
             }
         });
 
@@ -338,6 +329,7 @@ public class FormDialogo extends javax.swing.JDialog
             case PierdePartidaConPuntos:
                 this.txtNombre.setVisible(true);
                 this.lblReaccion.setIcon(new ImageIcon("108x76_06.jpg"));
+                this.setearNombre = true;
                 break;
             case PierdePartidaSinPuntos:
                 this.txtNombre.setVisible(false);
@@ -350,6 +342,7 @@ public class FormDialogo extends javax.swing.JDialog
             case GanaJuego:
                 this.txtNombre.setVisible(true);
                 this.lblReaccion.setIcon(new ImageIcon("108x76_15.jpg"));
+                this.setearNombre = true;
                 break;
         }
 

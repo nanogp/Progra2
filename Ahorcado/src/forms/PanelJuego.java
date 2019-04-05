@@ -336,7 +336,6 @@ public class PanelJuego extends javax.swing.JPanel
     {
         try
         {
-            System.out.println("Main.backend.nuevaPartida()");
             Main.backend.nuevaPartida();
             iniciarTeclado();
             actualizarImagen();

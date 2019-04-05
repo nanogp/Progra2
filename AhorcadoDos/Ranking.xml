@@ -5,29 +5,29 @@
    <void method="add">
     <object class="clases.Usuario">
      <void property="nombre">
-      <string>Nano</string>
+      <string>NANO</string>
      </void>
      <void property="partidasJugadas">
-      <int>7</int>
+      <int>13</int>
      </void>
      <void property="puntajeAcumulado">
-      <int>38</int>
+      <int>29</int>
      </void>
      <void property="puntajeUltimo">
-      <int>3</int>
+      <int>1</int>
      </void>
     </object>
    </void>
    <void method="add">
     <object class="clases.Usuario">
      <void property="nombre">
-      <string>Un-tano</string>
+      <string>FULANO</string>
      </void>
      <void property="partidasJugadas">
-      <int>8</int>
+      <int>6</int>
      </void>
      <void property="puntajeAcumulado">
-      <int>19</int>
+      <int>18</int>
      </void>
      <void property="puntajeUltimo">
       <int>2</int>
@@ -37,10 +37,10 @@
    <void method="add">
     <object class="clases.Usuario">
      <void property="nombre">
-      <string>Fulano</string>
+      <string>UN-TANO</string>
      </void>
      <void property="partidasJugadas">
-      <int>2</int>
+      <int>11</int>
      </void>
      <void property="puntajeAcumulado">
       <int>17</int>
@@ -53,29 +53,45 @@
    <void method="add">
     <object class="clases.Usuario">
      <void property="nombre">
-      <string>Sultano</string>
+      <string>SULTANO</string>
      </void>
      <void property="partidasJugadas">
-      <int>18</int>
+      <int>16</int>
+     </void>
+     <void property="puntajeAcumulado">
+      <int>15</int>
+     </void>
+     <void property="puntajeUltimo">
+      <int>4</int>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="clases.Usuario">
+     <void property="nombre">
+      <string>MENGANO</string>
+     </void>
+     <void property="partidasJugadas">
+      <int>4</int>
      </void>
      <void property="puntajeAcumulado">
       <int>13</int>
      </void>
      <void property="puntajeUltimo">
-      <int>1</int>
+      <int>4</int>
      </void>
     </object>
    </void>
    <void method="add">
     <object class="clases.Usuario">
      <void property="nombre">
-      <string>Mengano</string>
+      <string>ANONIMUS</string>
      </void>
      <void property="partidasJugadas">
-      <int>10</int>
+      <int>5</int>
      </void>
      <void property="puntajeAcumulado">
-      <int>10</int>
+      <int>9</int>
      </void>
      <void property="puntajeUltimo">
       <int>3</int>
@@ -85,32 +101,16 @@
    <void method="add">
     <object class="clases.Usuario">
      <void property="nombre">
-      <string>Ingresá tu nombre</string>
-     </void>
-     <void property="partidasJugadas">
-      <int>17</int>
-     </void>
-     <void property="puntajeAcumulado">
-      <int>9</int>
-     </void>
-     <void property="puntajeUltimo">
-      <int>1</int>
-     </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="clases.Usuario">
-     <void property="nombre">
-      <string>Juan</string>
+      <string>INGRESÁ TU NOMBRE</string>
      </void>
      <void property="partidasJugadas">
       <int>2</int>
      </void>
      <void property="puntajeAcumulado">
-      <int>1</int>
+      <int>3</int>
      </void>
      <void property="puntajeUltimo">
-      <int>1</int>
+      <int>3</int>
      </void>
     </object>
    </void>
