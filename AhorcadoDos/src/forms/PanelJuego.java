@@ -166,6 +166,8 @@ public class PanelJuego extends javax.swing.JPanel
         ImageIcon intentos = new ImageIcon(archivoImagen);
         JLabel lblImagen = new JLabel(intentos);
         cp.add(lblImagen);
+        this.panelImagen.setVisible(false);
+        this.panelImagen.setVisible(true);
     }
 
     public void iniciarPalabra()
