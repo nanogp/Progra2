@@ -374,8 +374,6 @@ public class Ahorcado
             //actualizar archivo ranking
             Main.backend.getRanking().guardarEnXml();
 
-            //terminar partida luego de guardar
-            setPartidaEnCurso(false);
         }
     }
 

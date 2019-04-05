@@ -323,6 +323,9 @@ public class PanelJuego extends javax.swing.JPanel
             {
                 Main.backend.actualizarEstadisticaUsuario(Main.backend.PIERDE_PARTIDA);
 
+                //terminar partida
+                Main.backend.setPartidaEnCurso(false);
+
                 //volver a inicio
                 this.setVisible(false);
             }
@@ -346,8 +349,8 @@ public class PanelJuego extends javax.swing.JPanel
             ganaJuego.setVisible(true);
             if (ganaJuego.isDialogResult)
             {
-                Main.backend.setPartidaEnCurso(false);
                 Main.backend.actualizarRanking();
+                Main.backend.setPartidaEnCurso(false);
 
                 //volver a inicio
                 this.setVisible(false);
