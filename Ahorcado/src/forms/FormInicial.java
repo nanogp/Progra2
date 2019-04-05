@@ -180,12 +180,26 @@ public class FormInicial extends javax.swing.JFrame
         jpRank.setMaximumSize(null);
         jpRank.setOpaque(false);
 
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBar(null);
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.setVerifyInputWhenFocusTarget(false);
+
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setBorder(null);
         jTextArea1.setOpaque(false);
         jScrollPane1.setViewportView(jTextArea1);
 
-        btnOK.setText("OK");
+        btnOK.setBorder(null);
+        btnOK.setBorderPainted(false);
+        btnOK.setContentAreaFilled(false);
+        btnOK.setFocusPainted(false);
+        btnOK.setFocusable(false);
+        btnOK.setMaximumSize(new java.awt.Dimension(293, 151));
+        btnOK.setMinimumSize(new java.awt.Dimension(293, 151));
+        btnOK.setPreferredSize(new java.awt.Dimension(293, 151));
         btnOK.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -198,23 +212,24 @@ public class FormInicial extends javax.swing.JFrame
         jpRank.setLayout(jpRankLayout);
         jpRankLayout.setHorizontalGroup(
             jpRankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpRankLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
             .addGroup(jpRankLayout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jpRankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpRankLayout.createSequentialGroup()
+                        .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(128, 128, 128))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpRankLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jpRankLayout.setVerticalGroup(
             jpRankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpRankLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnOK)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         mnMenu.setMnemonic('J');
@@ -565,7 +580,12 @@ public class FormInicial extends javax.swing.JFrame
 
         jScrollPane1.setBackground(new Color(0, 0, 0));
         jScrollPane1.setOpaque(false);
+        //jScrollPane1.getViewport().setOpaque(false);
         jScrollPane1.getViewport().setOpaque(false);
+             
+        this.btnOK.setIcon(new ImageIcon("volver-12.png"));
+        this.btnOK.setRolloverIcon (new ImageIcon("volver-13.png"));        
+       
 
         this.jpRank.addComponentListener(new ComponentListener()
         {
