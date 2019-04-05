@@ -346,26 +346,28 @@ public class Ahorcado
         System.out.println(!getRanking().getListaDeUsuarios().contains(getUsuario()));
 
         //ver si ya existe el usuario en el ranking
-        if (getRanking().getListaDeUsuarios().contains(getUsuario()))
+        if (getUsuario().getPuntajeUltimo() > 0)
         {
-            //tomar usuario del ranking
-            Usuario aux = getRanking().getListaDeUsuarios().get(getRanking().getListaDeUsuarios().indexOf(getUsuario()));
+            if (getRanking().getListaDeUsuarios().contains(getUsuario()))
+            {
+                //tomar usuario del ranking
+                Usuario aux = getRanking().getListaDeUsuarios().get(getRanking().getListaDeUsuarios().indexOf(getUsuario()));
 
-            //actualizar stats
-            aux.addPartidasJugadas(getUsuario().getPartidasJugadas());
-            aux.addPuntajeAcumulado(getUsuario().getPuntajeAcumulado());
-            aux.setPuntajeUltimo(getUsuario().getPuntajeUltimo());
+                //actualizar stats
+                aux.addPartidasJugadas(getUsuario().getPartidasJugadas());
+                aux.addPuntajeAcumulado(getUsuario().getPuntajeAcumulado());
+                aux.setPuntajeUltimo(getUsuario().getPuntajeUltimo());
+            }
+            else
+            {
+                //agregar al ranking
+                getRanking().getListaDeUsuarios().addLast(getUsuario());
+
+            }
+
+            //actualizar archivo ranking
+            Main.backend.getRanking().guardarEnXml();
         }
-        else
-        {
-            //agregar al ranking
-            getRanking().getListaDeUsuarios().addLast(getUsuario());
-
-        }
-
-        //actualizar archivo ranking
-        Main.backend.getRanking().guardarEnXml();
-
     }
 
     //</editor-fold>
