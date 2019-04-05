@@ -317,8 +317,12 @@ public class FormInicial extends javax.swing.JFrame
 
     private void mnItemNuevoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mnItemNuevoActionPerformed
     {//GEN-HEADEREND:event_mnItemNuevoActionPerformed
-        //llama al evento de presionar btnJugar
-        btnJugarActionPerformed(evt);
+        Main.backend.setPartidaEnCurso(false);
+        jpInicio.setVisible(true);
+        jpGameplay.setVisible(false);
+        jpUsuario.setVisible(false);
+        jpRank.setVisible(false);
+        mnItemNuevo.setEnabled(false);
     }//GEN-LAST:event_mnItemNuevoActionPerformed
 
     private void mnItemRankActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mnItemRankActionPerformed
@@ -326,6 +330,7 @@ public class FormInicial extends javax.swing.JFrame
         jpInicio.setVisible(false);
         jpGameplay.setVisible(false);
         jpUsuario.setVisible(false);
+        mnItemNuevo.setEnabled(true);
         lanzarRanking();
     }//GEN-LAST:event_mnItemRankActionPerformed
 
@@ -333,6 +338,7 @@ public class FormInicial extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnJugarActionPerformed
 
         this.jpInicio.setVisible(false);
+        this.mnItemNuevo.setEnabled(true);
 
         try
         {
@@ -436,7 +442,6 @@ public class FormInicial extends javax.swing.JFrame
         initComponents();
         btnJugar.setEnabled(false);
         this.jpRank.setVisible(false);
-        //   contenedor = new Container();
         listenerVolverAInicio = new ComponentListener()
         {
             @Override
@@ -476,6 +481,8 @@ public class FormInicial extends javax.swing.JFrame
         this.btnJugar.setIcon(new ImageIcon("jugar-09.png"));
         this.btnJugar.setRolloverIcon(new ImageIcon("jugar-11.png"));
         this.btnJugar.setPressedIcon(new ImageIcon("jugar-10.png"));
+
+        this.mnItemNuevo.setEnabled(false);
     }
 
     //</editor-fold>
@@ -589,11 +596,13 @@ public class FormInicial extends javax.swing.JFrame
                 {
                     jpInicio.setVisible(false);
                     jpGameplay.setVisible(true);
+                    mnItemNuevo.setEnabled(true);
                 }
                 else
                 {
                     jpInicio.setVisible(true);
                     jpGameplay.setVisible(false);
+                    mnItemNuevo.setEnabled(false);
                 }
                 jpUsuario.setVisible(false);
                 jpRank.setVisible(false);
