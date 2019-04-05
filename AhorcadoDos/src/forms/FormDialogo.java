@@ -149,7 +149,19 @@ public class FormDialogo extends javax.swing.JDialog
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAceptarActionPerformed
     {//GEN-HEADEREND:event_btnAceptarActionPerformed
+        System.out.println("OK En dialogo");
+
+        System.out.println("this.txtNombre.getText()");
+        System.out.println(this.txtNombre.getText());
+
+        System.out.println("Main.backend.getUsuario().getNombre() antes");
+        System.out.println(Main.backend.getUsuario().getNombre());
+
         Main.backend.getUsuario().setNombre(this.txtNombre.getText());
+
+        System.out.println("Main.backend.getUsuario().getNombre() dps");
+        System.out.println(Main.backend.getUsuario().getNombre());
+
         this.isDialogResult = true;
         this.setVisible(false);
     }//GEN-LAST:event_btnAceptarActionPerformed
@@ -191,6 +203,9 @@ public class FormDialogo extends javax.swing.JDialog
         initComponents();
         reaccionesConDialogo(tipoRespuesta, texto);
 
+        System.out.println("Main.backend.getUsuario().getNombre() constructor");
+        System.out.println(Main.backend.getUsuario().getNombre());
+        
         //pide ingresar nombre
         this.txtNombre.setText("Ingresá tu nombre");
 
@@ -230,10 +245,15 @@ public class FormDialogo extends javax.swing.JDialog
      */
     public static void main(String args[])
     {
-        /* Set the Nimbus look and feel */
+        /*
+         * Set the Nimbus look and feel
+         */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the
+         * default look and feel.
+         * For details see
+         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try
         {
@@ -273,7 +293,9 @@ public class FormDialogo extends javax.swing.JDialog
         //</editor-fold>
 
 
-        /* Create and display the dialog */
+        /*
+         * Create and display the dialog
+         */
         java.awt.EventQueue.invokeLater(new Runnable()
         {
             public void run()

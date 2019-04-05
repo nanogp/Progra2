@@ -309,6 +309,8 @@ public class PanelJuego extends javax.swing.JPanel
             ganaste.setVisible(true);
             if (ganaste.isDialogResult)
             {
+                Main.backend.actualizarEstadisticaUsuario(Main.backend.ganaPartida);
+                        
                 //pasar siguiente nivel
                 limpiarTodo();
             }
@@ -319,6 +321,8 @@ public class PanelJuego extends javax.swing.JPanel
             perdiste.setVisible(true);
             if (perdiste.isDialogResult)
             {
+                Main.backend.actualizarEstadisticaUsuario(Main.backend.pierdePartida);
+                        
                 //volver a inicio
                 this.setVisible(false);
             }

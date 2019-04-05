@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_131" class="java.beans.XMLDecoder">
+<java version="1.8.0_201" class="java.beans.XMLDecoder">
  <object class="clases.Ranking" id="Ranking0">
   <void property="listaDeUsuarios">
    <void method="add">
@@ -85,6 +85,22 @@
    <void method="add">
     <object class="clases.Usuario">
      <void property="nombre">
+      <string>Ingresá tu nombre</string>
+     </void>
+     <void property="partidasJugadas">
+      <int>17</int>
+     </void>
+     <void property="puntajeAcumulado">
+      <int>9</int>
+     </void>
+     <void property="puntajeUltimo">
+      <int>1</int>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="clases.Usuario">
+     <void property="nombre">
       <string>Juan</string>
      </void>
      <void property="partidasJugadas">
@@ -95,22 +111,6 @@
      </void>
      <void property="puntajeUltimo">
       <int>1</int>
-     </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="clases.Usuario">
-     <void property="nombre">
-      <string>Ingresá tu nombre</string>
-     </void>
-     <void property="partidasJugadas">
-      <int>5</int>
-     </void>
-     <void property="puntajeAcumulado">
-      <int>3</int>
-     </void>
-     <void property="puntajeUltimo">
-      <int>2</int>
      </void>
     </object>
    </void>
